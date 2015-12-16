@@ -1,0 +1,158 @@
+<?php
+
+namespace autostopBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use autostopBundle\Entity\Ruta;
+/**
+ * Puntos
+ *
+ * @ORM\Table(name="puntos", indexes={@ORM\Index(name="IDX_2F16D1B9B053AE12", columns={"idRuta"})})
+ * @ORM\Entity
+ */
+class Puntos
+{
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="latitud", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $latitud;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longitud", type="float", precision=10 , scale=0, nullable=false)
+     */
+    private $longitud;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=false)
+     */
+    private $descripcion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \autostopBundle\Entity\Ruta
+     *
+     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\Ruta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idRuta", referencedColumnName="id")
+     * })
+     */
+    private $idruta;
+
+
+
+    /**
+     * Set latitud
+     *
+     * @param float $latitud
+     * @return Puntos
+     */
+    public function setLatitud($latitud)
+    {
+        $this->latitud = $latitud;
+
+        return $this;
+    }
+
+    /**
+     * Get latitud
+     *
+     * @return float 
+     */
+    public function getLatitud()
+    {
+        return $this->latitud;
+    }
+
+    /**
+     * Set longitud
+     *
+     * @param float $longitud
+     * @return Puntos
+     */
+    public function setLongitud($longitud)
+    {
+        $this->longitud = $longitud;
+
+        return $this;
+    }
+
+    /**
+     * Get longitud
+     *
+     * @return float 
+     */
+    public function getLongitud()
+    {
+        return $this->longitud;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Puntos
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idruta
+     *
+     * @param \autostopBundle\Entity\Ruta $idruta
+     * @return Puntos
+     */
+    public function setIdruta(Ruta $idruta = null)
+    {
+        $this->idruta = $idruta;
+
+        return $this;
+    }
+
+    /**
+     * Get idruta
+     *
+     * @return \autostopBundle\Entity\Ruta 
+     */
+    public function getIdruta()
+    {
+        return $this->idruta;
+    }
+}

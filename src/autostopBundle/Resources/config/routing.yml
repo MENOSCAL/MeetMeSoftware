@@ -1,0 +1,53 @@
+daw_autostop_login:
+    path:     /login
+    defaults: { _controller: autostopBundle:login:login }
+
+daw_autostop_register:
+    path:     /registro
+    defaults: { _controller: autostopBundle:register:register }
+
+daw_autostop_perfil:
+    path:     /perfil/{usuariop}
+    defaults: { _controller: autostopBundle:perfil:perfil }
+    
+daw_autostop_recargar:
+    path:     /inicio
+    defaults: { _controller: autostopBundle:login:recargar }  
+
+daw_autostop_logout:
+    path:     /logout
+    defaults: { _controller: autostopBundle:logout:logout }
+    
+daw_autostop_notificacion:
+    path:     /notificacion/{idruta}/{idEstudiante}
+    defaults: { _controller: autostopBundle:notificacion:enviarNotificaciones }
+    
+daw_autostop_nueva_ruta:
+    path:     /nuevaruta
+    defaults: { _controller: autostopBundle:nuevaRuta:nuevaruta }
+    options:
+        expose: true
+           
+daw_autostop_amigos:
+    pattern:  /{usuariop}
+    defaults: { _controller: autostopBundle:amigos:agregar }
+    options:
+        expose: true
+        
+daw_autostop_puntos:
+    path:     /puntos
+    defaults: { _controller: autostopBundle:nuevaRuta:puntos }
+    options:
+        expose: true
+        
+daw_autostop_buscar:
+    pattern: /
+    defaults: { _controller: autostopBundle:nuevaRuta:buscar }
+    options:
+        expose: true
+        
+daw_autostop_amigosd:
+    pattern:  /p/{usuariop}
+    defaults: { _controller: autostopBundle:amigos:eliminar }
+    options:
+        expose: true
