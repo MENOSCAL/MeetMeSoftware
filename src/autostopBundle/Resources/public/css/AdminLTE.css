@@ -20,6 +20,14 @@ body {
   background: #f9f9f9;
 }
 
+/*********/
+.right-side{
+    font-size: 44px;
+    background-color:#01ff70;
+    }
+    
+    
+    /******************/
 footer{
   clear: both;
   text-align: center;
@@ -122,11 +130,13 @@ body > .header {
   display: block;
 }
 /*right side - contins main content*/
+/*
 .right-side {
   background-color: #f9f9f9;
   margin-left: 220px;
   min-height: 593px;
 }
+*/
 /*left side - contains sidebar*/
 .left-side {
   position: absolute;
@@ -169,11 +179,19 @@ body > .header {
   }
 }
 /*Give content full width on xs screens*/
+/*
 @media screen and (max-width: 992px) {
   .right-side {
     margin-left: 0;
   }
 }
+*/
+
+
+
+
+
+
 /*
     By default the layout is not fixed but if you add the class .fixed to the body element
     the sidebar and the navbar will automatically become poisitioned fixed

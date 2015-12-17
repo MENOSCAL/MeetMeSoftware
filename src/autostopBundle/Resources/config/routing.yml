@@ -18,6 +18,10 @@ daw_autostop_logout:
     path:     /logout
     defaults: { _controller: autostopBundle:logout:logout }
     
+daw_autostop_eventoinformal:
+     pattern:     /eventoinformal
+     defaults: { _controller: autostopBundle:eventoInformal:eventoInformal }
+    
 daw_autostop_notificacion:
     path:     /notificacion/{idruta}/{idEstudiante}
     defaults: { _controller: autostopBundle:notificacion:enviarNotificaciones }
@@ -51,3 +55,6 @@ daw_autostop_amigosd:
     defaults: { _controller: autostopBundle:amigos:eliminar }
     options:
         expose: true
+        
+
+    
