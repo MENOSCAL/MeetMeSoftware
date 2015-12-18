@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
     </head>
     <body class="skin-blue">
-       
+    {{ ws_client() }}   
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a style="background-color:#CC6633" href="{{path('daw_autostop_recargar')}}" class="logo">
@@ -147,6 +147,31 @@
                                     
                                 </div>
                         </li>
+                        <li class="active">
+                            <a class="botonMenu" style="background-color:#FFE4B5" href="#">
+                                <i class="fa fa-road"></i>
+                                <span data-toggle="modal" data-target="#evento" >Evento</span>
+                            </a>
+                            <div class="modal fade" id="evento" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" >
+                                        <div style="background-color:#FF9900;" class="modal-header">
+                                            <button style="background-color:#FF9900;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h2 style="color:white;background-color:#FF9900;font-family:'Kaushan Script', cursive;">Crear Evento</h2>
+                                        </div>
+                                        <div class="modal-body" style="overflow-y: auto; height: 300px;">
+                                            <div>
+                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('daw_autostop_eventoformal')}}" class="btn btn-block"><b>Evento Formal</b></a>
+                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('daw_autostop_eventoinformal')}}" class="btn btn-block"><b>Evento Informal</b></a>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                         </li>
+                        
+                        
+                        
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -158,8 +183,41 @@
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
             
-                 <h1>Eventos</h1>
-                 <img src="images/calend.jpg" alt="cal" >
+        <div class="form-box" id="login-box">
+            <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">Registrar Evento Formal</div>
+            <form action="{{path('daw_autostop_eventoformal')}}" method="POST">
+                
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <input type="text" name="titulo" class="form-control" maxlength="15" placeholder="Escriba el titulo de la agenda..."/>
+                    </div>
+                    <div class="form-group">
+                        <select name="cargo" class="form-control">
+                            <option  value="secretario">Secretario</option>
+                            <option  value="moderador">Moderador</option>
+                            <option  value="administrador">Administrador</option>
+                        </select>
+                    </div>    
+                    <div class="form-group">
+                        <select name="invitado" class="form-control">
+                            <option  value="name">Evelyn Gonzalez</option>
+                            <option  value="name">Raul Rodriguez</option>
+                            <option  value="name">Victor Menoscal</option>
+                            <option  value="name">Marcelo Sanchez</option>
+                        </select>
+                    </div>    
+                    <div class="form-group">
+                        <input type="text" name="descripcion" class="form-control" maxlength="15" placeholder="Descripción de la agenda..."/>
+                    </div>
+                    
+
+                </div>
+                <div class="footer bg-gray">              
+                    <button type="submit" style="background-color:#FF9900;" class="btn btn-block">Registrarse</button>
+                    <a href="{{path('daw_autostop_login')}}" class="text-center">Volver</a>
+                </div>
+            </form>
+        </div>
                
                 
             </aside><!-- /.right-side -->

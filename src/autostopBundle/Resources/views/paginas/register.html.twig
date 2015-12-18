@@ -66,10 +66,35 @@
                     <div class="registrationFormAlert" id="checkPasswordMatch"></div>
                    
                 </div>
-                <div class="footer bg-gray">              
+                <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '730641610413296',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+         <div class="footer bg-gray"
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>       
+                
+                
+              <!--  <div class="footer bg-gray">              
                     <button type="submit" style="background-color:#FF9900;" class="btn btn-block">Registrarse</button>
                     <a href="{{path('daw_autostop_login')}}" class="text-center">Volver</a>
-                </div>
+                </div>-->
             </form>
         </div>
 
