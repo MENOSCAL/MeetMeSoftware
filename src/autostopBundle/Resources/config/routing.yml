@@ -25,7 +25,7 @@ daw_autostop_eventoinformal:
 daw_autostop_eventoformal:
      pattern:     /eventoformal
      defaults: { _controller: autostopBundle:eventoFormal:eventoFormal }
-    
+     
 daw_autostop_notificacion:
     path:     /notificacion/{idruta}/{idEstudiante}
     defaults: { _controller: autostopBundle:notificacion:enviarNotificaciones }
@@ -59,6 +59,7 @@ daw_autostop_amigosd:
     defaults: { _controller: autostopBundle:amigos:eliminar }
     options:
         expose: true
-        
+
+
 
     

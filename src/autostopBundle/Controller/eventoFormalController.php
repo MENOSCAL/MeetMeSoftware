@@ -1,6 +1,6 @@
 <?php
 namespace autostopBundle\Controller;
-
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 /**
  * Description of eventoFormalController
  *
