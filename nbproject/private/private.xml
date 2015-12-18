@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/login.html.twig</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/eventoinformal.html.twig</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/index.html.twig</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/eventoformal.html.twig</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/register.html.twig</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/web/bundles/autostop/css/style1.css</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/src/autostopBundle/Controller/loginController.php</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/src/autostopBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/login.html.twig</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/app/config/config.yml</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/app/config/routing.yml</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/perfil.html.twig</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/app/config/parameters.yml</file>
+            <file>file:/C:/Program%20Files/xampp/htdocs/MeetMeSoftware/src/autostopBundle/Resources/views/paginas/index.html.twig</file>
         </group>
     </open-files>
 </project-private>
