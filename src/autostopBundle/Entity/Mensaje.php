@@ -36,9 +36,9 @@ class Mensaje
     private $id;
 
     /**
-     * @var \autostopBundle\Entity\Estudiante
+     * @var \autostopBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\Estudiante")
+     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idReceptor", referencedColumnName="id")
      * })
@@ -46,9 +46,9 @@ class Mensaje
     private $idreceptor;
 
     /**
-     * @var \autostopBundle\Entity\Estudiante
+     * @var \autostopBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\Estudiante")
+     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idEmisor", referencedColumnName="id")
      * })
@@ -114,10 +114,10 @@ class Mensaje
     /**
      * Set idreceptor
      *
-     * @param \autostopBundle\Entity\Estudiante $idreceptor
+     * @param \autostopBundle\Entity\User $idreceptor
      * @return Mensaje
      */
-    public function setIdreceptor(Estudiante $idreceptor = null)
+    public function setIdreceptor(User $idreceptor = null)
     {
         $this->idreceptor = $idreceptor;
 
@@ -127,7 +127,7 @@ class Mensaje
     /**
      * Get idreceptor
      *
-     * @return \autostopBundle\Entity\Estudiante 
+     * @return \autostopBundle\Entity\User 
      */
     public function getIdreceptor()
     {
@@ -137,10 +137,10 @@ class Mensaje
     /**
      * Set idemisor
      *
-     * @param \autostopBundle\Entity\Estudiante $idemisor
+     * @param \autostopBundle\Entity\User $idemisor
      * @return Mensaje
      */
-    public function setIdemisor(Estudiante $idemisor = null)
+    public function setIdemisor(User $idemisor = null)
     {
         $this->idemisor = $idemisor;
 
@@ -150,7 +150,7 @@ class Mensaje
     /**
      * Get idemisor
      *
-     * @return \autostopBundle\Entity\Estudiante 
+     * @return \autostopBundle\Entity\User 
      */
     public function getIdemisor()
     {

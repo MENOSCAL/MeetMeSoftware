@@ -2,7 +2,7 @@
 namespace autostopBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use autostopBundle\Entity\Estudiante;
+use autostopBundle\Entity\User;
 use autostopBundle\Modal\Login;
 
 class loginController extends Controller
@@ -11,7 +11,7 @@ class loginController extends Controller
     {
         $sesion = $this->getRequest()->getSession();
         $em = $this->getDoctrine()->getManager();
-        $repositorio = $em->getRepository('autostopBundle:Estudiante'); 
+        $repositorio = $em->getRepository('autostopBundle:User'); 
         
         if($request->getMethod() == 'POST'){
             $sesion->clear();

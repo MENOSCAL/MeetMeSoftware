@@ -71,9 +71,9 @@ class Ruta
     private $id;
 
     /**
-     * @var \autostopBundle\Entity\Estudiante
+     * @var \autostopBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\Estudiante")
+     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idEstudiante", referencedColumnName="id")
      * })
@@ -193,10 +193,10 @@ class Ruta
     /**
      * Set idestudiante
      *
-     * @param \autostopBundle\Entity\Estudiante $idestudiante
+     * @param \autostopBundle\Entity\User $idestudiante
      * @return Ruta
      */
-    public function setIdestudiante(Estudiante $idestudiante = null)
+    public function setIdestudiante(User $idestudiante = null)
     {
         $this->idestudiante = $idestudiante;
 
@@ -206,7 +206,7 @@ class Ruta
     /**
      * Get idestudiante
      *
-     * @return \autostopBundle\Entity\Estudiante 
+     * @return \autostopBundle\Entity\User 
      */
     public function getIdestudiante()
     {

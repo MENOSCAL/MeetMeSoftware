@@ -4,7 +4,7 @@ namespace autostopBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use autostopBundle\Entity\Auto;
-use autostopBundle\Entity\Estudiante;
+use autostopBundle\Entity\User;
 use autostopBundle\WebService\WebService;
 
 class signupController extends Controller
@@ -15,7 +15,7 @@ class signupController extends Controller
             $ws = new WebService();
             $nombreUsuario = $request->get('email');
             if($ws->verificarUsuario($nombreUsuario) == 1){
-                $usuario = new Estudiante();            
+                $usuario = new User();            
                 $usuario->setNombre($ws->getNombres());
                 $usuario->setApellido($ws->getApellidos());
                 $usuario->setUsuario($request->get('usuario'));
@@ -40,7 +40,7 @@ class signupController extends Controller
                 $em->flush();
                 /*OJO hay que validar que el usuario y correo no se encuentre en la base de datos*/
                 $auto = new Auto();
-                $estudiante = $em->getRepository('autostopBundle:Estudiante')->findOneBy(array('usuario'=>$request->get('usuario')));
+                $estudiante = $em->getRepository('autostopBundle:User')->findOneBy(array('usuario'=>$request->get('usuario')));
                 $auto->setMarca($request->get('marca'));
                 $auto->setCapacidad($request->get('capacidad'));
                 $auto->setPlaca($request->get('placa'));
@@ -59,7 +59,7 @@ class signupController extends Controller
     /*public function registerAction(Request $request)
     {
         if($request->getMethod() == 'POST'){
-            $usuario = new Estudiante();
+            $usuario = new User();
             $usuario->setNombre($request->get('nombre'));
             $usuario->setApellido($request->get('apellido'));
             $usuario->setUsuario($request->get('usuario'));
@@ -77,7 +77,7 @@ class signupController extends Controller
                 $em->persist($usuario);
                 $em->flush();
                 $auto = new Auto();
-                $estudiante = $em->getRepository('autostopBundle:Estudiante')->findOneBy(array('usuario'=>$request->get('usuario')));
+                $estudiante = $em->getRepository('autostopBundle:User')->findOneBy(array('usuario'=>$request->get('usuario')));
                 $auto->setMarca($request->get('marca'));
                 $auto->setCapacidad($request->get('capacidad'));
                 $auto->setPlaca($request->get('placa'));

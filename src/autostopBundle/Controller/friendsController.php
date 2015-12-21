@@ -10,7 +10,7 @@ namespace autostopBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use autostopBundle\Entity\Solicitudamistad;
-use autostopBundle\Entity\Estudiante;
+use autostopBundle\Entity\User;
 use autostopBundle\Modal\Login;
 
 /**
@@ -26,8 +26,8 @@ class friendsController extends Controller{
         $login = $this->get('session')->get('login');
         //$seguidor = $this->get('session')->get('loginUserId');
         $seguidor = $login->getUsername();
-        $id1 = $em->getRepository('autostopBundle:Estudiante')->findOneBy(array('usuario'=>$usuariop));
-        $id2 = $em->getRepository('autostopBundle:Estudiante')->findOneBy(array('usuario'=>$seguidor));
+        $id1 = $em->getRepository('autostopBundle:User')->findOneBy(array('usuario'=>$usuariop));
+        $id2 = $em->getRepository('autostopBundle:User')->findOneBy(array('usuario'=>$seguidor));
         $date = date_create(date('Y-m-d H:i:s'));
         $usuario = new Solicitudamistad();
         $usuario->setEstado(0);
@@ -60,7 +60,7 @@ class friendsController extends Controller{
     
     public function deleteAction($usuariop){
         $em = $this->getDoctrine()->getManager();
-        $repositorio = $em->getRepository('autostopBundle:Estudiante');
+        $repositorio = $em->getRepository('autostopBundle:User');
         $usuario = $this->get('session')->get('loginUserId');
         
         $queryp = $repositorio->createQueryBuilder('a')

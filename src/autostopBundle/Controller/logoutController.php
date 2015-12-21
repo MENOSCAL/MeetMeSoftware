@@ -2,7 +2,7 @@
 namespace autostopBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use autostopBundle\Entity\Estudiante;
+use autostopBundle\Entity\User;
 use autostopBundle\Modal\Login;
 
 class logoutController extends Controller{

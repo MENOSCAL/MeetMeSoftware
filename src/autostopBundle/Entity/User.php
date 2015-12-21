@@ -5,12 +5,12 @@ namespace autostopBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Estudiante
+ * User
  *
  * @ORM\Table(name="estudiante")
  * @ORM\Entity
  */
-class Estudiante
+class User
 {
     /**
      * @var boolean
@@ -102,7 +102,7 @@ class Estudiante
      * Set sexo
      *
      * @param boolean $sexo
-     * @return Estudiante
+     * @return User
      */
     public function setSexo($sexo)
     {
@@ -125,7 +125,7 @@ class Estudiante
      * Set nombre
      *
      * @param string $nombre
-     * @return Estudiante
+     * @return User
      */
     public function setNombre($nombre)
     {
@@ -148,7 +148,7 @@ class Estudiante
      * Set apellido
      *
      * @param string $apellido
-     * @return Estudiante
+     * @return User
      */
     public function setApellido($apellido)
     {
@@ -171,7 +171,7 @@ class Estudiante
      * Set usuario
      *
      * @param string $usuario
-     * @return Estudiante
+     * @return User
      */
     public function setUsuario($usuario)
     {
@@ -194,7 +194,7 @@ class Estudiante
      * Set contrasena
      *
      * @param string $contrasena
-     * @return Estudiante
+     * @return User
      */
     public function setContrasena($contrasena)
     {
@@ -217,7 +217,7 @@ class Estudiante
      * Set email
      *
      * @param string $email
-     * @return Estudiante
+     * @return User
      */
     public function setEmail($email)
     {
@@ -240,7 +240,7 @@ class Estudiante
      * Set foto
      *
      * @param string $foto
-     * @return Estudiante
+     * @return User
      */
     public function setFoto($foto)
     {
@@ -263,7 +263,7 @@ class Estudiante
      * Set visitas
      *
      * @param integer $visitas
-     * @return Estudiante
+     * @return User
      */
     public function setVisitas($visitas)
     {
@@ -286,7 +286,7 @@ class Estudiante
      * Set estado
      *
      * @param boolean $estado
-     * @return Estudiante
+     * @return User
      */
     public function setEstado($estado)
     {
@@ -309,7 +309,7 @@ class Estudiante
      * Set latitud
      *
      * @param float $latitud
-     * @return Estudiante
+     * @return User
      */
     public function setLatitud($latitud)
     {
@@ -332,7 +332,7 @@ class Estudiante
      * Set longitud
      *
      * @param float $longitud
-     * @return Estudiante
+     * @return User
      */
     public function setLongitud($longitud)
     {

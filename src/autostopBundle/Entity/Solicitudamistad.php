@@ -36,9 +36,9 @@ class Solicitudamistad
     private $id;
 
     /**
-     * @var \autostopBundle\Entity\Estudiante
+     * @var \autostopBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\Estudiante")
+     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idSeguidor", referencedColumnName="id")
      * })
@@ -46,9 +46,9 @@ class Solicitudamistad
     private $idseguidor;
 
     /**
-     * @var \autostopBundle\Entity\Estudiante
+     * @var \autostopBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\Estudiante")
+     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idEstudiante", referencedColumnName="id")
      * })
@@ -114,10 +114,10 @@ class Solicitudamistad
     /**
      * Set idseguidor
      *
-     * @param \autostopBundle\Entity\Estudiante $idseguidor
+     * @param \autostopBundle\Entity\User $idseguidor
      * @return Solicitudamistad
      */
-    public function setIdseguidor(Estudiante $idseguidor = null)
+    public function setIdseguidor(User $idseguidor = null)
     {
         $this->idseguidor = $idseguidor;
 
@@ -127,7 +127,7 @@ class Solicitudamistad
     /**
      * Get idseguidor
      *
-     * @return \autostopBundle\Entity\Estudiante 
+     * @return \autostopBundle\Entity\User 
      */
     public function getIdseguidor()
     {
@@ -137,10 +137,10 @@ class Solicitudamistad
     /**
      * Set idestudiante
      *
-     * @param \autostopBundle\Entity\Estudiante $idestudiante
+     * @param \autostopBundle\Entity\User $idestudiante
      * @return Solicitudamistad
      */
-    public function setIdestudiante(Estudiante $idestudiante = null)
+    public function setIdestudiante(User $idestudiante = null)
     {
         $this->idestudiante = $idestudiante;
 
@@ -150,7 +150,7 @@ class Solicitudamistad
     /**
      * Get idestudiante
      *
-     * @return \autostopBundle\Entity\Estudiante 
+     * @return \autostopBundle\Entity\User 
      */
     public function getIdestudiante()
     {

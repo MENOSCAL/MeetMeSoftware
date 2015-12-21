@@ -5,7 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use autostopBundle\Entity\Ruta;
 use autostopBundle\Entity\Solicitudamistad;
-use autostopBundle\Entity\Estudiante;
+use autostopBundle\Entity\User;
 
 class notificacionController extends Controller{
     

@@ -3,7 +3,7 @@ namespace autostopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
-use autostopBundle\Entity\Estudiante;
+use autostopBundle\Entity\User;
 use autostopBundle\Entity\Ruta;
 use autostopBundle\Modal\Login;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,7 +38,7 @@ class nuevaRutaController extends Controller
             }
             $ruta->setPuntosx($puntosx);
             $ruta->setPuntosy($puntosy);
-            $repositorioEstudiante = $em->getRepository('autostopBundle:Estudiante');
+            $repositorioEstudiante = $em->getRepository('autostopBundle:User');
             $estudiante = $repositorioEstudiante->findOneBy(array('usuario'=>$usuario));
             $ruta->setIdestudiante($estudiante);            
             $em->persist($ruta);

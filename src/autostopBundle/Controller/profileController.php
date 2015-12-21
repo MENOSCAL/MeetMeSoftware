@@ -9,7 +9,7 @@
 namespace autostopBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use autostopBundle\Entity\Solicitudamistad;
-use autostopBundle\Entity\Estudiante;
+use autostopBundle\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
 use autostopBundle\Modal\Login;
 use FOS\UserBundle\FOSUserEvents;
@@ -25,7 +25,7 @@ class profileController extends Controller{
     public function profileAction($usuariop){         
          
         $em = $this->getDoctrine()->getManager();
-        $repositorio = $em->getRepository('autostopBundle:Estudiante');
+        $repositorio = $em->getRepository('autostopBundle:User');
         $repositorio2 = $em->getRepository('autostopBundle:Solicitudamistad');
         $login = $this->get('session')->get('login');
         $usuario = $login->getUsername();
@@ -75,7 +75,7 @@ class profileController extends Controller{
         $clipp = $queryp->getArrayResult();
         
         $qb = $em->createQueryBuilder();
-        $q = $qb->update('autostopBundle:Estudiante','u')
+        $q = $qb->update('autostopBundle:User','u')
                 ->set('u.visitas','?1')
                 ->where('u.id = ?3')
                 ->setParameter(1, $clipp[0]['visitas']+1)

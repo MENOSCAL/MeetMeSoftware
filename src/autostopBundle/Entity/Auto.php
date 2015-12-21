@@ -43,9 +43,9 @@ class Auto
     private $id;
 
     /**
-     * @var \autostopBundle\Entity\Estudiante
+     * @var \autostopBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\Estudiante")
+     * @ORM\ManyToOne(targetEntity="autostopBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="idEstudiante", referencedColumnName="id")
      * })
@@ -134,10 +134,10 @@ class Auto
     /**
      * Set idestudiante
      *
-     * @param \autostopBundle\Entity\Estudiante $idestudiante
+     * @param \autostopBundle\Entity\User $idestudiante
      * @return Auto
      */
-    public function setIdestudiante(Estudiante $idestudiante = null)
+    public function setIdestudiante(User $idestudiante = null)
     {
         $this->idestudiante = $idestudiante;
 
@@ -147,7 +147,7 @@ class Auto
     /**
      * Get idestudiante
      *
-     * @return \autostopBundle\Entity\Estudiante 
+     * @return \autostopBundle\Entity\User 
      */
     public function getIdestudiante()
     {
