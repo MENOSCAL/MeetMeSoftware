@@ -2,7 +2,7 @@
 <html class="bg-black">
     <head>
         <meta charset="UTF-8">
-        <title>MeetMe - Registro</title>
+        <title>MeetMe - Sign Up</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="{{asset('bundles/autostop/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -27,22 +27,22 @@
     <body class="bg-black">
 
         <div class="form-box" id="login-box">
-            <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">Registro</div>
-            <form action="{{path('daw_autostop_register')}}" method="POST">
+            <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">Sign Up</div>
+            <form action="{{path('meetme_signup')}}" method="POST">
                 
                 <div class="body bg-gray">
                     <div class="form-group">
-                        <input type="text" name="nombre2" class="form-control" maxlength="15" placeholder="Escriba su nombre..."/>
+                        <input type="text" name="nombre2" class="form-control" maxlength="15" placeholder="Your name..."/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="usuario" class="form-control" maxlength="15" placeholder="Escriba su usuario..."/>
+                        <input type="text" name="usuario" class="form-control" maxlength="15" placeholder="Your user..."/>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" maxlength="50" placeholder="Correo electronico..."/>
+                        <input type="email" name="email" class="form-control" maxlength="50" placeholder="Your email..."/>
                         <div class="input-group-addon"></div>
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="telefono" class="form-control" maxlength="50" placeholder="Teléfono"/>
+                        <input type="tel" name="telefono" class="form-control" maxlength="50" placeholder="Phone"/>
                         <div class="input-group-addon"></div>
                     </div>
                     <!--
@@ -53,15 +53,15 @@
                     </div>
                     -->
                     <div class="form-group">
-                        <input type="text" name="pais" class="form-control" maxlength="50" placeholder="País..."/>
+                        <input type="text" name="pais" class="form-control" maxlength="50" placeholder="Country..."/>
                         <div class="input-group-addon"></div>
                     </div>
                     
                     <div class="form-group">
-                        <input type="password" id="newPassword" name="password" class="form-control" maxlength="15" placeholder="Contraseña..."/>
+                        <input type="password" id="newPassword" name="password" class="form-control" maxlength="15" placeholder="Password..."/>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="confirmPassword" name="password2" class="form-control" maxlength="15" placeholder="Confirme contraseña..."/>
+                        <input type="password" id="confirmPassword" name="password2" class="form-control" maxlength="15" placeholder="Confirm password..."/>
                     </div>
                     <div class="registrationFormAlert" id="checkPasswordMatch"></div>
                    
@@ -83,18 +83,22 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+<!--
          <div class="footer bg-gray"
   class="fb-like"
   data-share="true"
   data-width="450"
   data-show-faces="true">
 </div>       
-                
-                
-              <!--  <div class="footer bg-gray">              
-                    <button type="submit" style="background-color:#FF9900;" class="btn btn-block">Registrarse</button>
-                    <a href="{{path('daw_autostop_login')}}" class="text-center">Volver</a>
-                </div>-->
+-->                
+              <div class="footer bg-gray">                       
+                  
+                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Sign Up</button>
+              </div>  
+               <div class="footer bg-gray">              
+                   
+                    <a href="{{path('meetme_login')}}" class="text-center">Go back</a>
+               </div>
             </form>
         </div>
 

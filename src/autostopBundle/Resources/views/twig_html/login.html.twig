@@ -17,20 +17,20 @@
     <body class="bg-black">        
         <div class="form-box" id="login-box">
             <div class="header" style="background-color:#FF9900;font-size:30px;font-family:'Kaushan Script', cursive;" >MeetMe</div>
-            <form action="{{path('daw_autostop_login')}}" method="post">
+            <form action="{{path('meetme_login')}}" method="post">
                 <div class="body bg-gray">
                     <div class="form-group">
-                        <input type="text" name="usuario" class="form-control" placeholder="nombre de ususario..."/>
+                        <input type="text" name="usuario" class="form-control" placeholder="Your username..."/>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="contrasena" class="form-control" placeholder="contraseña..."/>
+                        <input type="password" name="contrasena" class="form-control" placeholder="Your password..."/>
                     </div> 
                 </div>
                 <div class="footer bg-gray">                                                               
-                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Iniciar sesi&oacute;n</button>                   
-                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Iniciar con Hotmail</button> 
-                    <a style="background-color:#FF9900;" class="btn btn-block" href="https://www.facebook.com/dialog/oauth?client_id=730641610413296&redirect_uri=http://localhost/MeetMeSoftware/web/app_dev.php/eventoformal">Iniciar con Facebook</a>                     
-                    <a style="color:black"href="{{path('daw_autostop_register')}}" class="text-center">Registrarse</a>
+                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Sign in</button>                   
+                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Sign in Hotmail</button> 
+                    <a style="background-color:#FF9900;" class="btn btn-block" href="https://www.facebook.com/dialog/oauth?client_id=730641610413296&redirect_uri=http://localhost/MeetMeSoftware/web/app_dev.php/eventoformal">Sign in with Facebook</a>                     
+                    <a style="color:black"href="{{path('meetme_signup')}}" class="text-center">Sign Up</a>
                 </div>
             </form>            
         </div>

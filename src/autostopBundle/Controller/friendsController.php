@@ -18,9 +18,9 @@ use autostopBundle\Modal\Login;
  *
  * @author Carlos
  */
-class amigosController extends Controller{
+class friendsController extends Controller{
     //put your code here
-    public function agregarAction($usuariop){
+    public function addAction($usuariop){
         
         $em = $this->getDoctrine()->getManager();
         $login = $this->get('session')->get('login');
@@ -43,7 +43,7 @@ class amigosController extends Controller{
         echo 'alert("usuario no encontrado")';
         echo '</script>';
         /*
-        return $this->render('autostopBundle:paginas:perfil.html.twig', array(
+        return $this->render('autostopBundle:twig_html:perfil.html.twig', array(
                 'usuario'     => $seguidor,
                 'nombre'      => $nombre,
                 'apellido'    => $apellido,
@@ -58,7 +58,7 @@ class amigosController extends Controller{
        return new Reponse();
     }
     
-    public function eliminarAction($usuariop){
+    public function deleteAction($usuariop){
         $em = $this->getDoctrine()->getManager();
         $repositorio = $em->getRepository('autostopBundle:Estudiante');
         $usuario = $this->get('session')->get('loginUserId');

@@ -25,7 +25,7 @@ class loginController extends Controller
                     $nombre = $login->getNombre();
                     $apellido = $login->getApellido();
                     $sexo = $login->getSexo();
-                    return $this->render( 'autostopBundle:paginas:index.html.twig', array('usuario' => $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
+                    return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario' => $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
                 }else{
                     $login = new Login();
                     $login->setUsername($usuario);
@@ -34,10 +34,10 @@ class loginController extends Controller
                     $login->setApellido($user->getApellido());
                     $login->setSexo($user->getSexo());
                     $sesion->set('login', $login);
-                    return $this->render( 'autostopBundle:paginas:index.html.twig', array('usuario' => $usuario, 'nombre'=>$user->getNombre(), 'apellido'=>$user->getApellido(), 'sexo'=>$user->getSexo()) );
+                    return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario' => $usuario, 'nombre'=>$user->getNombre(), 'apellido'=>$user->getApellido(), 'sexo'=>$user->getSexo()) );
                 }                        
             }else{
-                return $this->render('autostopBundle:paginas:login.html.twig');
+                return $this->render('autostopBundle:twig_html:login.html.twig');
                 //return new Response("no encontro el usuario");
             }     
             /*if($user){
@@ -57,17 +57,17 @@ class loginController extends Controller
                 $nombre =($clip[0]['nombre']);
                 $apellido =($clip[0]['apellido']);
                 $url =($clip[0]['foto'].'.jpg');
-                //return $this->render('autostopBundle:paginas:index.html.twig',array('nombre'=>$user->getNombre(), 'apellido'=>$user->getApellido()));//OJO aqui se actualiza la pagina 
+                //return $this->render('autostopBundle:twig_html:index.html.twig',array('nombre'=>$user->getNombre(), 'apellido'=>$user->getApellido()));//OJO aqui se actualiza la pagina 
                 $this->get('session')->set('loginUserId', $usuario);
                 $this->get('session')->set('loginId', $id);
-                return $this->render('autostopBundle:paginas:index.html.twig', array(
+                return $this->render('autostopBundle:twig_html:index.html.twig', array(
                 'usuario'     => $usuario,
                 'nombre'      => $nombre,
                 'apellido'    => $apellido,
                 'url'      => $url
                 ));          
             }else{
-                return $this->render('autostopBundle:paginas:login.html.twig',array('mensaje'=>'no se encontro el usuario, registrese...'));
+                return $this->render('autostopBundle:twig_html:login.html.twig',array('mensaje'=>'no se encontro el usuario, registrese...'));
             }*/
         }else{
             if($sesion->has('login')){
@@ -76,9 +76,9 @@ class loginController extends Controller
                 $nombre = $login->getNombre();
                 $apellido = $login->getApellido();
                 $sexo = $login->getSexo();
-                return $this->render( 'autostopBundle:paginas:index.html.twig', array('usuario' => $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
+                return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario' => $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
             }else{
-                return $this->render('autostopBundle:paginas:login.html.twig');            
+                return $this->render('autostopBundle:twig_html:login.html.twig');            
             }
             /*if($sesion->has('login')){
                 $login = $sesion->get('login');
@@ -86,16 +86,16 @@ class loginController extends Controller
                 $password = $login->getPassword();
                 $user = $repositorio->findOneBy(array('usuario'=>$username,'contrasena'=>$password));
                 if($user){
-                    //return $this->render('autostopBundle:paginas:index.html.twig', array('name' => $usuario->getNombre()));//OJO aqui se actualiza la pagina
-                    return $this->render('autostopBundle:paginas:index.html.twig', array(
+                    //return $this->render('autostopBundle:twig_html:index.html.twig', array('name' => $usuario->getNombre()));//OJO aqui se actualiza la pagina
+                    return $this->render('autostopBundle:twig_html:index.html.twig', array(
                 'usuario'   => $usuario
                 ));
                 }
             }*/
-            return $this->render('autostopBundle:paginas:login.html.twig');
+            return $this->render('autostopBundle:twig_html:login.html.twig');
         }        
     }
-    public function recargarAction(){
+    public function reloadAction(){
         $sesion = $this->getRequest()->getSession();
         if($sesion->has('login')){
             $login = $sesion->get('login');
@@ -103,11 +103,11 @@ class loginController extends Controller
             $nombre = $login->getNombre();
             $apellido = $login->getApellido();
             $sexo = $login->getSexo();
-            return $this->render( 'autostopBundle:paginas:index.html.twig', array('usuario'=> $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
+            return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario'=> $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
         }
-        return $this->render('autostopBundle:paginas:index.html.twig');
+        return $this->render('autostopBundle:twig_html:index.html.twig');
         
-        /*return $this->render('autostopBundle:paginas:index.html.twig', array(
+        /*return $this->render('autostopBundle:twig_html:index.html.twig', array(
                 'usuario'     => "ngngng"
                 ));*/
     }

@@ -31,12 +31,14 @@ function addMarker(latlng) {
 
 function calcRoute() {
     if (inicio == null) {
-      alert("De click en una region en el mapa par agregar puntos");
+      //alert("De click en una region en el mapa par agregar puntos");
+      alert("Please, click on a region in the map to add points");
       return;
     }
     
     if (fin == null) {
-      alert("De click en una region en el mapa par agregar puntos");
+      //alert("De click en una region en el mapa par agregar puntos");
+      alert("Please, click on a region in the map to add points");
       return;
     }
     

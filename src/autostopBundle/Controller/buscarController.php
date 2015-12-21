@@ -12,6 +12,6 @@ class buscarController extends Controller{
     //put your code here
     public function buscarAction()
     { 
-        return $this->render('autostopBundle:paginas:index.html.twig');
+        return $this->render('autostopBundle:twig_html:index.html.twig');
     }
 }

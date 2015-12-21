@@ -6,9 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  *
  * @author Raul
  */
-class eventoFormalController extends Controller{
-    public function eventoFormalAction()
+class formalEventController extends Controller{
+    public function formalEventAction()
     {
-        return $this->render('autostopBundle:paginas:eventoformal.html.twig');
+        return $this->render('autostopBundle:twig_html:formalevent.html.twig');
     }
 }

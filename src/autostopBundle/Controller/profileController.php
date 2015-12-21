@@ -20,9 +20,9 @@ use FOS\UserBundle\Model\UserInterface;
  *
  * @author Carlos
  */
-class perfilController extends Controller{
+class profileController extends Controller{
     //put your code here
-    public function perfilAction($usuariop){         
+    public function profileAction($usuariop){         
          
         $em = $this->getDoctrine()->getManager();
         $repositorio = $em->getRepository('autostopBundle:Estudiante');
@@ -175,7 +175,7 @@ class perfilController extends Controller{
             echo '</script>';
         }
         
-        return $this->render('autostopBundle:paginas:perfil.html.twig', array(
+        return $this->render('autostopBundle:twig_html:perfil.html.twig', array(
                 'usuario'     => $usuario,
                 'nombre'      => $nombre,
                 'apellido'    => $apellido,

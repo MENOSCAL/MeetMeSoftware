@@ -7,9 +7,9 @@ use autostopBundle\Entity\Auto;
 use autostopBundle\Entity\Estudiante;
 use autostopBundle\WebService\WebService;
 
-class registerController extends Controller
+class signupController extends Controller
 {
-    public function registerAction(Request $request)
+    public function signupAction(Request $request)
     {
         if($request->getMethod() == 'POST'){
             $ws = new WebService();
@@ -31,7 +31,7 @@ class registerController extends Controller
                     $usuario->setFoto('bundles/autostop/img/female');
                 }
             }else{
-                return $this->render('autostopBundle:paginas:register.html.twig');
+                return $this->render('autostopBundle:twig_html:signup.html.twig');
             }            
             
             if($request->get('auto')=='si'){                                
@@ -52,9 +52,9 @@ class registerController extends Controller
                 $em->persist($usuario);
                 $em->flush();
             }
-            return $this->render('autostopBundle:paginas:login.html.twig');
+            return $this->render('autostopBundle:twig_html:login.html.twig');
         }
-        return $this->render('autostopBundle:paginas:register.html.twig');
+        return $this->render('autostopBundle:twig_html:signup.html.twig');
     }
     /*public function registerAction(Request $request)
     {
@@ -89,9 +89,9 @@ class registerController extends Controller
                 $em->persist($usuario);
                 $em->flush();
             }
-            return $this->render('autostopBundle:paginas:login.html.twig');
+            return $this->render('autostopBundle:twig_html:login.html.twig');
         }
-        return $this->render('autostopBundle:paginas:register.html.twig');
+        return $this->render('autostopBundle:twig_html:register.html.twig');
     }*/
 }
 

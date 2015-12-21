@@ -26,7 +26,7 @@
 <body class="skin-blue">
 {{ ws_client() }}
 <header class="header">
-    <a href="{{path('daw_autostop_recargar')}}" class="logo">
+    <a href="{{path('meetme_reload')}}" class="logo">
         AutoStop
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -183,7 +183,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{{path('daw_autostop_logout')}}" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                                <a href="{{path('meetme_logout')}}" class="btn btn-default btn-flat">Cerrar Sesión</a>
                             </div>
                         </li>
                     </ul>
@@ -210,7 +210,7 @@
             <!-- search form -->
             <form class="sidebar-form">
                 <div class="input-group">
-                    <input type="text" name="clave" class="busca" id="caja_busqueda" placeholder="Buscar..."/>
+                    <input type="text" name="clave" class="busca" id="caja_busqueda" placeholder="Search..."/>
                     <span class="input-group-btn">
                         <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                     </span></br>
@@ -221,12 +221,12 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a href="{{path('daw_autostop_recargar')}}">
+                    <a href="{{path('meetme_reload')}}">
                         <i class="fa fa-globe"></i> <span>Inicio</span>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="{{path('daw_autostop_perfil', {'usuariop': usuario})}}">
+                    <a href="{{path('meetme_profile', {'usuariop': usuario})}}">
                         <i class="fa fa-user"></i> <span>Perfil</span>
                     </a>
                 </li>

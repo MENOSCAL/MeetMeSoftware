@@ -10,7 +10,7 @@ class logoutController extends Controller{
     public function logoutAction(Request $request){
         $sesion = $this->getRequest()->getSession();
         $sesion->clear();
-        return $this->render('autostopBundle:paginas:login.html.twig');
+        return $this->render('autostopBundle:twig_html:login.html.twig');
     }
 }
 

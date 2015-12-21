@@ -1,30 +1,30 @@
-daw_autostop_login:
+meetme_login:
     path:     /login
     defaults: { _controller: autostopBundle:login:login }
 
-daw_autostop_register:
+meetme_signup:
     path:     /registro
-    defaults: { _controller: autostopBundle:register:register }
+    defaults: { _controller: autostopBundle:signup:signup }
 
-daw_autostop_perfil:
-    path:     /perfil/{usuariop}
-    defaults: { _controller: autostopBundle:perfil:perfil }
+meetme_profile:
+    path:     /profile/{usuariop}
+    defaults: { _controller: autostopBundle:profile:profile }
     
-daw_autostop_recargar:
+meetme_reload:
     path:     /inicio
-    defaults: { _controller: autostopBundle:login:recargar }  
+    defaults: { _controller: autostopBundle:login:reload }  
 
-daw_autostop_logout:
+meetme_logout:
     path:     /logout
     defaults: { _controller: autostopBundle:logout:logout }
     
-daw_autostop_eventoinformal:
+meetme_informalevent:
      pattern:     /eventoinformal
-     defaults: { _controller: autostopBundle:eventoInformal:eventoInformal }
+     defaults: { _controller: autostopBundle:informalEvent:informalEvent }
      
-daw_autostop_eventoformal:
+meetme_formalevent:
      pattern:     /eventoformal
-     defaults: { _controller: autostopBundle:eventoFormal:eventoFormal }
+     defaults: { _controller: autostopBundle:formalEvent:formalEvent }
      
 daw_autostop_notificacion:
     path:     /notificacion/{idruta}/{idEstudiante}
@@ -36,9 +36,9 @@ daw_autostop_nueva_ruta:
     options:
         expose: true
            
-daw_autostop_amigos:
+meetme_friends:
     pattern:  /{usuariop}
-    defaults: { _controller: autostopBundle:amigos:agregar }
+    defaults: { _controller: autostopBundle:friends:add }
     options:
         expose: true
         
@@ -54,9 +54,9 @@ daw_autostop_buscar:
     options:
         expose: true
         
-daw_autostop_amigosd:
+meetme_friendsd:
     pattern:  /p/{usuariop}
-    defaults: { _controller: autostopBundle:amigos:eliminar }
+    defaults: { _controller: autostopBundle:friends:delete }
     options:
         expose: true
 

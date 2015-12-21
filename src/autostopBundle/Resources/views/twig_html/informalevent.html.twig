@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>MeetMe - Evento formal</title>
+        <title>MeetMe - Evento informal</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="{{asset('bundles/autostop/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <!--<link href="{{asset('bundles/autostop/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />-->
+        <link href="{{asset('bundles/autostop/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
-        <!--<link href="{{asset('bundles/autostop/css/ionicons.min.css')}}" rel="stylesheet" type="text/css" />-->
+        <link href="{{asset('bundles/autostop/css/ionicons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="{{asset('bundles/autostop/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />
         <!--Google API-->
@@ -17,10 +17,10 @@
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
     </head>
     <body class="skin-blue">
-    {{ ws_client() }}   
+       
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a style="background-color:#CC6633" href="{{path('daw_autostop_recargar')}}" class="logo">
+            <a style="background-color:#CC6633" href="{{path('meetme_reload')}}" class="logo">
                 MeetMe
             </a>
             <!-- Header Navbar: style can be found in header.less -->
@@ -96,7 +96,7 @@
                     {#<form action="perfil_amigo.html" method="get" class="sidebar-form">#}
                     <form class="sidebar-form">
                         <div class="input-group">
-                            <input type="text" name="clave" class="busca" id="caja_busqueda" placeholder="Buscar..."/>
+                            <input type="text" name="clave" class="busca" id="caja_busqueda" placeholder="Search..."/>
                             <span class="input-group-btn">
                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span></br>
@@ -106,18 +106,18 @@
      
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="{{path('daw_autostop_recargar')}}">
-                                <i class="fa fa-globe"></i> <span>Inicio</span>
+                            <a href="{{path('meetme_reload')}}">
+                                <i class="fa fa-globe"></i> <span>Home</span>
                             </a>
                         </li>
                         <li class="active">
-                            
-                                <i class="fa fa-user"></i> <span>Contactos</span>
+                            <a href="">
+                                <i class="fa fa-user"></i> <span>Contacts</span>
                             </a>
                         </li>
                         <li id="crearRuta" class="active">
                             <a href="#">
-                                <i class="fa fa-road"></i> <span>Calendario</span>
+                                <i class="fa fa-road"></i> <span>Calendar</span>
                             </a>
                             <div class="rutaReset" style="display:none;margin:5px 0 5px 25px;">
                                 <input type="button" class="btn btn-info btnResetRuta" value="Reset" onclick="reset()"/>
@@ -126,7 +126,7 @@
                         <li class="active">
                             <a href="#">
                                 <i class="fa fa-road"></i>
-                                <span data-toggle="modal" data-target="#modalRuta" >Contactenos</span>
+                                <span data-toggle="modal" data-target="#modalRuta" >Contact Us</span>
                             </a>
                             <div class="modal fade" id="modalRuta" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -147,31 +147,29 @@
                                     
                                 </div>
                         </li>
-                        <li class="active">
+                        
+                                                <li class="active">
                             <a class="botonMenu" style="background-color:#FFE4B5" href="#">
                                 <i class="fa fa-road"></i>
-                                <span data-toggle="modal" data-target="#evento" >Evento</span>
+                                <span data-toggle="modal" data-target="#evento" >Event</span>
                             </a>
                             <div class="modal fade" id="evento" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content" >
                                         <div style="background-color:#FF9900;" class="modal-header">
                                             <button style="background-color:#FF9900;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h2 style="color:white;background-color:#FF9900;font-family:'Kaushan Script', cursive;">Crear Evento</h2>
+                                            <h2 style="color:white;background-color:#FF9900;font-family:'Kaushan Script', cursive;">Create Event</h2>
                                         </div>
                                         <div class="modal-body" style="overflow-y: auto; height: 300px;">
                                             <div>
-                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('daw_autostop_eventoformal')}}" class="btn btn-block"><b>Evento Formal</b></a>
-                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('daw_autostop_eventoinformal')}}" class="btn btn-block"><b>Evento Informal</b></a>
+                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('meetme_formalevent')}}" class="btn btn-block"><b>Formal Event</b></a>
+                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('meetme_informalevent')}}" class="btn btn-block"><b>Informal Event</b></a>
                                             </div>
                                            
                                         </div>
                                     </div>
                                 </div>
                          </li>
-                        
-                        
-                        
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -183,21 +181,14 @@
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
             
-        <div class="form-box" id="login-box">
-            <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">Registrar Evento Formal</div>
-            <form action="{{path('daw_autostop_eventoformal')}}" method="POST">
+<div class="form-box" id="login-box">
+            <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">Informal Event Form</div>
+            <form action="{{path('meetme_informalevent')}}" method="POST">
                 
                 <div class="body bg-gray">
                     <div class="form-group">
-                        <input type="text" name="titulo" class="form-control" maxlength="15" placeholder="Escriba el titulo de la agenda..."/>
+                        <input type="text" name="titulo" class="form-control" maxlength="15" placeholder="Write a title for the agenda..."/>
                     </div>
-                    <div class="form-group">
-                        <select name="cargo" class="form-control">
-                            <option  value="secretario">Secretario</option>
-                            <option  value="moderador">Moderador</option>
-                            <option  value="administrador">Administrador</option>
-                        </select>
-                    </div>    
                     <div class="form-group">
                         <select name="invitado" class="form-control">
                             <option  value="name">Evelyn Gonzalez</option>
@@ -205,16 +196,21 @@
                             <option  value="name">Victor Menoscal</option>
                             <option  value="name">Marcelo Sanchez</option>
                         </select>
-                    </div>    
+                    </div> 
+                    <div class="form-group">	
+                        <input type="date" name="fecha" class="form-control">
+                    </div>
                     <div class="form-group">
-                        <input type="text" name="descripcion" class="form-control" maxlength="15" placeholder="Descripción de la agenda..."/>
+                        <input type="text" name="descripcion" class="form-control" maxlength="15" placeholder="A description for the agenda..."/>
                     </div>
                     
-
+                    <div class="form-group">
+                        <input type="text" name="lugar" class="form-control" maxlength="50" placeholder="Place of the event..."/>
+                    </div>
                 </div>
                 <div class="footer bg-gray">              
-                    <button type="submit" style="background-color:#FF9900;" class="btn btn-block">Registrarse</button>
-                    <a href="{{path('daw_autostop_login')}}" class="text-center">Volver</a>
+                    <button type="submit" style="background-color:#FF9900;" class="btn btn-block">Create Event</button>
+                    <a href="{{path('meetme_login')}}" class="text-center">Go back</a>
                 </div>
             </form>
         </div>
@@ -226,9 +222,9 @@
         
         
         <footer class="page-footer">
-            <p class="footer-web">Ingeniería de Software II</p>
-            <a class="desarrolladores" href="#" data-toggle="modal" data-target="#modalFooter">Desarrolladores:Evelyn González - Raúl Rodriguez - Víctor Menoscal - Marcelo Sánchez</a><br/>
-            <p class="copyright">&copy; 2015 Todos los derechos reservados. </p>
+            <p class="footer-web">Software Engineering II</p>
+            <a class="desarrolladores" href="#" data-toggle="modal" data-target="#modalFooter">Developers</a><br/>
+            <p class="copyright">&copy; 2015 All right reserved. </p>
 
         </footer>
         <div class="modal fade" id="modalFooter" tabindex="-1" aria-hidden="true">
@@ -237,29 +233,29 @@
                     <div class="modal-content">
                         <div class="modal-header" style="background-color:#367fa9;">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h2 style="font-family:'Kaushan Script', cursive;color:white;">Desarrolladores</h2>
+                            <h2 style="font-family:'Kaushan Script', cursive;color:white;">Developers</h2>
                         </div>
                         <div class="modal-body" style="overflow-y: auto; height: 300px;">
                             <div class="row">
                                 <div class="col-sm-3 col-xs-12 col-md-3 col-lg-4">
                                                 <img src="img/avatar3.png" style="width:50px; display: block;margin-left: auto;margin-right: auto;" alt="avatar">
                                                 <h5 style="text-align:center;">Evenlyn Gonz&aacute;lez</h5>
-                                                <h6 style="text-align:center;">Ing. en Ciencias Computacionales</h6>
+                                                <h6 style="text-align:center;">Computer Science Engineer</h6>
                                 </div>
                                 <div class="col-sm-3 col-xs-12 col-md-3 col-lg-4">
                                                 <img src="img/avatar04.png" style="width:50px; display: block;margin-left: auto;margin-right: auto;" alt="avatar">
                                                 <h5 style="text-align:center;">Ra&uacute;l Rodr&iacute;guez</h5>
-                                                <h6 style="text-align:center;">Ing. en Ciencias Computacionales</h6>
+                                                <h6 style="text-align:center;">Computer Science Engineer</h6>
                                 </div>
                                 <div class="col-sm-3 col-xs-12 col-md-3 col-lg-4">
                                                 <img src="img/avatar.png" style="width:50px; display: block;margin-left: auto;margin-right: auto;" alt="avatar">
                                                 <h5 style="text-align:center;">V&iacute;ctor Menoscal</h5>
-                                                <h6 style="text-align:center;">Ing. en Ciencias Computacionales</h6>
+                                                <h6 style="text-align:center;">Computer Science Engineer</h6>
                                 </div>
                                 <div class="col-sm-3 col-xs-12 col-md-3 col-lg-4">
                                                 <img src="img/avatar5.png" style="width:50px; display: block;margin-left: auto;margin-right: auto;" alt="avatar">
                                                 <h5 style="text-align:center;">Marcelo S&aacute;nchez</h5>
-                                                <h6 style="text-align:center;">Ing. en Ciencias Computacionales</h6>
+                                                <h6 style="text-align:center;">Computer Science Engineer</h6>
                                 </div>
                                
                             </div>
@@ -286,4 +282,3 @@
         
     </body>
 </html>
-

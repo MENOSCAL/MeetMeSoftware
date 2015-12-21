@@ -48,7 +48,7 @@ class nuevaRutaController extends Controller
             $response = $this->forward('autostopBundle:notificacion:enviarNotificaciones',array('idruta'=>$idRuta, 'idEstudiante'=>$estudiante->getId()));
             
             return $response;
-            //return $this->render('autostopBundle:paginas:ejemplo.html.twig');
+            //return $this->render('autostopBundle:twig_html:ejemplo.html.twig');
             //return new Response('<html><body>'+var_dump($formulario)+'</body></html>');
         }else{ return new Response("no hay metodo post");}
     }

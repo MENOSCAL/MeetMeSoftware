@@ -21,7 +21,7 @@ class puntosController extends Controller{
             //return array('puntosx'=>$puntosx, 'puntosy'=>$puntosy);
             return new Response('<html><body>'+var_dump($formulario)+'</body></html>');
         }
-        //return $this->render('autostopBundle:paginas:ejemplo.html.twig', array('latitud'=>'no hay nada'));
+        //return $this->render('autostopBundle:twig_html:ejemplo.html.twig', array('latitud'=>'no hay nada'));
     }
 }
 
