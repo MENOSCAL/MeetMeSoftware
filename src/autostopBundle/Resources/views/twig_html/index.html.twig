@@ -80,14 +80,14 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>{{nombre}} <i class="caret"></i></span>
+                                <span>{{name}} {{lastname}} <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img {%if sexo == 1 %}src="{{asset('bundles/autostop/img/male.jpg')}}"{%else %}src="{{asset('bundles/autostop/img/female.jpg')}}"{%endif%} class="img-circle" alt="User Image" />
+                                    <img {%if sex == 1 %}src="{{asset('bundles/autostop/img/male.jpg')}}"{%else %}src="{{asset('bundles/autostop/img/female.jpg')}}"{%endif%} class="img-circle" alt="User Image" />
                                     <p>
-                                        {{nombre}} {{apellido}}
+                                        {{name}} {{lastname}}
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -115,10 +115,10 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img {%if sexo == 1 %}src="{{asset('bundles/autostop/img/male.jpg')}}"{%else %}src="{{asset('bundles/autostop/img/female.jpg')}}"{%endif%} class="img-circle" alt="User Image" />
+                            <img {%if sex == 1 %}src="{{asset('bundles/autostop/img/male.jpg')}}"{%else %}src="{{asset('bundles/autostop/img/female.jpg')}}"{%endif%} class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hola, {{nombre}}</p>
+                            <p>Hello, {{name}} {{lastname}}</p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
@@ -142,7 +142,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a href="{{path('meetme_profile', {'usuariop': usuario})}}">
+                            <a href="{{path('meetme_profile', {'usuariop': username})}}">
                                 <i class="fa fa-user"></i> <span>Contacts</span>
                             </a>
                         </li>
@@ -229,7 +229,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
-                            <!--<iframe style="margin-left: 70px;margin-top: 30px" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=evelynnathaly89%40gmail.com&amp;color=%23BE6D00&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%232952A3&amp;src=es.ec%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FGuayaquil" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>-->
+                           <iframe style="margin-left: 230px;margin-top: 30px" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=evelynnathaly89%40gmail.com&amp;color=%23BE6D00&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%232952A3&amp;src=es.ec%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FGuayaquil" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
                         </div>
                     </div>
                 </div>

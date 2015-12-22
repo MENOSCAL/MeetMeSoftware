@@ -15,26 +15,28 @@ class loginController extends Controller
         
         if($request->getMethod() == 'POST'){
             $sesion->clear();
-            $usuario = $request->get('usuario');
-            $contrasena = sha1($request->get('contrasena'));
-            $recordar = $request->get('recordar');
-            $user = $repositorio->findOneBy(array('usuario'=>$usuario,'contrasena'=>$contrasena));
+            $username = $request->get('username');
+            $password = sha1($request->get('password'));
+            //$recordar = $request->get('recordar');
+            $user = $repositorio->findOneBy(array('username'=>$username,'password'=>$password));
              if($user){
                 if($sesion->has('login')){
                     $login = $sesion->get('login');
-                    $nombre = $login->getNombre();
-                    $apellido = $login->getApellido();
-                    $sexo = $login->getSexo();
-                    return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario' => $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
+                    $name = $login->getName();
+                    $lastname = $login->getLastName();
+                    $sex = $login->getSex();
+                    return $this->render( 'autostopBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$name, 'lastname'=>$lastname, 'sex'=>$sex) );
+                    
                 }else{
                     $login = new Login();
-                    $login->setUsername($usuario);
-                    $login->setNombre($user->getNombre());
-                    $this->get('session')->set('loginId', $user->getId());
-                    $login->setApellido($user->getApellido());
-                    $login->setSexo($user->getSexo());
+                    $login->setUsername($username);
+                    $login->setName($user->getName());
+                    $this->get('session')->set('loginId', $user->getUserId());
+                    $login->setLastname($user->getLastname());
+                    $login->setSex($user->getSex());
                     $sesion->set('login', $login);
-                    return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario' => $usuario, 'nombre'=>$user->getNombre(), 'apellido'=>$user->getApellido(), 'sexo'=>$user->getSexo()) );
+                    return $this->render( 'autostopBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'sex'=>$user->getSex()) );
+                    
                 }                        
             }else{
                 return $this->render('autostopBundle:twig_html:login.html.twig');
@@ -72,11 +74,12 @@ class loginController extends Controller
         }else{
             if($sesion->has('login')){
                 $login = $sesion->get('login');
-                $usuario = $login->getUsername();
-                $nombre = $login->getNombre();
-                $apellido = $login->getApellido();
-                $sexo = $login->getSexo();
-                return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario' => $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
+                $username = $login->getUsername();
+                $name = $login->getName();
+                $lastname= $login->getLastname();
+                $sex = $login->getSex();
+                return $this->render( 'autostopBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$name, 'lastname'=>$lastname, 'sex'=>$sex) );
+                
             }else{
                 return $this->render('autostopBundle:twig_html:login.html.twig');            
             }
@@ -99,11 +102,11 @@ class loginController extends Controller
         $sesion = $this->getRequest()->getSession();
         if($sesion->has('login')){
             $login = $sesion->get('login');
-            $usuario = $login->getUsername();
-            $nombre = $login->getNombre();
-            $apellido = $login->getApellido();
-            $sexo = $login->getSexo();
-            return $this->render( 'autostopBundle:twig_html:index.html.twig', array('usuario'=> $usuario, 'nombre'=>$nombre, 'apellido'=>$apellido, 'sexo'=>$sexo) );
+            $username = $login->getUsername();
+            $name = $login->getName();
+            $lastname = $login->getLastName();
+            $sex = $login->getSex();
+            return $this->render( 'autostopBundle:twig_html:index.html.twig', array('username'=> $username, 'name'=>$name, 'sex'=>$sex) );
         }
         return $this->render('autostopBundle:twig_html:index.html.twig');
         

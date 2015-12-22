@@ -1012,16 +1012,16 @@
         },
         {
             "name": "gos/web-socket-bundle",
-            "version": "v1.6.1",
+            "version": "v1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GeniusesOfSymfony/WebSocketBundle.git",
-                "reference": "7857e7048499895cce152dc4e54fa3347715670a"
+                "reference": "460e74d25441f82008dcb67bccdeb8c9dcc936b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GeniusesOfSymfony/WebSocketBundle/zipball/7857e7048499895cce152dc4e54fa3347715670a",
-                "reference": "7857e7048499895cce152dc4e54fa3347715670a",
+                "url": "https://api.github.com/repos/GeniusesOfSymfony/WebSocketBundle/zipball/460e74d25441f82008dcb67bccdeb8c9dcc936b8",
+                "reference": "460e74d25441f82008dcb67bccdeb8c9dcc936b8",
                 "shasum": ""
             },
             "require": {
@@ -1047,7 +1047,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -1078,7 +1078,7 @@
                 "io",
                 "websocket"
             ],
-            "time": "2015-09-21 20:09:47"
+            "time": "2015-12-21 23:48:09"
         },
         {
             "name": "gos/websocket-client",

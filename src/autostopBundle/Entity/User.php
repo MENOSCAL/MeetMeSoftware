@@ -7,45 +7,47 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="estudiante")
+ * @ORM\Table(name="user", indexes={@ORM\Index(name="fk_user_country", columns={"country_id"})})
  * @ORM\Entity
  */
 class User
 {
     /**
-     * @var boolean
+     * @var integer
      *
-     * @ORM\Column(name="sexo", type="boolean", nullable=false)
+     * @ORM\Column(name="userId", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $sexo;
+    private $userid;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=20, nullable=false)
+     * @ORM\Column(name="name", type="string", length=25, nullable=true)
      */
-    private $nombre;
+    private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="apellido", type="string", length=20, nullable=false)
+     * @ORM\Column(name="lastname", type="string", length=25, nullable=true)
      */
-    private $apellido;
+    private $lastname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usuario", type="string", length=15, nullable=false)
+     * @ORM\Column(name="username", type="string", length=15, nullable=true)
      */
-    private $usuario;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contrasena", type="string", length=40, nullable=false)
+     * @ORM\Column(name="password", type="string", length=15, nullable=true)
      */
-    private $contrasena;
+    private $password;
 
     /**
      * @var string
@@ -57,160 +59,129 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="foto", type="string", length=50, nullable=true)
+     * @ORM\Column(name="photo", type="string", length=50, nullable=true)
      */
-    private $foto;
+    private $photo;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="visitas", type="integer", nullable=true)
+     * @ORM\Column(name="sex", type="integer", nullable=true)
      */
-    private $visitas;
+    private $sex;
 
     /**
-     * @var boolean
+     * @var \Country
      *
-     * @ORM\Column(name="estado", type="boolean", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Country")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="country_id", referencedColumnName="countryId")
+     * })
      */
-    private $estado;
+    private $country;
+
+
 
     /**
-     * @var float
+     * Get userid
      *
-     * @ORM\Column(name="latitud", type="float", precision=10, scale=0, nullable=true)
+     * @return integer 
      */
-    private $latitud;
+    public function getUserid()
+    {
+        return $this->userid;
+    }
 
     /**
-     * @var float
+     * Set name
      *
-     * @ORM\Column(name="longitud", type="float", precision=10, scale=0, nullable=true)
-     */
-    private $longitud;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
-
-     /**
-     * Set sexo
-     *
-     * @param boolean $sexo
+     * @param string $name
      * @return User
      */
-    public function setSexo($sexo)
+    public function setName($name)
     {
-        $this->sexo = $sexo;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get sexo
-     *
-     * @return boolean 
-     */
-    public function getSexo()
-    {
-        return $this->sexo;
-    }
-
-    /**
-     * Set nombre
-     *
-     * @param string $nombre
-     * @return User
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre
+     * Get name
      *
      * @return string 
      */
-    public function getNombre()
+    public function getName()
     {
-        return $this->nombre;
+        return $this->name;
     }
 
     /**
-     * Set apellido
+     * Set lastname
      *
-     * @param string $apellido
+     * @param string $lastname
      * @return User
      */
-    public function setApellido($apellido)
+    public function setLastname($lastname)
     {
-        $this->apellido = $apellido;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
     /**
-     * Get apellido
+     * Get lastname
      *
      * @return string 
      */
-    public function getApellido()
+    public function getLastname()
     {
-        return $this->apellido;
+        return $this->lastname;
     }
 
     /**
-     * Set usuario
+     * Set username
      *
-     * @param string $usuario
+     * @param string $username
      * @return User
      */
-    public function setUsuario($usuario)
+    public function setUsername($username)
     {
-        $this->usuario = $usuario;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get usuario
+     * Get username
      *
      * @return string 
      */
-    public function getUsuario()
+    public function getUsername()
     {
-        return $this->usuario;
+        return $this->username;
     }
 
     /**
-     * Set contrasena
+     * Set password
      *
-     * @param string $contrasena
+     * @param string $password
      * @return User
      */
-    public function setContrasena($contrasena)
+    public function setPassword($password)
     {
-        $this->contrasena = $contrasena;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get contrasena
+     * Get password
      *
      * @return string 
      */
-    public function getContrasena()
+    public function getPassword()
     {
-        return $this->contrasena;
+        return $this->password;
     }
 
     /**
@@ -237,127 +208,72 @@ class User
     }
 
     /**
-     * Set foto
+     * Set photo
      *
-     * @param string $foto
+     * @param string $photo
      * @return User
      */
-    public function setFoto($foto)
+    public function setPhoto($photo)
     {
-        $this->foto = $foto;
+        $this->photo = $photo;
 
         return $this;
     }
 
     /**
-     * Get foto
+     * Get photo
      *
      * @return string 
      */
-    public function getFoto()
+    public function getPhoto()
     {
-        return $this->foto;
+        return $this->photo;
     }
 
     /**
-     * Set visitas
+     * Set sex
      *
-     * @param integer $visitas
+     * @param integer $sex
      * @return User
      */
-    public function setVisitas($visitas)
+    public function setSex($sex)
     {
-        $this->visitas = $visitas;
+        $this->sex = $sex;
 
         return $this;
     }
 
     /**
-     * Get visitas
+     * Get sex
      *
      * @return integer 
      */
-    public function getVisitas()
+    public function getSex()
     {
-        return $this->visitas;
+        return $this->sex;
     }
 
     /**
-     * Set estado
+     * Set country
      *
-     * @param boolean $estado
+     * @param integer $country
      * @return User
      */
-    public function setEstado($estado)
+    //public function setCountry(\autostopBundle\Entity\Country $country = null)
+    public function setCountry($country)
     {
-        $this->estado = $estado;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Get estado
+     * Get country
      *
-     * @return boolean 
+     * @return \autostopBundle\Entity\Country 
      */
-    public function getEstado()
+    public function getCountry()
     {
-        return $this->estado;
-    }
-
-    /**
-     * Set latitud
-     *
-     * @param float $latitud
-     * @return User
-     */
-    public function setLatitud($latitud)
-    {
-        $this->latitud = $latitud;
-
-        return $this;
-    }
-
-    /**
-     * Get latitud
-     *
-     * @return float 
-     */
-    public function getLatitud()
-    {
-        return $this->latitud;
-    }
-
-    /**
-     * Set longitud
-     *
-     * @param float $longitud
-     * @return User
-     */
-    public function setLongitud($longitud)
-    {
-        $this->longitud = $longitud;
-
-        return $this;
-    }
-
-    /**
-     * Get longitud
-     *
-     * @return float 
-     */
-    public function getLongitud()
-    {
-        return $this->longitud;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
+        return $this->country;
     }
 }

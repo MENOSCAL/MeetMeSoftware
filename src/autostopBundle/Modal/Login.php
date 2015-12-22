@@ -17,28 +17,28 @@ class Login{
         $this->username = $nombreUsuario;
     }
     
-    public function setApellido($apellido){
+    public function setLastName($apellido){
         $this->apellido = $apellido;
     }
     
-    public function setNombre($nombre){
+    public function setName($nombre){
         $this->nombre = $nombre;
     }
     
-    public function getApellido(){
+    public function getLastName(){
         return $this->apellido;
     }
     
-    public function getNombre(){
+    public function getName(){
         return $this->nombre;
     }
     
-    public function getSexo()
+    public function getSex()
     {
         return $this->sexo;
     }
     
-    public function setSexo($sexo)
+    public function setSex($sexo)
     {
         $this->sexo = $sexo;
     }
