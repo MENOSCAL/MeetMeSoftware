@@ -85,5 +85,5 @@ gos_web_socket:
         host: 127.0.0.1   #The host ip to bind to
         router:
             resources:
-                - @autostopBundle/Resources/config/pubsub/routing.yml
+                - @meetmeBundle/Resources/config/pubsub/routing.yml
 

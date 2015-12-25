@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Gos\Bundle\WebSocketBundle\GosWebSocketBundle(),
             new Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle(),
-            new autostopBundle\autostopBundle(),
+            new meetmeBundle\meetmeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,5 +1,5 @@
-autostop:
-    resource: "@autostopBundle/Resources/config/routing.yml"
+meetme:
+    resource: "@meetmeBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

@@ -1,0 +1,14 @@
+services:
+    acme_hello.topic_sample_service:
+        class: meetmeBundle\Topic\AcmeTopic
+        tags:
+            - { name: gos_web_socket.topic }
+
+    acme_hello.rpc_sample_service:
+        class: meetmeBundle\Rpc\AcmeRpc
+        tags:
+            - { name: gos_web_socket.rpc }
+            
+#    meetme.example:
+#        class: meetmeBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

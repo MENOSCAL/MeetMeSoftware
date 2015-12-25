@@ -1,0 +1,69 @@
+meetme_login:
+    path:     /login
+    defaults: { _controller: meetmeBundle:login:login }
+
+meetme_signup:
+    path:     /signup
+    defaults: { _controller: meetmeBundle:signup:signup }
+
+meetme_profile:
+    path:     /profile/{usuariop}
+    defaults: { _controller: meetmeBundle:profile:profile }
+    
+meetme_reload:
+    path:     /inicio
+    defaults: { _controller: meetmeBundle:login:reload }  
+
+meetme_logout:
+    path:     /logout
+    defaults: { _controller: meetmeBundle:logout:logout }
+    
+meetme_informalevent:
+     pattern:     /informalevent
+     defaults: { _controller: meetmeBundle:informalEvent:informalEvent }
+     
+meetme_formalevent:
+     pattern:     /formalevent
+     defaults: { _controller: meetmeBundle:formalEvent:formalEvent }
+     
+meetme_createdevent:
+     pattern:     /createdevent
+     defaults: { _controller: meetmeBundle:createdEvent:createdEvent }
+     
+daw_autostop_notificacion:
+    path:     /notificacion/{idruta}/{idEstudiante}
+    defaults: { _controller: meetmeBundle:notificacion:enviarNotificaciones }
+    
+daw_autostop_nueva_ruta:
+    path:     /nuevaruta
+    defaults: { _controller: meetmeBundle:nuevaRuta:nuevaruta }
+    options:
+        expose: true
+           
+meetme_friends:
+    pattern:  /{usuariop}
+    defaults: { _controller: meetmeBundle:friends:add }
+    options:
+        expose: true
+        
+daw_autostop_puntos:
+    path:     /puntos
+    defaults: { _controller: meetmeBundle:nuevaRuta:puntos }
+    options:
+        expose: true
+        
+daw_autostop_buscar:
+    pattern: /
+    defaults: { _controller: meetmeBundle:nuevaRuta:buscar }
+    options:
+        expose: true
+        
+meetme_friendsd:
+    pattern:  /p/{usuariop}
+    defaults: { _controller: meetmeBundle:friends:delete }
+    options:
+        expose: true
+
+
+
+    
