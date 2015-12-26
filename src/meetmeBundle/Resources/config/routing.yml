@@ -5,7 +5,7 @@ meetme_login:
 meetme_signup:
     path:     /signup
     defaults: { _controller: meetmeBundle:signup:signup }
-
+    
 meetme_profile:
     path:     /profile/{usuariop}
     defaults: { _controller: meetmeBundle:profile:profile }

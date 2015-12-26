@@ -17,6 +17,10 @@
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
     </head>
     <body class="skin-blue">
+        
+       
+
+
         {{ ws_client() }}
         <!-- header logo: style can be found in header.less -->
         <header class="header">
@@ -109,6 +113,10 @@
                                     
                                     
         <div class="wrapper row-offcanvas row-offcanvas-left">
+            
+            
+
+
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="left-side sidebar-offcanvas">
                 <!-- sidebar: style can be found in sidebar.less -->
@@ -246,6 +254,20 @@
                                             
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
+                
+           {% for type, flashMessage in app.session.flashbag.all() %}
+                <div class="alert alert-{{ type }} fade in">
+                    <button class="close" data-dismiss="alert" type="button">×</button>
+                    {% if flashMessage.title is defined %}
+                        <strong>{{ flashMessage.title }}</strong>
+                        <strong>{{ flashMessage.message }}</strong>
+                    {% else %}
+                         {{ type }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
@@ -263,9 +285,9 @@
         
         
         <footer class="page-footer">
-            <p class="footer-web">Ingeniería de Software II</p>
+            <p class="footer-web">Software Engineering II</p>
             <a class="desarrolladores" href="#" data-toggle="modal" data-target="#modalFooter">Developers</a><br/>
-            <p class="copyright">&copy; 2015 Todos los derechos reservados. </p>
+            <p class="copyright">&copy; 2015 All right reserved. </p>
 
         </footer>
         <div class="modal fade" id="modalFooter" tabindex="-1" aria-hidden="true">

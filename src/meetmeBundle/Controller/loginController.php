@@ -24,6 +24,17 @@ class loginController extends Controller
                     $login = $sesion->get('login');
                     $name = $login->getName();
                     $lastname = $login->getLastName();
+                    
+                        $this->get('session')->getFlashBag()->set(
+                        'success',
+                        array(
+                        'title' => 'Welcome. ',
+                        'message' => 'Your log in has been successful. '
+                        )
+                        );
+                        $sesion->set('login', $login);
+                    
+                    
                     return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$name, 'lastname'=>$lastname) );
                     
                 }else{
@@ -32,7 +43,16 @@ class loginController extends Controller
                     $login->setName($user->getName());
                     $this->get('session')->set('loginId', $user->getId());
                     $login->setLastname($user->getLastname());
+                        $this->get('session')->getFlashBag()->set(
+                        'success',
+                        array(
+                        'title' => 'Welcome. ',
+                        'message' => 'Your log in has been successful. '
+                        )
+                        );
+                       
                     $sesion->set('login', $login);
+                    
                     return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname()) );
                 }                        
             }else{
