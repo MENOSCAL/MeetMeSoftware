@@ -7,6 +7,7 @@ class Login{
     private $nombre;
     private $apellido;
     private $sexo;
+    private $password;
     /**
      * Set nombreUsuario
      *
@@ -47,4 +48,15 @@ class Login{
     {
         return $this->username;
     }
+    
+    
+    public function setPassword($password){
+        $this->password = $password;
+    }
+     public function getPassword()
+    {
+        return $this->password;
+    }
+    
+    
 }

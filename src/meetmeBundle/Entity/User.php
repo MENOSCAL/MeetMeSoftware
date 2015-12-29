@@ -94,6 +94,28 @@ class User
      */
     private $country;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Event", inversedBy="iduser")
+     * @ORM\JoinTable(name="user_event",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="iduser", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="idevent", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $idevent;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -334,5 +356,38 @@ class User
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Add idevent
+     *
+     * @param \meetmeBundle\Entity\Event $idevent
+     * @return User
+     */
+    public function addIdevent(\meetmeBundle\Entity\Event $idevent)
+    {
+        $this->idevent[] = $idevent;
+
+        return $this;
+    }
+
+    /**
+     * Remove idevent
+     *
+     * @param \meetmeBundle\Entity\Event $idevent
+     */
+    public function removeIdevent(\meetmeBundle\Entity\Event $idevent)
+    {
+        $this->idevent->removeElement($idevent);
+    }
+
+    /**
+     * Get idevent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdevent()
+    {
+        return $this->idevent;
     }
 }

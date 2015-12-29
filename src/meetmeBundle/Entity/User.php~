@@ -1,6 +1,6 @@
 <?php
 
-namespace autostopBundle\Entity;
+namespace meetmeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -94,5 +94,27 @@ class User
      */
     private $country;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Event", inversedBy="iduser")
+     * @ORM\JoinTable(name="user_event",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="iduser", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="idevent", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $idevent;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 }

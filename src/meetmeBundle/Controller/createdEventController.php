@@ -1,29 +1,78 @@
 <?php
 namespace meetmeBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class createdEventController extends Controller{
-    public function createdEventAction()
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+//use meetmeBundle\Entity\User;
+use meetmeBundle\Entity\Event;
+use meetmeBundle\Entity\InvitedPerson;
+
+class createdEventController extends Controller
+{
+    public function createdEventAction(Request $request)
     {
-         $sesion = $this->getRequest()->getSession();
-        if($sesion->has('login')){
+        $sesion = $this->getRequest()->getSession();
+        $em = $this->getDoctrine()->getManager();
+        $repositorio = $em->getRepository('meetmeBundle:User');
+        if($request->getMethod() == 'POST'){
+            //$sesion->clear();
+             if($sesion->has('login')){
                     $login = $sesion->get('login');
-                    $name = $login->getName();
-                    $lastname = $login->getLastName();
                     $username = $login->getUsername();
-                    return $this->render( 'meetmeBundle:twig_html:createdevent.html.twig', array('username' => $username, 'name'=>$name, 'lastname'=>$lastname) );
+                    $password = $login->getPassword();
+                    $user = $repositorio->findOneBy(array('username'=>$username,'password'=>$password));
+                    $name = $user->getName();
+                    $lastName = $user->getLastname();
+                    $title = $request->get('title');
+                    $eventDate = $request->get('date');
+                    $eventHour = $request->get('hour');
+                    $description = $request->get('description');
+                    $place = $request->get('place');
+                    $event = new Event();  
+                    $event->setType("I");
+                    $type = $event->getType();
+                    $event->setTitle($title);
+                    $title = $event->getTitle();
+                    $event->setEventDate(new \DateTime($eventDate));
+                    $eventDate = $event->getEventDate();
+                    $eventDateStr = date_format($eventDate, 'Y-m-d');
+                    $event->setEventHour($eventHour);
+                    //$eventHour = $event->getEventHour();
+                    $event->setDescription($description);
+                    $event->setPlace($place);
+                    $event->setCreationDate(new \DateTime("now"));
+                    $creationDate = $event->getCreationDate();
+                    $emails = $request->get('emails');
                     
-                }else{
+                    $invitedPerson = new InvitedPerson(); 
+                    $invitedPerson->setEmail($emails);
+                    
+                    $event->addIduser($user);
+                    $event->addIdinvited($invitedPerson);
+                    
+                    $em->persist($event);
+                    $em->persist($user);
+                    $em->persist($invitedPerson);
+                    $em->flush();
+                    
+                    $repositorio = $em->getRepository('meetmeBundle:InvitedPerson'); 
+                    $invitedPersons = $repositorio->findAll();
                     /*
-                    $login = new Login();
-                    $login->setUsername($username);
-                    $login->setName($user->getName());
-                    $this->get('session')->set('loginId', $user->getId());
-                    $login->setLastname($user->getLastname());
-                    $sesion->set('login', $login);
-                    return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname()) );
+                     return new Response(
+                     'Created user id: '.$user->getId()
+                    .' and event id: '.$event->getId()
+                     );
                     */
-                }                    
-        //return $this->render('meetmeBundle:twig_html:formalevent.html.twig');
-    }
+                   
+                    return $this->render('meetmeBundle:twig_html:createdevent.html.twig', array('title' => $title, 'name'=>$name, 'lastname' => $lastName, 'eventdate' => $eventDateStr, 'hour' => $eventHour, 'place' => $place, 'invitedPersons' => $invitedPersons)); 
+             }
+                return $this->render('meetmeBundle:twig_html:login.html.twig'); 
+                }
+                else
+                {
+                 return $this->render('meetmeBundle:twig_html:login.html.twig');  
+                }   
+     }
 }
+   

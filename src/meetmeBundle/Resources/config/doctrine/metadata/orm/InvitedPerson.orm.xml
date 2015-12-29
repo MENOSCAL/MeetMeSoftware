@@ -5,5 +5,15 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="email" type="string" column="email" length="50" nullable="false"/>
+    <many-to-many field="idevent" target-entity="Event" inversed-by="idinvited">
+      <join-table name="invited_event">
+        <join-columns>
+          <join-column name="idinvited" referenced-column-name="id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="idevent" referenced-column-name="id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
   </entity>
 </doctrine-mapping>

@@ -181,13 +181,13 @@
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">
             
-<div class="form-box" id="login-box">
+            <div class="form-box" id="login-box">
             <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">Informal Event Form</div>
-            <form action="{{path('meetme_informalevent')}}" method="POST">
+            <form action="{{path('meetme_createdevent')}}" method="POST">
                 
                 <div class="body bg-gray">
                     <div class="form-group">
-                        <input type="text" name="titulo" class="form-control" maxlength="15" placeholder="Write a title for the agenda..."/>
+                        <input type="text" name="title" class="form-control" maxlength="80" placeholder="Write a title for the agenda..." required/>
                     </div>
                     <!--
                     <div class="form-group">
@@ -208,27 +208,33 @@
                     </div>
                     -->
                     <div class="form-group">
-                         <label class = "labelf" for="fecha">Please choose a date</label>
+                         <label class = "labelf" for="date">Please choose a date</label>
                     </div>
                     
                     <div class="form-group">	
-                        <input type="date" name="fecha" class="form-control">
+                        <input type="date" name="date" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="hour" class="form-control" maxlength="15" placeholder="Please type an hour for this event..."/>
+                        <input type="time" name="hour" class="form-control" maxlength="15" placeholder="Please type an hour for this event..." required/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="descripcion" class="form-control" maxlength="15" placeholder="A description for the agenda..."/>
+                        <input type="text" name="description" class="form-control" maxlength="500" placeholder="A description for the agenda..." required/>
                     </div>
                     
                     <div class="form-group">
-                        <input type="text" name="lugar" class="form-control" maxlength="50" placeholder="Place of the event..."/>
+                        <input type="text" name="place" class="form-control" maxlength="100" placeholder="Place of the event..." required/>
+                    </div>
+                    <div class="form-group">
+                         <label class = "labelf" for="invite">Invite people</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="emails" class="form-control" maxlength="100" placeholder="Type emails separate by commas (,)" required/>
                     </div>
                 </div>
                 <div class="footer bg-gray">              
-                    <!--<button type="submit" style="background-color:#FF9900;" href="{{path('meetme_createdevent')}}" class="btn btn-block">Create Event</button>-->
+                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Save</button>          
                    
-                    <a style="background-color:#FF9900;" href="{{path('meetme_createdevent')}}" class="btn btn-block"><b>Create Event</b></a>
+                    
                     
                                             
                 </div>    

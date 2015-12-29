@@ -6,6 +6,8 @@ meetme_signup:
     path:     /signup
     defaults: { _controller: meetmeBundle:signup:signup }
     
+
+    
 meetme_profile:
     path:     /profile/{usuariop}
     defaults: { _controller: meetmeBundle:profile:profile }
@@ -29,6 +31,9 @@ meetme_formalevent:
 meetme_createdevent:
      pattern:     /createdevent
      defaults: { _controller: meetmeBundle:createdEvent:createdEvent }
+     
+
+
      
 daw_autostop_notificacion:
     path:     /notificacion/{idruta}/{idEstudiante}

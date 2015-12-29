@@ -8,8 +8,11 @@
     <field name="title" type="string" column="title" length="80" nullable="false"/>
     <field name="description" type="string" column="description" length="500" nullable="false"/>
     <field name="creationDate" type="date" column="creation_date" nullable="false"/>
-    <field name="eventDate" type="date" column="event_date" nullable="false"/>
-    <field name="hourDate" type="date" column="hour_date" nullable="false"/>
-    <field name="link" type="string" column="link" length="500" nullable="false"/>
+    <field name="eventDate" type="date" column="event_date" nullable="true"/>
+    <field name="eventHour" type="string" column="event_hour" length="5" nullable="false"/>
+    <field name="place" type="string" column="place" length="100" nullable="false"/>
+    <field name="link" type="string" column="link" length="200" nullable="true"/>
+    <many-to-many field="iduser" target-entity="User" mapped-by="idevent"/>
+    <many-to-many field="idinvited" target-entity="InvitedPerson" mapped-by="idevent"/>
   </entity>
 </doctrine-mapping>

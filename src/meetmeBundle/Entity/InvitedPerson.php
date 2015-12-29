@@ -28,6 +28,28 @@ class InvitedPerson
      */
     private $email;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Event", inversedBy="idinvited")
+     * @ORM\JoinTable(name="invited_event",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="idinvited", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="idevent", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $idevent;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -61,5 +83,38 @@ class InvitedPerson
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Add idevent
+     *
+     * @param \meetmeBundle\Entity\Event $idevent
+     * @return InvitedPerson
+     */
+    public function addIdevent(\meetmeBundle\Entity\Event $idevent)
+    {
+        $this->idevent[] = $idevent;
+
+        return $this;
+    }
+
+    /**
+     * Remove idevent
+     *
+     * @param \meetmeBundle\Entity\Event $idevent
+     */
+    public function removeIdevent(\meetmeBundle\Entity\Event $idevent)
+    {
+        $this->idevent->removeElement($idevent);
+    }
+
+    /**
+     * Get idevent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdevent()
+    {
+        return $this->idevent;
     }
 }

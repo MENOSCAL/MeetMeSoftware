@@ -11,6 +11,7 @@
     </id>
     <field name="subject" type="string" column="subject" length="50" nullable="true"/>
     <field name="message" type="string" column="message" length="400" nullable="true"/>
+    <field name="idinvitedperson" type="integer" column="idinvitedperson" nullable="true"/>
     <field name="dateSent" type="string" column="date_sent" length="20" nullable="true"/>
     <many-to-one field="idsender" target-entity="User">
       <join-columns>
@@ -20,11 +21,6 @@
     <many-to-one field="idreceiver" target-entity="User">
       <join-columns>
         <join-column name="idreceiver" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idinvitedperson" target-entity="InvitedPerson">
-      <join-columns>
-        <join-column name="idinvitedperson" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

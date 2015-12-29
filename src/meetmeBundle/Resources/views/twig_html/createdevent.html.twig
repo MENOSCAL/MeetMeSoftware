@@ -103,7 +103,7 @@
                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span></br>
                         </div>
-			<div id="display"></div>
+			<!--<div id="display"></div>-->
                     </form>
      
                     <ul class="sidebar-menu">
@@ -186,31 +186,40 @@
             <aside class="right-side">
             
         <div class="form-box" id="login-box">
-            <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">Created Event</div>
+            <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">{{title}}</div>
             <form action="{{path('meetme_reload')}}" method="POST">
                 
                 <div class="body bg-gray">
                      <div class="form-group">
-                         <label class = "labelf">Evento creado por Raul Rodriguez</label>
+                         <label class = "labelf">Evento creado por {{name}} {{lastname}}</label>
                     </div>
                     
                     <div class="form-group">
-                         <label class = "labelf">Fecha: Tue 5 january 2016</label>
+                         <label class = "labelf">Fecha: {{eventdate}}</label>
                     </div>
                     
                      <div class="form-group">
-                        <label class = "labelf" for="hour">Hour:</label>
-                        <input type="text" name="hour" class="form-control" maxlength="15" placeholder="18:00" disabled/>
-                    </div>
+                        <label class = "labelf" for="hour">Hour: {{hour}}</label>
+                     </div>   
                     
                     <div class="form-group">
-                        <label class = "labelf" for="place">Place</label>
-                        <input type="text" name="place" class="form-control" maxlength="15" placeholder="Escuela Superior politecnica del Litoral" disabled/>
+                        <label class = "labelf" for="place">Place: {{place}}</label>
+                        
                     </div>
-                    
+                    <!--
                     <div id = "particip" class="form-group">
                          <input type="text" id = "nombre" name = "nombre" placeholder="Add a participant">
                          <input type="button" value="Save" onclick="genera_tabla()">
+                    </div>
+                    -->
+                    <div class="form-group">
+                        <label for="invitedpeople">List of participants</label>
+                    <select  name="invitedpeople" required>
+                        <option selected="selected" ></option>
+                            {% for i in invitedPersons %}
+                             <option value="{{i.id}}">{{i.email}}</option>
+                            {% endfor %}
+                    </select>
                     </div>
                     <!--
                     <div class="form-group">

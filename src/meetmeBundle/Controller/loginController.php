@@ -17,7 +17,6 @@ class loginController extends Controller
             $sesion->clear();
             $username = $request->get('username');
             $password = sha1($request->get('password'));
-            //$recordar = $request->get('recordar');
             $user = $repositorio->findOneBy(array('username'=>$username,'password'=>$password));
              if($user){
                 if($sesion->has('login')){
@@ -40,6 +39,11 @@ class loginController extends Controller
                 }else{
                     $login = new Login();
                     $login->setUsername($username);
+                    
+                    
+                    $login->setPassword($password);
+                    
+                    
                     $login->setName($user->getName());
                     $this->get('session')->set('loginId', $user->getId());
                     $login->setLastname($user->getLastname());

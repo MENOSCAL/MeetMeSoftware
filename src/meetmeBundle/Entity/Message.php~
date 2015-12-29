@@ -1,6 +1,6 @@
 <?php
 
-namespace autostopBundle\Entity;
+namespace meetmeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -36,21 +36,18 @@ class Message
     private $message;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="idinvitedperson", type="integer", nullable=true)
+     */
+    private $idinvitedperson;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="date_sent", type="string", length=20, nullable=true)
      */
     private $dateSent;
-
-    /**
-     * @var \InvitedPerson
-     *
-     * @ORM\ManyToOne(targetEntity="InvitedPerson")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idinvitedperson", referencedColumnName="id")
-     * })
-     */
-    private $idinvitedperson;
 
     /**
      * @var \User

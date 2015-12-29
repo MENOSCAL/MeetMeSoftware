@@ -1,6 +1,6 @@
 <?php
 
-namespace autostopBundle\Entity;
+namespace meetmeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

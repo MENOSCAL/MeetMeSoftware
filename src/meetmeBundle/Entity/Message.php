@@ -36,21 +36,18 @@ class Message
     private $message;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="idinvitedperson", type="integer", nullable=true)
+     */
+    private $idinvitedperson;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="date_sent", type="string", length=20, nullable=true)
      */
     private $dateSent;
-
-    /**
-     * @var \InvitedPerson
-     *
-     * @ORM\ManyToOne(targetEntity="InvitedPerson")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idinvitedperson", referencedColumnName="id")
-     * })
-     */
-    private $idinvitedperson;
 
     /**
      * @var \User
@@ -131,6 +128,29 @@ class Message
     }
 
     /**
+     * Set idinvitedperson
+     *
+     * @param integer $idinvitedperson
+     * @return Message
+     */
+    public function setIdinvitedperson($idinvitedperson)
+    {
+        $this->idinvitedperson = $idinvitedperson;
+
+        return $this;
+    }
+
+    /**
+     * Get idinvitedperson
+     *
+     * @return integer 
+     */
+    public function getIdinvitedperson()
+    {
+        return $this->idinvitedperson;
+    }
+
+    /**
      * Set dateSent
      *
      * @param string $dateSent
@@ -151,29 +171,6 @@ class Message
     public function getDateSent()
     {
         return $this->dateSent;
-    }
-
-    /**
-     * Set idinvitedperson
-     *
-     * @param \meetmeBundle\Entity\InvitedPerson $idinvitedperson
-     * @return Message
-     */
-    public function setIdinvitedperson(\meetmeBundle\Entity\InvitedPerson $idinvitedperson = null)
-    {
-        $this->idinvitedperson = $idinvitedperson;
-
-        return $this;
-    }
-
-    /**
-     * Get idinvitedperson
-     *
-     * @return \meetmeBundle\Entity\InvitedPerson 
-     */
-    public function getIdinvitedperson()
-    {
-        return $this->idinvitedperson;
     }
 
     /**

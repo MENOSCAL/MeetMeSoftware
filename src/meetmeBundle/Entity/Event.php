@@ -52,24 +52,53 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="event_date", type="date", nullable=false)
+     * @ORM\Column(name="event_date", type="date", nullable=true)
      */
     private $eventDate;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="hour_date", type="date", nullable=false)
+     * @ORM\Column(name="event_hour", type="string", length=5, nullable=false)
      */
-    private $hourDate;
+    private $eventHour;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="link", type="string", length=500, nullable=false)
+     * @ORM\Column(name="place", type="string", length=100, nullable=false)
+     */
+    private $place;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=200, nullable=true)
      */
     private $link;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="InvitedPerson", mappedBy="idevent")
+     */
+    private $idinvited;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="idevent")
+     */
+    private $iduser;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idinvited = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->iduser = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -198,26 +227,49 @@ class Event
     }
 
     /**
-     * Set hourDate
+     * Set eventHour
      *
-     * @param \DateTime $hourDate
+     * @param string $eventHour
      * @return Event
      */
-    public function setHourDate($hourDate)
+    public function setEventHour($eventHour)
     {
-        $this->hourDate = $hourDate;
+        $this->eventHour = $eventHour;
 
         return $this;
     }
 
     /**
-     * Get hourDate
+     * Get eventHour
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getHourDate()
+    public function getEventHour()
     {
-        return $this->hourDate;
+        return $this->eventHour;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     * @return Event
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string 
+     */
+    public function getPlace()
+    {
+        return $this->place;
     }
 
     /**
@@ -241,5 +293,71 @@ class Event
     public function getLink()
     {
         return $this->link;
+    }
+
+    /**
+     * Add idinvited
+     *
+     * @param \meetmeBundle\Entity\InvitedPerson $idinvited
+     * @return Event
+     */
+    public function addIdinvited(\meetmeBundle\Entity\InvitedPerson $idinvited)
+    {
+        $this->idinvited[] = $idinvited;
+
+        return $this;
+    }
+
+    /**
+     * Remove idinvited
+     *
+     * @param \meetmeBundle\Entity\InvitedPerson $idinvited
+     */
+    public function removeIdinvited(\meetmeBundle\Entity\InvitedPerson $idinvited)
+    {
+        $this->idinvited->removeElement($idinvited);
+    }
+
+    /**
+     * Get idinvited
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdinvited()
+    {
+        return $this->idinvited;
+    }
+
+    /**
+     * Add iduser
+     *
+     * @param \meetmeBundle\Entity\User $iduser
+     * @return Event
+     */
+    public function addIduser(\meetmeBundle\Entity\User $iduser)
+    {
+        $this->iduser[] = $iduser;
+
+        return $this;
+    }
+
+    /**
+     * Remove iduser
+     *
+     * @param \meetmeBundle\Entity\User $iduser
+     */
+    public function removeIduser(\meetmeBundle\Entity\User $iduser)
+    {
+        $this->iduser->removeElement($iduser);
+    }
+
+    /**
+     * Get iduser
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
     }
 }
