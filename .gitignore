@@ -20,17 +20,17 @@
 /bin/*
 !bin/console
 !bin/symfony_requirements
-/vendor/
+# /vendor/
 
 # Assets and user uploads
-/web/uploads/
+# /web/uploads/
 
 # PHPUnit
 /app/phpunit.xml
 /phpunit.xml
 
 # Build data
-/build/
+# /build/
 
 # Composer PHAR
 /composer.phar
