@@ -1,0 +1,29 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+ 	background:url(../img/login_bkg.png) no-repeat center fixed;
+    -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+ 	background-size: cover;
+ 	background-size: 100% 100%;
+}
+.header{
+    background-color: #367fa9;
+}
+.footer{
+    text-align: center;
+  border-top: 2px solid #8B4513;
+}
+.sidebar-menu a.botonMenu:hover{
+    background-color: red;
+    
+}
+a{
+    color:#367fa9;
+}
+a:hover{
+    color:black;
+}
+button{
+    background-color: #367fa9;
+}
