@@ -181,7 +181,7 @@ ul li {
 	margin-left: 16%;
 	border-bottom: solid 3px #c24528;
 }
-
+ 
 /*bottom*/
 .go_back_btn {
     margin-left: 0 !important;
@@ -209,7 +209,7 @@ ul li {
     height: 23px;
     position: absolute;
     margin-left: -25px;
-    top: 8px;
+    top: 8px; 
     left: 168px;
     display: inline-block;
     background: url(../img/arrow_selector_down.png) no-repeat right center transparent;
