@@ -1,0 +1,30 @@
+user:
+    path:     /
+    defaults: { _controller: "meetmeBundle:User:index" }
+
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "meetmeBundle:User:show" }
+
+user_new:
+    path:     /new
+    defaults: { _controller: "meetmeBundle:User:new" }
+
+user_create:
+    path:     /create
+    defaults: { _controller: "meetmeBundle:User:create" }
+    methods:  POST
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "meetmeBundle:User:edit" }
+
+user_update:
+    path:     /{id}/update
+    defaults: { _controller: "meetmeBundle:User:update" }
+    methods:  [POST, PUT]
+
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "meetmeBundle:User:delete" }
+    methods:  [POST, DELETE]

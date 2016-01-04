@@ -34,31 +34,25 @@ class signupController extends Controller
                 $selectedCountry = filter_input(INPUT_POST, 'namecbxcountry', FILTER_SANITIZE_NUMBER_INT);
                 $selectedCountry2  = $em->getRepository('meetmeBundle:Country')->findOneById($selectedCountry);
                 $user->setCountry($selectedCountry2);
-                $password = $request->get('password');
-                $user->setPassword(sha1($password));
+                $password = sha1($request->get('password'));
+                $user->setPassword($password);
                 $user->setPhoto('bundles/meetme/img/unisex');
                 $user->setStatus(1);
                 $user->setType("N");
                 $user->setRegisterDate(new \DateTime("now"));
                 $em->persist($user);
                 $em->flush();
-                $login = new Login();
-                $login->setUsername($request->get('username'));
-                $login->setName($user->getName());
-                $login->setLastname($user->getLastname());
                 
+                      $login = new Login();
+                      $login->setUsername($username);
+                      $login->setPassword($password);
+                      $login->setName($user->getName());
+                      $login->setLastname($user->getLastname());
+                      $this->get('session')->set('loginId', $user->getId());
+                      $sesion->set('login', $login);
                 
-                
-                //$this->get('session')->getFlashBag()->set(
-                //'success',
-                //array(
-                //'title' => 'Congratulatios. ',
-                //'message' => 'Your sign up has been successful. Welcome to the best place to plan your schedules.'
-                //)
-                //);
-                //$sesion->set('login', $login);
-                //return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname()) );
-                return $this->render( 'meetmeBundle:twig_html:responsesignupsuccess.html.twig', array('username' => $username) );
+                return $this->redirectToRoute('meetme_login');
+                //return $this->render( 'meetmeBundle:twig_html:responsesignupsuccess.html.twig', array('username' => $username) );
                 
                 
                 

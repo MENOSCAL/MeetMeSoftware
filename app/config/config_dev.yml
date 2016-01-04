@@ -46,3 +46,8 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+swiftmailer:
+    transport: gmail
+    username:  rstacks9
+    password:  kali1207

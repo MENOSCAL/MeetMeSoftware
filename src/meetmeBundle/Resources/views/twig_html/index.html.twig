@@ -89,10 +89,11 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                  
-                                     <img src="{{asset('bundles/meetme/img/unisex.png')}}" class="img-circle" alt="User Image" />
+                                 
+                                     <img style="background-image: url({{ asset('bundles/meetme/images/' ~ nameImg ) }});background-size: 100% 100%;" class="img-circle" alt="" />
+                                     <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">&nbsp;</a>
                                     <p>
-                                        {{name}} {{lastname}}
+                                        <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">{{name}} {{lastname}}</a>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -124,7 +125,12 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="{{asset('bundles/meetme/img/unisex.png')}}" class="img-circle" alt="User Image" />
+                            <img style="background-image: url({{ asset('bundles/meetme/images/' ~ nameImg ) }}); background-size: 100% 100%;" class="img-circle" alt="" /> 
+                            
+                        </div>
+                        <div class="pull-left image">
+                            
+                            <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">&nbsp;&nbsp;</a>
                         </div>
                         <div class="pull-left info">
                             <p>Hi!, {{name}} {{lastname}}</p>
@@ -211,10 +217,11 @@
                             
                             
                         </li>
+                        
                         <li class="active">
                             <a class="botonMenu" style="background-color:#FFE4B5" href="#">
                                 <i class="fa fa-road"></i>
-                                <span data-toggle="modal" data-target="#evento" >Event</span>
+                                <span data-toggle="modal" data-target="#evento" >Create Event</span>
                             </a>
                             
                             
@@ -235,17 +242,91 @@
                                         </div>
                                     </div>
                                 </div>
-                                            
-                                            
-                                            
-                                            
                                             </div>
-                                            
-                                            
-                                            
-                                            
-                                            
                          </li>
+                         
+                         
+                         
+                         
+                         
+                         <li class="active">
+                            <a class="botonMenu" style="background-color:#FFE4B5" href="#">
+                                <i class="fa fa-road"></i>
+                                <span data-toggle="modal" data-target="#searchevent" >Search Events</span>
+                            </a>
+                            
+                            
+                            
+                            <div class="modal fade" id="searchevent" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" >
+                                        <div style="background-color:#FF9900;" class="modal-header">
+                                            <button style="background-color:#FF9900;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h2 style="color:white;background-color:#FF9900;font-family:'Kaushan Script', cursive;">Search Events</h2>
+                                        </div>
+                                        
+                                        
+                                        <div class="modal-body" style="overflow-y: auto; height: 300px;">
+                                            
+                                            
+                                            
+          <form action="{{path('meetme_searchevent')}}" method="POST">
+                
+                <div class="body bg-gray">
+                    
+                    <div class="form-group">
+                        <input type="text" name="token" class="form-control" maxlength="80" placeholder="Type a toke if you have one" required/>
+                    </div>
+                    <div class="form-group">
+                         <label class = "labelf" for="startdate">Please choose a start date</label>
+                    </div>
+                    
+                    <div class="form-group">	
+                        <input type="date" name="startdate" class="form-control" required>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                         <label class = "labelf" for="enddate">Please choose an end date</label>
+                    </div>
+                    
+                    <div class="form-group">	
+                        <input type="date" name="enddate" class="form-control" required>
+                    </div>
+                </div>
+                <div class="footer bg-gray">              
+                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Search</button>          
+                             
+                </div>    
+                 <div class="footer bg-gray"> 
+                    <a href="{{path('meetme_login')}}" class="text-center">Go back</a>
+                </div>
+            </form>
+
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <div>
+                                                
+                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('meetme_informalevent')}}" class="btn btn-block"><b>Search Event</b></a>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                            </div>
+                         </li>
+                         
+                         
+                         
+                         
+                         
+                         
                         
                     </ul>
                 </section>
@@ -402,3 +483,4 @@
         </script>#}
     </body>
 </html>
+

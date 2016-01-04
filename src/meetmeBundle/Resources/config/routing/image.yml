@@ -1,0 +1,30 @@
+image:
+    path:     /
+    defaults: { _controller: "meetmeBundle:Image:index" }
+
+image_show:
+    path:     /{id}/show
+    defaults: { _controller: "meetmeBundle:Image:show" }
+
+image_new:
+    path:     /new
+    defaults: { _controller: "meetmeBundle:Image:new" }
+
+image_create:
+    path:     /create
+    defaults: { _controller: "meetmeBundle:Image:create" }
+    methods:  POST
+
+image_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "meetmeBundle:Image:edit" }
+
+image_update:
+    path:     /{id}/update
+    defaults: { _controller: "meetmeBundle:Image:update" }
+    methods:  [POST, PUT]
+
+image_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "meetmeBundle:Image:delete" }
+    methods:  [POST, DELETE]

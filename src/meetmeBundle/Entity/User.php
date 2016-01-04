@@ -117,7 +117,9 @@ class User
         $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
+    
+    
+    
     /**
      * Get id
      *
@@ -390,4 +392,5 @@ class User
     {
         return $this->idevent;
     }
+    
 }

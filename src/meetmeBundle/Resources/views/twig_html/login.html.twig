@@ -10,10 +10,14 @@
         <!-- font Awesome -->
         <link href="{{asset('bundles/meetme/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
+        
        
-        <!-- <link href="{{asset('bundles/meetme/css/darkly.min.css')}}" rel="stylesheet"> -->
-        <!-- <link href="{{asset('bundles/meetme/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" /> -->
-        <!-- <link href="{{asset('bundles/meetme/css/style1.css')}}" rel="stylesheet"> -->
+         <!--<link href="{{asset('bundles/meetme/css/darkly.min.css')}}" rel="stylesheet">--> 
+         <!--<link href="{{asset('bundles/meetme/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" /> --> 
+         <!--<link href="{{asset('bundles/meetme/css/style1.css')}}" rel="stylesheet"> --> 
+        
+        
+        
         <link href="{{asset('bundles/meetme/css/login.css')}}" rel="stylesheet">
 
     </head>
@@ -46,6 +50,17 @@
 				</div>
 			</div><br/>
 			<div class="sign">
+                       {% for type, flashMessage in app.session.flashbag.all() %}
+                            <div class="alert alert-{{ type }} fade in">
+                            <button class="close" data-dismiss="alert" type="button">×</button>
+                            {% if flashMessage.title is defined %}
+                            <strong>{{ flashMessage.title }}</strong>
+                            <strong>{{ flashMessage.message }}</strong>
+                            {% else %}
+                            {{ type }}
+                            {% endif %}
+                            </div>
+                            {% endfor %}
 				<div class="need">Need new account ?</div>
 				<div class="up"><a href="{{path('meetme_signup')}}">Sign Up</a></div>
 			</div>

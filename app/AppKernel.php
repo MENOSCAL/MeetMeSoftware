@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Gos\Bundle\WebSocketBundle\GosWebSocketBundle(),
             new Gos\Bundle\PubSubRouterBundle\GosPubSubRouterBundle(),
             new meetmeBundle\meetmeBundle(),
+           
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

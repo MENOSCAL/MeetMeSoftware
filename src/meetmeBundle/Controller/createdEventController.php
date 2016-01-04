@@ -43,17 +43,17 @@ class createdEventController extends Controller
                     $event->setPlace($place);
                     $event->setCreationDate(new \DateTime("now"));
                     $creationDate = $event->getCreationDate();
-                    $emails = $request->get('emails');
+                    //$email = $request->get('email');
                     
-                    $invitedPerson = new InvitedPerson(); 
-                    $invitedPerson->setEmail($emails);
+                    //$invitedPerson = new InvitedPerson(); 
+                    //$invitedPerson->setEmail($email);
                     
                     $event->addIduser($user);
-                    $event->addIdinvited($invitedPerson);
+                    //$event->addIdinvited($invitedPerson);
                     
                     $em->persist($event);
                     $em->persist($user);
-                    $em->persist($invitedPerson);
+                    //$em->persist($invitedPerson);
                     $em->flush();
                     
                     $repositorio = $em->getRepository('meetmeBundle:InvitedPerson'); 

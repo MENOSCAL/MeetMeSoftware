@@ -1,0 +1,6 @@
+{# app/Resources/views/default/upload.html.twig #}
+<form action="{{ path('meetme_upload') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>

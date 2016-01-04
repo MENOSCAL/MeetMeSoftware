@@ -187,7 +187,7 @@
             
         <div class="form-box" id="login-box">
             <div class="header" style="background-color: #FF9900;font-size:30px;font-family:'Kaushan Script', cursive;">{{title}}</div>
-            <form action="{{path('meetme_reload')}}" method="POST">
+           
                 
                 <div class="body bg-gray">
                      <div class="form-group">
@@ -212,8 +212,9 @@
                          <input type="button" value="Save" onclick="genera_tabla()">
                     </div>
                     -->
+                    
                     <div class="form-group">
-                        <label for="invitedpeople">List of participants</label>
+                        <label for="invitedpeople">List of invitees</label>
                     <select  name="invitedpeople" required>
                         <option selected="selected" ></option>
                             {% for i in invitedPersons %}
@@ -221,45 +222,36 @@
                             {% endfor %}
                     </select>
                     </div>
-                    <!--
+                                         
+                    <form action="{{path('meetme_email')}}" method="POST">
                     <div class="form-group">
-                       <ol name="participants">
-                            <li>Raul Rodriguez</li>
-                            <li>Evelyn Gonzalez</li>
-                            <li>Marcelo Sanchez</li>
-                            <li>Victor Menoscal</li>
-                        </ol>
-                    </div>  
-                    -->
-                     
-                    
-                    <div class="form-group">
-                        <label class = "labelf" for="inv_person">Invite people(send an email)</label>
+                        <label class = "labelf" for="email">Invite people(send an email)</label>
                        
                     </div>     
                     
                      <div class="form-group">
                         
-                        <input type="text"  name = "inv_person" placeholder="Type an email">                        
+                        <input type="email"  name = "email" placeholder="Type an email">                        
                     </div>     
                     
                     <div class="form-group">
                         <label class = "labelf" for="message">Message</label>
-                        <textarea rows="4" cols="40" name = "message">
+                        <textarea rows="4" cols="40" name = "messagetxt">
                             This is an invitation for you to participate in this Event. 
                         </textarea>                      
                     </div>  
                     
                     <div  class="form-group">
-                      <input type="button" value="Send" onclick="">
-                    </div>    
+                      <input type="submit" value="Send" onclick="">
+                    </div> 
+                    </form>
 
                 </div>
                 <div class="footer bg-gray">              
-                    <button type="submit" style="background-color:#FF9900;" class="btn btn-block">Done</button>
+                    <a style="background-color:#FF9900;" href="{{path('meetme_login')}}" class="btn btn-block"><b>Done</b></a>
                     <a href="{{path('meetme_login')}}" class="text-center">Go back</a>
                 </div>
-            </form>
+            
         </div>
                
                 
@@ -334,5 +326,6 @@
         
     </body>
 </html>
+
 
 
