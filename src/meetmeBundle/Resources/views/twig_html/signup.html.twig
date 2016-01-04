@@ -33,13 +33,15 @@
             <li>
               <input type="text" name="username" required class="text_half" placeholder="User Name"/>
               <div class="selector_a">
-                <select name="namecbxcountry" class="text_half half_right_input" required="">
-                  <option selected disabled>Select Country</option>
-                  <option value="1">Ecuador</option>
-                  <option value="2">Venezuela</option>
-                  <option value="3">Colombia</option>
-                  <option value="4">Perú</option>
-                </select>
+                
+                  
+                 <select  name="namecbxcountry" class="text_half half_right_input"  required>
+                     <option selected disabled>Select Country</option>
+                            {% for country in countries %}
+                             <option value="{{country.id}}">{{country.name}}</option>
+                            {% endfor %}
+                    </select>
+                
               </div> 
 
             </li>
