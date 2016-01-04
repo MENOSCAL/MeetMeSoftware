@@ -46,7 +46,7 @@ class emailController extends Controller{
                         
                
         $message = \Swift_Message::newInstance()
-        ->setSubject('Hello Email')
+        ->setSubject('Invitation from MeetMePlanner...')
         ->setFrom('rstacks9@gmail.com')
         ->setTo($email)
         ->setBody($messagetxt)

@@ -28,6 +28,8 @@ class Country
      */
     private $name;
 
+
+
     /**
      * Get id
      *
@@ -37,7 +39,20 @@ class Country
     {
         return $this->id;
     }
-    
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Country
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     /**
      * Get name
      *
@@ -47,7 +62,4 @@ class Country
     {
         return $this->name;
     }
-    
-    
-
 }

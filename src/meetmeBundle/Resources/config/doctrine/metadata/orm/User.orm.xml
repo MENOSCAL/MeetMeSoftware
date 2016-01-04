@@ -12,7 +12,6 @@
     <field name="username" type="string" column="username" length="15" nullable="true"/>
     <field name="password" type="string" column="password" length="40" nullable="true"/>
     <field name="email" type="string" column="email" length="50" nullable="false"/>
-    <field name="photo" type="string" column="photo" length="50" nullable="true"/>
     <field name="status" type="integer" column="status" nullable="false"/>
     <field name="type" type="string" column="type" length="1" nullable="false"/>
     <field name="registerDate" type="datetime" column="register_date" nullable="false"/>

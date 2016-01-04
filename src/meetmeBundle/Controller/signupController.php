@@ -36,7 +36,6 @@ class signupController extends Controller
                 $user->setCountry($selectedCountry2);
                 $password = sha1($request->get('password'));
                 $user->setPassword($password);
-                $user->setPhoto('bundles/meetme/img/unisex');
                 $user->setStatus(1);
                 $user->setType("N");
                 $user->setRegisterDate(new \DateTime("now"));

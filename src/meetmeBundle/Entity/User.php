@@ -57,13 +57,6 @@ class User
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=50, nullable=true)
-     */
-    private $photo;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="status", type="integer", nullable=false)
@@ -117,9 +110,7 @@ class User
         $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    
-    
-    
+
     /**
      * Get id
      *
@@ -246,29 +237,6 @@ class User
     }
 
     /**
-     * Set photo
-     *
-     * @param string $photo
-     * @return User
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string 
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
      * Set status
      *
      * @param integer $status
@@ -392,5 +360,4 @@ class User
     {
         return $this->idevent;
     }
-    
 }

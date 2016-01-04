@@ -57,13 +57,6 @@ class User
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=50, nullable=true)
-     */
-    private $photo;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="status", type="integer", nullable=false)
