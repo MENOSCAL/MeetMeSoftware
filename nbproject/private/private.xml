@@ -3,9 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/loginController.php</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/signupController.php</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Resources/views/twig_html/invalidpassword.html.twig</file>
+            <file>file:/C:/wamp/www/MeetMeSoftware/app/Resources/TwigBundle/views/Exception/exception.html.twig</file>
         </group>
     </open-files>
 </project-private>

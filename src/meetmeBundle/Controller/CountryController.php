@@ -4,7 +4,6 @@ namespace meetmeBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use meetmeBundle\Entity\Country;
 use meetmeBundle\Form\CountryType;
 

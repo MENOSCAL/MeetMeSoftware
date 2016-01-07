@@ -1,11 +1,7 @@
 <?php
 namespace meetmeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-/**
- * Description of eventoFormalController
- *
- * @author Raul
- */
+
 class formalEventController extends Controller{
     public function formalEventAction()
     {

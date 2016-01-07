@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace meetmeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use meetmeBundle\Entity\Solicitudamistad;
@@ -15,11 +9,7 @@ use meetmeBundle\Modal\Login;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\GetResponseUserEvent;
 use FOS\UserBundle\Model\UserInterface;
-/**
- * Description of perfilCOntroller
- *
- * @author Carlos
- */
+
 class profileController extends Controller{
     //put your code here
     public function profileAction($usuariop){         

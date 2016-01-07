@@ -7,7 +7,7 @@ meetme_image:
     prefix:   /image
     
 meetme_email:
-    path:     /email/
+    path:     /email
     defaults: { _controller: meetmeBundle:email:email }
 
 meetme_country:
@@ -64,46 +64,6 @@ meetme_createdevent:
      defaults: { _controller: meetmeBundle:createdEvent:createdEvent }
      
 meetme_searchevent:
-     pattern:     /searchdevent
+     pattern:     /searchevent
      defaults: { _controller: meetmeBundle:searchEvent:searchEvent }
      
-
-
-     
-daw_autostop_notificacion:
-    path:     /notificacion/{idruta}/{idEstudiante}
-    defaults: { _controller: meetmeBundle:notificacion:enviarNotificaciones }
-    
-daw_autostop_nueva_ruta:
-    path:     /nuevaruta
-    defaults: { _controller: meetmeBundle:nuevaRuta:nuevaruta }
-    options:
-        expose: true
-           
-meetme_friends:
-    pattern:  /{usuariop}
-    defaults: { _controller: meetmeBundle:friends:add }
-    options:
-        expose: true
-        
-daw_autostop_puntos:
-    path:     /puntos
-    defaults: { _controller: meetmeBundle:nuevaRuta:puntos }
-    options:
-        expose: true
-        
-daw_autostop_buscar:
-    pattern: /
-    defaults: { _controller: meetmeBundle:nuevaRuta:buscar }
-    options:
-        expose: true
-        
-meetme_friendsd:
-    pattern:  /p/{usuariop}
-    defaults: { _controller: meetmeBundle:friends:delete }
-    options:
-        expose: true
-
-
-
-    

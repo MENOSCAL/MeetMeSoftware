@@ -33,31 +33,31 @@ class signupController extends Controller
                 $selectedCountry = filter_input(INPUT_POST, 'namecbxcountry', FILTER_SANITIZE_NUMBER_INT);
                 $selectedCountry2  = $em->getRepository('meetmeBundle:Country')->findOneById($selectedCountry);
                 $password = $request->get('password');
-                $error_clave = "";
+                $passwordError = "";
                 
                 //Password validation
                 if(strlen($password) < 7){
-                $error_clave = "La clave debe tener al menos 7 caracteres";
+                $passwordError = "La clave debe tener al menos 7 caracteres";
                 
                  }
                 if(strlen($password) > 14){
-                $error_clave = "La clave no puede tener más de 14 caracteres";
+                $passwordError = "La clave no puede tener más de 14 caracteres";
                 
                 }
                 if (!preg_match('`[a-z]`',$password)){
-                $error_clave = "La clave debe tener al menos una letra minúscula";
+                $passwordError = "La clave debe tener al menos una letra minúscula";
                 
                 }
                 if (!preg_match('`[A-Z]`',$password)){
-                $error_clave = "La clave debe tener al menos una letra mayúscula";
+                $passwordError = "La clave debe tener al menos una letra mayúscula";
                 
                 }
                 if (!preg_match('`[0-9]`',$password)){
-                $error_clave = "La clave debe tener al menos un caracter numérico";
+                $passwordError = "La clave debe tener al menos un caracter numérico";
                 
                 }
    
-                if($error_clave == ""){
+                if($passwordError == ""){
                 //sign up success
                 $password = sha1($password); 
                 $user->setPassword($password);

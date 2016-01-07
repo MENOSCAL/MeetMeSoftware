@@ -5,9 +5,25 @@ security:
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                   #ryan:  { password: ryanpass, roles: 'ROLE_USER' }
+                   admin: { password: 20hks3lm, roles: 'ROLE_ADMIN' }
+                   
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
 
     firewalls:
+        
+        ##
+        secured_area:
+            pattern:    /login, /index, /signup
+            anonymous: ~
+            http_basic:
+                realm: "Secured Demo Area"
+                
+        ##
+                
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -23,4 +39,21 @@ security:
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
-       
+    access_control:
+        - { path: ^/admin,   roles: ROLE_ADMIN }
+        # Descomenta la siguiente línea para proteger también
+        # la propia URL /admin
+        - { path: ^/admin$, roles: ROLE_ADMIN }
+        - { path: /signupfail, roles: ROLE_ADMIN }
+        - { path: /upload, roles: ROLE_ADMIN }
+        - { path: /informalevent, roles: ROLE_ADMIN }
+        - { path: /formalevent, roles: ROLE_ADMIN }
+        - { path: /createdevent, roles: ROLE_ADMIN }
+        - { path: /searchevent, roles: ROLE_ADMIN }
+        - { path: /email, roles: ROLE_ADMIN }
+        - { path: /index/1, roles: ROLE_ADMIN }
+        - { path: /user, roles: ROLE_ADMIN }
+        - { path: /country, roles: ROLE_ADMIN }
+        
+        
+        
