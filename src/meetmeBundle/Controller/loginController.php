@@ -14,6 +14,7 @@ class loginController extends Controller
         $repository = $em->getRepository('meetmeBundle:User'); 
         $imgRepository = $em->getRepository('meetmeBundle:Image'); 
         
+        
         if($request->getMethod() == 'POST'){
             $sesion->clear();
             $username = $request->get('username');
@@ -37,11 +38,18 @@ class loginController extends Controller
                         $sesion->set('login', $login);
                         $img = $imgRepository->findOneBy(array('iduser'=>$user->getId(), 'isActive'=>1 ));
                         
+                        $email  = trim($user->getEmail());
+                        $domain = strstr($email, '@');
+                        $useremail = strstr($email, '@', true); // Desde PHP 5.3.0
+                        if (strnatcasecmp ( $domain , "@gmail.com" ) == 0 ) {
+                          $emailcode = "g";
+                        }            
+                        
                         if($img){
-                          return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath()) );
+                          return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
                         }else{
                          $nameImg = 'unisex.png';
-                         return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg) ); 
+                         return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
                         }
                     
                 }else{
@@ -59,19 +67,20 @@ class loginController extends Controller
                       )
                       );
                       $sesion->set('login', $login);
-                      
+                      $email  = trim($user->getEmail());
+                      $domain = strstr($email, '@');
+                      $useremail = strstr($email, '@', true); // Desde PHP 5.3.0
+                      if (strnatcasecmp ( $domain , "@gmail.com" ) == 0 ) {
+                          $emailcode = "g";
+                      }                      
                       $img = $imgRepository->findOneBy(array('iduser'=>$user->getId(), 'isActive'=>1 ));
                       if($img){
-                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath()) );
+                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
                       }else{
                         $nameImg = 'unisex.png';
-                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg) ); 
+                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
                       }
-                }           
-                
-                
-                
-                
+                }     
             }else{
                 
                 
@@ -97,10 +106,8 @@ class loginController extends Controller
                     $user = $repository->findOneBy(array('username'=>$username,'password'=>$password));
                     $img = $imgRepository->findOneBy(array('iduser'=>$user->getId(), 'isActive'=>1 ));
                 
-                if($user){
-                   
-                    
-                    $this->get('session')->getFlashBag()->set(
+                    if($user){
+                     $this->get('session')->getFlashBag()->set(
                       'success',
                       array(
                       'title' => 'Welcome. ',
@@ -109,11 +116,17 @@ class loginController extends Controller
                       );
                      $sesion->set('login', $login);
                      
+                     $email  = trim($user->getEmail());
+                     $domain = strstr($email, '@');
+                     $useremail = strstr($email, '@', true); // Desde PHP 5.3.0
+                     if (strnatcasecmp ( $domain , "@gmail.com" ) == 0 ) {
+                         $emailcode = "g";
+                     }               
                         if($img){
-                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath()) );
+                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
                         }else{
                            $nameImg = 'unisex.png';
-                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg) ); 
+                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
                         }
                 }
                 }else{
@@ -123,8 +136,6 @@ class loginController extends Controller
                 }
             }
     }   
-    
-   
     
     public function reloadAction(){
         $sesion = $this->getRequest()->getSession();
@@ -137,4 +148,6 @@ class loginController extends Controller
         }
         return $this->render('meetmeBundle:twig_html:index.html.twig');
     }
+    
+   
 }

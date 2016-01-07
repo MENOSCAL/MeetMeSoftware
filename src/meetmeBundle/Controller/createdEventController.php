@@ -43,6 +43,9 @@ class createdEventController extends Controller
                     $event->setPlace($place);
                     $event->setCreationDate(new \DateTime("now"));
                     $creationDate = $event->getCreationDate();
+                    $searchCode = substr(md5(microtime()),rand(0,21),10);
+                    $event->setSearchCode($searchCode);
+                    
                     //$email = $request->get('email');
                     
                     //$invitedPerson = new InvitedPerson(); 
@@ -65,7 +68,7 @@ class createdEventController extends Controller
                      );
                     */
                    
-                    return $this->render('meetmeBundle:twig_html:createdevent.html.twig', array('title' => $title, 'name'=>$name, 'lastname' => $lastName, 'eventdate' => $eventDateStr, 'hour' => $eventHour, 'place' => $place, 'invitedPersons' => $invitedPersons)); 
+                    return $this->render('meetmeBundle:twig_html:createdevent.html.twig', array('title' => $title, 'name'=>$name, 'lastname' => $lastName, 'eventdate' => $eventDateStr, 'hour' => $eventHour, 'place' => $place, 'invitedPersons' => $invitedPersons, 'searchCode' =>$searchCode)); 
              }
                 return $this->render('meetmeBundle:twig_html:login.html.twig'); 
                 }

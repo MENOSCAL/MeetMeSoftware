@@ -78,6 +78,13 @@ class Event
     private $link;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="search_code", type="string", length=10, nullable=false)
+     */
+    private $searchCode;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="InvitedPerson", mappedBy="idevent")
@@ -293,6 +300,29 @@ class Event
     public function getLink()
     {
         return $this->link;
+    }
+
+    /**
+     * Set searchCode
+     *
+     * @param string $searchCode
+     * @return Event
+     */
+    public function setSearchCode($searchCode)
+    {
+        $this->searchCode = $searchCode;
+
+        return $this;
+    }
+
+    /**
+     * Get searchCode
+     *
+     * @return string 
+     */
+    public function getSearchCode()
+    {
+        return $this->searchCode;
     }
 
     /**

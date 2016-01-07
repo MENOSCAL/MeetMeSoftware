@@ -78,6 +78,13 @@ class Event
     private $link;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="search_code", type="string", length=10, nullable=false)
+     */
+    private $searchCode;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="InvitedPerson", mappedBy="idevent")

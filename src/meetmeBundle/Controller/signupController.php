@@ -20,44 +20,73 @@ class signupController extends Controller
             $username = $request->get('username');
             $password = sha1($request->get('password'));
             $email = $request->get('email');
-            //$recordar = $request->get('recordar');
+            //$remember = $request->get('remember');
             $userVal = $repositorio->findOneBy(array('username'=>$username,'password'=>$password));
             $emailVal = $repositorio->findOneBy(array('email'=>$email));
+            
             if(is_null($userVal) && is_null($emailVal)){  
                 $user = new User();  
                 $user->setName($request->get('name'));
                 $user->setLastName($request->get('lastname'));
                 $username = $request->get('username');
-                $user->setUsername($username);
-                $user->setEmail($request->get('email'));
-                $em = $this->getDoctrine()->getManager();  
+                $email = strtolower($email);
                 $selectedCountry = filter_input(INPUT_POST, 'namecbxcountry', FILTER_SANITIZE_NUMBER_INT);
                 $selectedCountry2  = $em->getRepository('meetmeBundle:Country')->findOneById($selectedCountry);
-                $user->setCountry($selectedCountry2);
-                $password = sha1($request->get('password'));
+                $password = $request->get('password');
+                $error_clave = "";
+                
+                //Password validation
+                if(strlen($password) < 7){
+                $error_clave = "La clave debe tener al menos 7 caracteres";
+                
+                 }
+                if(strlen($password) > 14){
+                $error_clave = "La clave no puede tener más de 14 caracteres";
+                
+                }
+                if (!preg_match('`[a-z]`',$password)){
+                $error_clave = "La clave debe tener al menos una letra minúscula";
+                
+                }
+                if (!preg_match('`[A-Z]`',$password)){
+                $error_clave = "La clave debe tener al menos una letra mayúscula";
+                
+                }
+                if (!preg_match('`[0-9]`',$password)){
+                $error_clave = "La clave debe tener al menos un caracter numérico";
+                
+                }
+   
+                if($error_clave == ""){
+                //sign up success
+                $password = sha1($password); 
                 $user->setPassword($password);
+                $user->setUsername($username);
+                $user->setCountry($selectedCountry2);
+                $user->setEmail($email);
                 $user->setStatus(1);
                 $user->setType("N");
                 $user->setRegisterDate(new \DateTime("now"));
+                
+                $em = $this->getDoctrine()->getManager();  
                 $em->persist($user);
                 $em->flush();
                 
-                      $login = new Login();
-                      $login->setUsername($username);
-                      $login->setPassword($password);
-                      $login->setName($user->getName());
-                      $login->setLastname($user->getLastname());
-                      $this->get('session')->set('loginId', $user->getId());
-                      $sesion->set('login', $login);
+                $login = new Login();
+                $login->setUsername($username);
+                $login->setPassword($password);
+                $login->setName($user->getName());
+                $login->setLastname($user->getLastname());
+                $this->get('session')->set('loginId', $user->getId());
+                $sesion->set('login', $login);
                 
                 return $this->redirectToRoute('meetme_login');
-                //return $this->render( 'meetmeBundle:twig_html:responsesignupsuccess.html.twig', array('username' => $username) );
                 
-                
-                
-                
+                }else{
+                    //signup failure. Invalid password.
+                    return $this->redirectToRoute('meetme_signupfail');
+                }
                  }else{
-                     
                      $username = $request->get('username');
                      $email = $request->get('email');
                      return $this->render('meetmeBundle:twig_html:responsesignupfail.html.twig', array('username' => $username, 'email' => $email));
@@ -74,9 +103,5 @@ class signupController extends Controller
                  'countries' => $countries));  
             }   
      }
-     
-     
-    
-
 }
    

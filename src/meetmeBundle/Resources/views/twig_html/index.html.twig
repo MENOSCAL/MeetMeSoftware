@@ -352,7 +352,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
-                           <iframe style="margin-left: 150px;margin-top: 30px" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=evelynnathaly89%40gmail.com&amp;color=%23BE6D00&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%232952A3&amp;src=es.ec%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FGuayaquil" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                            
+                            {% if emailcode == "g" %} 
+                             <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;hl=en&amp;bgcolor=%23ffcc66&amp;src={{useremail}}%40gmail.com&amp;color=%2329527A&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%23BE6D00&amp;src=es.ec%23holiday%40group.v.calendar.google.com&amp;color=%23125A12&amp;ctz=America%2FGuayaquil" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                            {% endif %}>
+                           
                         </div>
                     </div>
                 </div>

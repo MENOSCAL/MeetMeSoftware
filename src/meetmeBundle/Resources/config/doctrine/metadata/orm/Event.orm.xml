@@ -12,6 +12,7 @@
     <field name="eventHour" type="string" column="event_hour" length="5" nullable="false"/>
     <field name="place" type="string" column="place" length="100" nullable="false"/>
     <field name="link" type="string" column="link" length="200" nullable="true"/>
+    <field name="searchCode" type="string" column="search_code" length="10" nullable="false"/>
     <many-to-many field="iduser" target-entity="User" mapped-by="idevent"/>
     <many-to-many field="idinvited" target-entity="InvitedPerson" mapped-by="idevent"/>
   </entity>
