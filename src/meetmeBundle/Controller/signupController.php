@@ -65,7 +65,7 @@ class signupController extends Controller
                 $user->setCountry($selectedCountry2);
                 $user->setEmail($email);
                 $user->setStatus(1);
-                $user->setType("N");
+                $user->setType("A");
                 $user->setRegisterDate(new \DateTime("now"));
                 
                 $em = $this->getDoctrine()->getManager();  

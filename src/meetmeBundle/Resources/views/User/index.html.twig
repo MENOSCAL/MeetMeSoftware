@@ -12,7 +12,6 @@
                 <th>Username</th>
                 <th>Password</th>
                 <th>Email</th>
-                <th>Photo</th>
                 <th>Status</th>
                 <th>Type</th>
                 <th>Registerdate</th>
@@ -28,7 +27,6 @@
                 <td>{{ entity.username }}</td>
                 <td>{{ entity.password }}</td>
                 <td>{{ entity.email }}</td>
-                <td>{{ entity.photo }}</td>
                 <td>{{ entity.status }}</td>
                 <td>{{ entity.type }}</td>
                 <td>{% if entity.registerDate %}{{ entity.registerDate|date('Y-m-d H:i:s') }}{% endif %}</td>

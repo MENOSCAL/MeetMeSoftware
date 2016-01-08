@@ -75,8 +75,8 @@ doctrine:
 swiftmailer:
     transport: gmail
     host:      smtp.gmail.com
-    username:  rstacks9
-    password:  kali1207
+    username:  meetmeplanner
+    password:  me.a1gmA
     spool:     { type: memory }
    
     

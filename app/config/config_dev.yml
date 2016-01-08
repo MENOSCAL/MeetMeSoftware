@@ -49,5 +49,5 @@ assetic:
 
 swiftmailer:
     transport: gmail
-    username:  rstacks9
-    password:  kali1207
+    username:  meetmeplanner
+    password:  me.a1gmA

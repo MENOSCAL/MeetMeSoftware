@@ -7,7 +7,7 @@ parameters:
     database_password: null
     mailer_transport: gmail
     mailer_host: smtp.gmail.com
-    mailer_user: rstaks9
-    mailer_password: kali1207
+    mailer_user: meetmeplanner
+    mailer_password: me.a1gmA
     secret: ThisTokenIsNotSoSecretChangeIt
     

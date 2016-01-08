@@ -1,27 +1,15 @@
 meetme_index:
     path:     /index
     defaults: { _controller: meetmeBundle:nologin:nologin }  
-
-meetme_image:
-    resource: "@meetmeBundle/Resources/config/routing/image.yml"
-    prefix:   /image
+    
+meetme_login:
+    path:     /login
+    defaults: { _controller: meetmeBundle:login:login }
     
 meetme_email:
     path:     /email
     defaults: { _controller: meetmeBundle:email:email }
-
-meetme_country:
-    resource: "@meetmeBundle/Resources/config/routing/country.yml"
-    prefix:   /country
-
-meetme_user:
-    resource: "@meetmeBundle/Resources/config/routing/user.yml"
-    prefix:   /user
-
-meetme_login:
-    path:     /login
-    defaults: { _controller: meetmeBundle:login:login }
-
+    
 meetme_signup:
     path:     /signup
     defaults: { _controller: meetmeBundle:signup:signup }
@@ -29,7 +17,6 @@ meetme_signup:
 meetme_signupfail:
     path:     /signupfail
     defaults: { _controller: meetmeBundle:signupfail:signupfail }
-
    
 meetme_upload:
     path:     /upload
@@ -67,3 +54,14 @@ meetme_searchevent:
      pattern:     /searchevent
      defaults: { _controller: meetmeBundle:searchEvent:searchEvent }
      
+meetme_image:
+    resource: "@meetmeBundle/Resources/config/routing/image.yml"
+    prefix:   /admin/image
+    
+meetme_country:
+    resource: "@meetmeBundle/Resources/config/routing/country.yml"
+    prefix:   /admin/country
+
+meetme_user:
+    resource: "@meetmeBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/user
