@@ -92,8 +92,12 @@
                                  
                                      <img style="background-image: url({{ asset('bundles/meetme/images/' ~ nameImg ) }});background-size: 100% 100%;" class="img-circle" alt="" />
                                      <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">&nbsp;</a>
+                                     
+                                     
+                                     
+                                     
                                     <p>
-                                        <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">{{name}} {{lastname}}</a>
+                                        <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">   <span data-toggle="modal" data-target="#modalImage" >{{name}} {{lastname}}</span>    </a>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -170,6 +174,12 @@
                             </div>
                         </li>
                         <li class="active">
+                            
+                            
+                            
+                            
+                            <!--Begin. copiar esto y pegarlo para form upload-->
+                            
                             <a href="#">
                                 <i class="fa fa-road"></i>
                                 <span data-toggle="modal" data-target="#modalRuta" >Contact Us</span>
@@ -213,6 +223,50 @@
                                 
                                 
                                 </div>
+                            
+                            <!--End. copiar esto y pegarlo para form upload-->
+                            
+                         <!--Begin. Pop Up Upload Image Form -->
+                         
+                         <div class="modal fade" id="modalImage" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" >
+                                        <div style="background-color:#367fa9;" class="modal-header">
+                                            <button style="background-color:#367fa9;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h2 style="color:white;background-color:#367fa9;font-family:'Kaushan Script', cursive;">Upload Image</h2>
+                                        </div>
+                                        <div class="modal-body" style="overflow-y: auto; height: 300px;">
+                                            
+                                            
+                                            
+              
+                                        <form action="{{path('meetme_upload')}}" method="post" enctype="multipart/form-data"> 
+   	
+                                        <input type="hidden" name="MAX_FILE_SIZE" value="100000"> 
+                                        <br> 
+                                        <br> 
+                                        <b>Select a file: </b> 
+                                        <br> 
+                                        <input name="userfile" type="file"> 
+                                        <br> 
+                                        <input type="submit" style="background-color:#FF9900;"class="btn btn-block" value="Send"> 
+                                        </form>
+
+        
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                </div>
+                            
+                            <!--End. Pop up upload image form-->
+                            
+                            
+                            
+                            
+                            
+                            
                             
                             
                             
