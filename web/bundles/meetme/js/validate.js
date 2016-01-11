@@ -1,3 +1,4 @@
+
 function checkPasswordMatch() {
     var password = $("#newPassword").val();
     var confirmPassword = $("#confirmPassword").val();
@@ -26,14 +27,28 @@ function checkPasswordMatch() {
                       $("#checkPasswordMatch").html("Password must contain at least 1 capital letter.");
                       document.getElementById("btn_register").disabled = true; 
                 }else{
-                      $("#checkPasswordMatch").html("Password is correct.");
-                      document.getElementById("btn_register").disabled = false; 
-                }   
-            } 
+                        $("#checkPasswordMatch").html("Password match. Password is correct.");
+                        checkCountry();
+                } 
         }
      }
+    }
+  }
 }
+
+function checkCountry(){
+     var country =  document.getElementById("countrycbx").value ;
+    if (country == -1){
+        $("#checkCountry").html("Please select a country!");
+        document.getElementById("newPassword").value = "";
+        document.getElementById("confirmPassword").value = "";
+        $("#checkPasswordMatch").html("");
+    }else{
+        $("#checkCountry").html("");
+        document.getElementById("btn_register").disabled = false; 
+    }
 }
+
 
 var numbers="0123456789";
 
@@ -79,3 +94,4 @@ $(window).ready(function () {
         }
     })
 });
+
