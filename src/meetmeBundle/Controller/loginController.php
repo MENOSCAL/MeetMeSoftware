@@ -48,11 +48,11 @@ class loginController extends Controller
                         if($img){
                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
                         }else{
-                         $nameImg = 'unisex.png';
+                         $nameImg = 'bundles/meetme/images/unisex.png';
                          return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
                         }
                     
-                }else{
+                }else{//user doesn't have login
                       $login = new Login();
                       $login->setUsername($username);
                       $login->setPassword($password);
@@ -72,12 +72,79 @@ class loginController extends Controller
                       $useremail = strstr($email, '@', true); // Desde PHP 5.3.0
                       if (strnatcasecmp ( $domain , "@gmail.com" ) == 0 ) {
                           $emailcode = "g";
-                      }                      
+                      }      
+                      
+                      
+                      //
+                      //$page_title = Util::getFormattedPageTitle("Events");
+
+    
+    
+                //$query = $em->createQuery($dql);
+                //$customers = $query->execute();
+                $maxItemPerPage = 10;
+               /*
+                $query = $em->createQueryBuilder()
+                ->select('e')
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->where('e.id = ?1')
+                ->setParameter(1, 86)
+                ->orderBy('e.eventDate', 'DESC')
+                ->getQuery() 
+                ;
+                $events = $query->getResult();
+                */
+                /*
+                $query = $em->createQueryBuilder();
+                $query->select(['e','u'])
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->innerJoin('e.iduser','u')
+                ->where($query->expr()->eq('u.id',':id'))
+                ->setParameters(['id' => $user->getId()])
+                ->getQuery()->getResult();
+                */
+                $query = $em->createQueryBuilder();
+                $q = $query
+                ->select(['e','u'])
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->innerJoin('e.iduser','u')
+                ->where($query->expr()->eq('u.id',':id'))
+                ->setParameters(['id' => $user->getId()])
+                 ->orderBy('e.eventDate', 'DESC')
+                ->getQuery();
+                
+                $events = $q->getResult();
+                
+                
+                
+                
+                 
+
+              
+                $paginator  = $this->get('knp_paginator');
+                $pagination = $paginator->paginate(
+                $q,
+                $this->get('request')->query->get('page', 1)/*page number*/,
+                $maxItemPerPage /*limit per page*/
+                );
+
+
+    // parameters to template
+                /*
+    return $this->render('CustomersBundle:Default:index.html.twig', array(
+        'page_title' => $page_title,
+        'pagination' => $pagination,
+        'image_path' => CustomersConstants::$customers_image_thumb_path
+    ));
+                 */
+                 
+    
+    
                       $img = $imgRepository->findOneBy(array('iduser'=>$user->getId(), 'isActive'=>1 ));
                       if($img){
                         return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
                       }else{
-                        $nameImg = 'unisex.png';
+                        $nameImg = 'bundles/meetme/images/unisex.png';
                         return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
                       }
                 }     
@@ -125,7 +192,7 @@ class loginController extends Controller
                         if($img){
                            return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
                         }else{
-                           $nameImg = 'unisex.png';
+                           $nameImg = 'bundles/meetme/images/unisex.png';
                            return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
                         }
                 }

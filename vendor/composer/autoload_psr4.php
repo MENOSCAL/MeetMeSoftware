@@ -23,6 +23,7 @@ return array(
     'React\\EventLoop\\' => array($vendorDir . '/react/event-loop'),
     'Ratchet\\' => array($vendorDir . '/gos/ratchet/src/Ratchet'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'Knp\\Bundle\\PaginatorBundle\\' => array($vendorDir . '/knplabs/knp-paginator-bundle'),
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'Gos\\Component\\WebSocketClient\\' => array($vendorDir . '/gos/websocket-client'),
     'Gos\\Component\\RatchetStack\\' => array($vendorDir . '/gos/ratchet-stack/src'),

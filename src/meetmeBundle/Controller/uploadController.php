@@ -57,7 +57,13 @@ class uploadController extends Controller{
                 //echo "The extent or size of the files is not correct. <br><br><table><tr><td><li>.jpg, .png or .gif files allowed</li></td></tr></table>"; 
             }   
             else{ 
-                if (move_uploaded_file($file, __DIR__.'/../../../web/bundles/meetme/images/'.$fileName)){ 
+                $UploadDir =   sprintf(__DIR__.'/../../../web/bundles/meetme/images/%s.%s',
+                sha1_file($file),
+                $ext
+                );  
+                $posBundles = strpos($UploadDir, "bundles/meetme");
+                $substrUploadDir = substr($UploadDir, $posBundles); 
+                if (move_uploaded_file($file,$UploadDir)) {
                     //echo "Upload successful.";
                     $em = $this->getDoctrine()->getManager();
                     $qb = $em->createQueryBuilder();
@@ -68,17 +74,19 @@ class uploadController extends Controller{
                     ->setParameter(2, $user->getId())
                     ->getQuery();
                     $p = $q->execute();
-       
+                    
                     $image = new Image();
-                    $image->setPath($fileName);
+                    $image->setPath($substrUploadDir);
                     $image->setIduser($user);
                     $image->setIsActive(1);
                     $em->persist($image);
                     $em->flush();
+                     
                     //return $this->redirectToRoute('meetme_upload_success');
                     return $this->redirectToRoute('meetme_login');
                 }else{ 
                     //echo "Upload fail."; 
+                    throw new RuntimeException('Failed to move uploaded file.');
                } 
             } 
 //        }catch (RuntimeException $e) {

@@ -90,7 +90,7 @@
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
                                  
-                                     <img style="background-image: url({{ asset('bundles/meetme/images/' ~ nameImg ) }});background-size: 100% 100%;" class="img-circle" alt="" />
+                                     <img style="background-image: url({{ asset(nameImg ) }});background-size: 100% 100%;" class="img-circle" alt="" />
                                      <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">&nbsp;</a>
                                      
                                      
@@ -129,7 +129,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img style="background-image: url({{ asset('bundles/meetme/images/' ~ nameImg ) }}); background-size: 100% 100%;" class="img-circle" alt="" /> 
+                            <img style="background-image: url({{ asset(nameImg ) }}); background-size: 100% 100%;" class="img-circle" alt="" /> 
                             
                         </div>
                         <div class="pull-left image">
@@ -541,4 +541,5 @@
         </script>#}
     </body>
 </html>
+
 

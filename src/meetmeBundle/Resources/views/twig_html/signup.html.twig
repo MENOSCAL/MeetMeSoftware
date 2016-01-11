@@ -12,7 +12,7 @@
         <!-- Theme style -->
        
         <!-- <link href="{{asset('bundles/meetme/css/darkly.min.css')}}" rel="stylesheet"> -->
-        <!-- <link href="{{asset('bundles/meetme/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" /> -->
+        <!-- <link href="{{asset('bundles/meetme/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />--> 
         <!-- <link href="{{asset('bundles/meetme/css/style1.css')}}" rel="stylesheet"> -->
         <link href="{{asset('bundles/meetme/css/signup.css')}}" rel="stylesheet">
 
@@ -49,12 +49,12 @@
               <input type="email" name="email" required class="text" placeholder="Email"/>
             </li>
             <li>
-              <input type="password" id="newPassword" name="password" required class="text_half" placeholder="Password"/>
-              <input type="password" id="confirmPassword" name="password2" required class="text_half half_right_input" placeholder="Confirm Password"/>
+              <input type="password" id="newPassword" name="password" required class="text_half" placeholder="Password" min="7" max="14"/>
+              <input type="password" id="confirmPassword" name="password2" required class="text_half half_right_input" placeholder="Confirm Password" min="7" max="14"/>
             </li>
             <div class="registrationFormAlert" id="checkPasswordMatch"></div>
             <li>
-              <input type="submit" value="REGISTER" class="btn">
+              <button type="submit" id="btn_register" class="btn btn-block" disabled >REGISTER</button>
             </li>
             
           </ul>
@@ -91,6 +91,8 @@ window.fbAsyncInit = function() {
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="{{asset('bundles/meetme/js/bootstrap.min.js')}}" type="text/javascript"></script>        
+        <script src="{{asset('bundles/meetme/js/validate.js')}}" type="text/javascript"></script>
+        
 
     </body>
 </html>

@@ -7,7 +7,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="path" type="string" column="path" length="255" nullable="true"/>
+    <field name="path" type="string" column="path" length="255" nullable="false"/>
     <field name="isActive" type="integer" column="is_active" nullable="false"/>
     <many-to-one field="iduser" target-entity="User">
       <join-columns>

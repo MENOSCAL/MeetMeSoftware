@@ -87,4 +87,24 @@ gos_web_socket:
         router:
             resources:
                 - @meetmeBundle/Resources/config/pubsub/routing.yml
+                
+knp_paginator:
+  page_range: 5 # number of pages displayed in the paginator.
+
+  default_options:
+    # the following three parameters allow "translate" the paginator.
+    # you can use eg 'page', 'order' and 'direction'
+    page_name:           page
+    sort_field_name:     sort
+    sort_direction_name: direction
+
+    # only include different results (useful when you do GROUP BY queries)
+    distinct: true
+
+  template:
+    # these options configure the template used for pagination.
+    # and the controls that allow you to sort the results.
+    pagination: KnpPaginatorBundle:Pagination:sliding.html.twig
+    sortable:   KnpPaginatorBundle:Pagination:sortable_link.html.twig
+    
 
