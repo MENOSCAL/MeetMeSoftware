@@ -4,6 +4,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use meetmeBundle\Modal\Login;
 use meetmeBundle\Entity\User;
+use Doctrine\ORM\Query\AST\Join;
 
 class loginController extends Controller
 {
@@ -74,56 +75,30 @@ class loginController extends Controller
                           $emailcode = "g";
                       }      
                       
-                      
-                      //
                       //$page_title = Util::getFormattedPageTitle("Events");
 
-    
-    
-                //$query = $em->createQuery($dql);
-                //$customers = $query->execute();
-                $maxItemPerPage = 10;
-               /*
+                      $maxItemPerPage = 5;
+             
+                 $query = $em->createQueryBuilder()
+                 ->select('e')
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->innerJoin('e.iduser','u')
+                ->where('u.id = ?1')
+                ->setParameter(1 , $user->getId())
+                ->orderBy('e.eventDate', 'DESC')
+                ->getQuery()->getResult();
+              
+              
+               /*todos los eventos creados por todos los users
                 $query = $em->createQueryBuilder()
                 ->select('e')
                 ->from('meetmeBundle\Entity\Event', 'e')
-                ->where('e.id = ?1')
-                ->setParameter(1, 86)
                 ->orderBy('e.eventDate', 'DESC')
-                ->getQuery() 
-                ;
-                $events = $query->getResult();
-                */
-                /*
-                $query = $em->createQueryBuilder();
-                $query->select(['e','u'])
-                ->from('meetmeBundle\Entity\Event', 'e')
-                ->innerJoin('e.iduser','u')
-                ->where($query->expr()->eq('u.id',':id'))
-                ->setParameters(['id' => $user->getId()])
                 ->getQuery()->getResult();
-                */
-                $query = $em->createQueryBuilder();
-                $q = $query
-                ->select(['e','u'])
-                ->from('meetmeBundle\Entity\Event', 'e')
-                ->innerJoin('e.iduser','u')
-                ->where($query->expr()->eq('u.id',':id'))
-                ->setParameters(['id' => $user->getId()])
-                 ->orderBy('e.eventDate', 'DESC')
-                ->getQuery();
-                
-                $events = $q->getResult();
-                
-                
-                
-                
-                 
-
-              
+              */
                 $paginator  = $this->get('knp_paginator');
                 $pagination = $paginator->paginate(
-                $q,
+                $query,
                 $this->get('request')->query->get('page', 1)/*page number*/,
                 $maxItemPerPage /*limit per page*/
                 );
@@ -142,10 +117,10 @@ class loginController extends Controller
     
                       $img = $imgRepository->findOneBy(array('iduser'=>$user->getId(), 'isActive'=>1 ));
                       if($img){
-                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
+                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode, 'pagination' => $pagination) );
                       }else{
                         $nameImg = 'bundles/meetme/images/unisex.png';
-                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
+                        return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode, 'pagination' => $pagination) ); 
                       }
                 }     
             }else{

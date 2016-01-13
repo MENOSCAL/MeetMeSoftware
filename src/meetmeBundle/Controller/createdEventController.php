@@ -51,6 +51,7 @@ class createdEventController extends Controller
                     //$invitedPerson->setEmail($email);
                     
                     $event->addIduser($user);
+                    $user->addIdevent($event);
                     //$event->addIdinvited($invitedPerson);
                     
                     $em->persist($event);

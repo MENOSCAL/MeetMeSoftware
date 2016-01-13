@@ -46,6 +46,7 @@ class emailController extends Controller{
                 {
                     //$id = $event->getId();
                     $event->addIdinvited($invitedPerson);
+                    $invitedPerson->addIdevent($event);
                     $em->persist($event);
                     $em->persist($invitedPerson);
                     $em->flush();
@@ -72,5 +73,10 @@ class emailController extends Controller{
      }
    }
  }
+ 
+ 
+ 
+ 
+ 
  }
 

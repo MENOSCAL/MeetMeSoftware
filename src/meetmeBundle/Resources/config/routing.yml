@@ -54,6 +54,14 @@ meetme_searchevent:
      pattern:     /searchevent
      defaults: { _controller: meetmeBundle:searchEvent:searchEvent }
      
+meetme_forgotpassword:
+    path:     /forgotpassword
+    defaults: { _controller: meetmeBundle:forgotPassword:forgotPassword }
+    
+meetme_forgot_pass_email:
+    path:     /emailforgotpass
+    defaults: { _controller: meetmeBundle:emailForgotPass:emailForgotPass }
+     
 meetme_image:
     resource: "@meetmeBundle/Resources/config/routing/image.yml"
     prefix:   /admin/image

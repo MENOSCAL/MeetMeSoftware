@@ -35,29 +35,29 @@ class signupController extends Controller
                 $password = $request->get('password');
                 $passwordError = "";
                 
-                //Password validation
-                if(strlen($password) < 7){
-                $passwordError = "La clave debe tener al menos 7 caracteres";
+//                //Password validation
+//                if(strlen($password) < 7){
+//                $passwordError = "La clave debe tener al menos 7 caracteres";
+//                
+//                 }
+//                if(strlen($password) > 14){
+//                $passwordError = "La clave no puede tener más de 14 caracteres";
+//                
+//                }
+//                if (!preg_match('`[a-z]`',$password)){
+//                $passwordError = "La clave debe tener al menos una letra minúscula";
+//                
+//                }
+//                if (!preg_match('`[A-Z]`',$password)){
+//                $passwordError = "La clave debe tener al menos una letra mayúscula";
+//                
+//                }
+//                if (!preg_match('`[0-9]`',$password)){
+//                $passwordError = "La clave debe tener al menos un caracter numérico";
+//                
+//                }
+//   
                 
-                 }
-                if(strlen($password) > 14){
-                $passwordError = "La clave no puede tener más de 14 caracteres";
-                
-                }
-                if (!preg_match('`[a-z]`',$password)){
-                $passwordError = "La clave debe tener al menos una letra minúscula";
-                
-                }
-                if (!preg_match('`[A-Z]`',$password)){
-                $passwordError = "La clave debe tener al menos una letra mayúscula";
-                
-                }
-                if (!preg_match('`[0-9]`',$password)){
-                $passwordError = "La clave debe tener al menos un caracter numérico";
-                
-                }
-   
-                if($passwordError == ""){
                 //sign up success
                 $password = sha1($password); 
                 $user->setPassword($password);
@@ -82,10 +82,7 @@ class signupController extends Controller
                 
                 return $this->redirectToRoute('meetme_login');
                 
-                }else{
-                    //signup failure. Invalid password.
-                    return $this->redirectToRoute('meetme_signupfail');
-                }
+                
                  }else{
                      $username = $request->get('username');
                      $email = $request->get('email');

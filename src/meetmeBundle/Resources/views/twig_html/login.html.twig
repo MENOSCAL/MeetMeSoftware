@@ -40,7 +40,7 @@
 							<input type="submit" value="LOGIN" class="btn">
 						</li>
 						<li>
-							<div class="span"><span class="ch"><input type="checkbox" id="r"> <label for="r">Remember Me</label> </span> <span class="ch"><a href="#">Forgot Password?</a></span></div>
+							<div class="span"><span class="ch"><input type="checkbox" id="r"> <label for="r">Remember Me</label> </span> <span class="ch"><a href="{{path('meetme_forgotpassword')}}">Forgot Password?</a></span></div>
 						</li>
 					</ul>
 				</form>
@@ -50,17 +50,6 @@
 				</div>
 			</div><br/>
 			<div class="sign">
-                       {% for type, flashMessage in app.session.flashbag.all() %}
-                            <div class="alert alert-{{ type }} fade in">
-                            <button class="close" data-dismiss="alert" type="button">×</button>
-                            {% if flashMessage.title is defined %}
-                            <strong>{{ flashMessage.title }}</strong>
-                            <strong>{{ flashMessage.message }}</strong>
-                            {% else %}
-                            {{ type }}
-                            {% endif %}
-                            </div>
-                            {% endfor %}
 				<div class="need">Need new account ?</div>
 				<div class="up"><a href="{{path('meetme_signup')}}">Sign Up</a></div>
 			</div>
