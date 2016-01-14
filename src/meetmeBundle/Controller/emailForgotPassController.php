@@ -54,7 +54,7 @@ class emailForgotPassController extends Controller{
                    $transport = $this->get('swiftmailer.transport.real');
                    $spool->flushQueue($transport);
                    //$this->get('mailer')->send($message);
-                   return $this->render('meetmeBundle:twig_html:registration.html.twig' ,
+                   return $this->render('meetmeBundle:twig_html:forgotpasswordmessage.html.twig' ,
                    array('name' => $email));
     
     } else {

@@ -46,11 +46,29 @@ class loginController extends Controller
                           $emailcode = "g";
                         }            
                         
+                         $maxItemPerPage = 5;
+                 $query = $em->createQueryBuilder()
+                 ->select('e')
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->innerJoin('e.iduser','u')
+                ->where('u.id = ?1')
+                ->setParameter(1 , $user->getId())
+                ->orderBy('e.eventDate', 'DESC')
+                ->getQuery()->getResult();
+                 
+                $paginator  = $this->get('knp_paginator');
+                $pagination = $paginator->paginate(
+                $query,
+                $this->get('request')->query->get('page', 1)/*page number*/,
+                $maxItemPerPage /*limit per page*/
+                );
+
+
                         if($img){
-                          return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
+                          return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode, 'pagination' => $pagination) );
                         }else{
                          $nameImg = 'bundles/meetme/images/unisex.png';
-                         return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
+                         return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode, 'pagination' => $pagination) ); 
                         }
                     
                 }else{//user doesn't have login
@@ -77,8 +95,7 @@ class loginController extends Controller
                       
                       //$page_title = Util::getFormattedPageTitle("Events");
 
-                      $maxItemPerPage = 5;
-             
+                 $maxItemPerPage = 5;
                  $query = $em->createQueryBuilder()
                  ->select('e')
                 ->from('meetmeBundle\Entity\Event', 'e')
@@ -124,18 +141,7 @@ class loginController extends Controller
                       }
                 }     
             }else{
-                
-                
-                //
-                $this->get('session')->getFlashBag()->set(
-                      'Error',
-                      array(
-                      'title' => 'Sign In Error. ',
-                      'message' => 'The user or the password doesn\'t match. '
-                      )
-                      );
-                //
-                
+              
                 return $this->render('meetmeBundle:twig_html:login.html.twig'); 
                 
            } 
@@ -163,12 +169,31 @@ class loginController extends Controller
                      $useremail = strstr($email, '@', true); // Desde PHP 5.3.0
                      if (strnatcasecmp ( $domain , "@gmail.com" ) == 0 ) {
                          $emailcode = "g";
-                     }               
+                     } 
+                     
+                     $maxItemPerPage = 5;
+                 $query = $em->createQueryBuilder()
+                 ->select('e')
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->innerJoin('e.iduser','u')
+                ->where('u.id = ?1')
+                ->setParameter(1 , $user->getId())
+                ->orderBy('e.eventDate', 'DESC')
+                ->getQuery()->getResult();
+                 
+                $paginator  = $this->get('knp_paginator');
+                $pagination = $paginator->paginate(
+                $query,
+                $this->get('request')->query->get('page', 1)/*page number*/,
+                $maxItemPerPage /*limit per page*/
+                );
+                
+                
                         if($img){
-                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode) );
+                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $img->getPath(),   'useremail' => $useremail, 'emailcode' => $emailcode, 'pagination' => $pagination) );
                         }else{
                            $nameImg = 'bundles/meetme/images/unisex.png';
-                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode) ); 
+                           return $this->render( 'meetmeBundle:twig_html:index.html.twig', array('username' => $username, 'name'=>$user->getName(), 'lastname'=>$user->getLastname(), 'nameImg' => $nameImg,   'useremail' => $useremail, 'emailcode' => $emailcode, 'pagination' => $pagination) ); 
                         }
                 }
                 }else{

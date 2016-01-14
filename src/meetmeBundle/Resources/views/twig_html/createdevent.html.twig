@@ -190,24 +190,32 @@
            
                 
                 <div class="body bg-gray">
+                    
+                    <form action="{{path('meetme_email')}}" method="POST">
+                      <input type="hidden" name="eventtitle" value="{{title}}">  
                      <div class="form-group">
-                         <label class = "labelf">Event created by {{name}} {{lastname}}</label>
+                         <!--<label class = "labelf" name = "lbname"></label>-->
+                         <input type ="text" name ="firstname" readonly size="40" value ="Event created by {{name}} {{lastname}}" />
                     </div>
                     
                     <div class="form-group">
-                         <label class = "labelf">Search code: {{searchCode}} </label>
+                         
+                         <input type ="text" name ="searchcode" readonly size="40" value ="Search code: {{searchCode}}" />
                     </div>
                     
                     <div class="form-group">
-                         <label class = "labelf">Date: {{eventdate}}</label>
+                         
+                         <input type ="text" name ="eventdate" readonly size="40" value ="Date: {{eventdate}}" />
                     </div>
                     
                      <div class="form-group">
-                        <label class = "labelf" for="hour">Hour: {{hour}}</label>
+                       
+                        <input type ="text" name ="hour" readonly size="40" value ="Hour: {{hour}}" />
                      </div>   
                     
                     <div class="form-group">
-                        <label class = "labelf" for="place">Place: {{place}}</label>
+                       
+                        <input type ="text" name ="place" readonly size="40" value ="Place: {{place}}" />
                         
                     </div>
                     <!--
@@ -219,7 +227,7 @@
                     
                     <div class="form-group">
                         <label for="invitedpeople">List of invitees</label>
-                    <select  name="invitedpeople" required>
+                    <select  name="invitedpeople">
                         <option selected="selected" ></option>
                             {% for i in invitedPersons %}
                              <option value="{{i.id}}">{{i.email}}</option>
@@ -227,7 +235,7 @@
                     </select>
                     </div>
                                          
-                    <form action="{{path('meetme_email')}}" method="POST">
+                    
                     <div class="form-group">
                         <label class = "labelf" for="email">Invite people(send an email)</label>
                        
@@ -241,7 +249,7 @@
                     <div class="form-group">
                         <label class = "labelf" for="message">Message</label>
                         <textarea rows="4" cols="40" name = "messagetxt">
-                            This is an invitation for you to participate in this Meetme Event: 
+                            
                         </textarea>                      
                     </div>  
                     

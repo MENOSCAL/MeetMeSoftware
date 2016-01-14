@@ -29,6 +29,20 @@ class InvitedPerson
     private $email;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="invitation_date", type="datetime", nullable=true)
+     */
+    private $invitationDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="accepted_invitation_date", type="datetime", nullable=true)
+     */
+    private $acceptedInvitationDate;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Event", inversedBy="idinvited")

@@ -5,6 +5,8 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="email" type="string" column="email" length="50" nullable="false"/>
+    <field name="invitationDate" type="datetime" column="invitation_date" nullable="true"/>
+    <field name="acceptedInvitationDate" type="datetime" column="accepted_invitation_date" nullable="true"/>
     <many-to-many field="idevent" target-entity="Event" inversed-by="idinvited">
       <join-table name="invited_event">
         <join-columns>

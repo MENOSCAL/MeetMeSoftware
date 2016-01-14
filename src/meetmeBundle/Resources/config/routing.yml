@@ -61,6 +61,11 @@ meetme_forgotpassword:
 meetme_forgot_pass_email:
     path:     /emailforgotpass
     defaults: { _controller: meetmeBundle:emailForgotPass:emailForgotPass }
+    
+    
+meetme_showevent:
+    path:     /showevent/{varid}
+    defaults: { _controller: meetmeBundle:showEvent:showEvent }
      
 meetme_image:
     resource: "@meetmeBundle/Resources/config/routing/image.yml"

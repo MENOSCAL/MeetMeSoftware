@@ -59,8 +59,19 @@ class createdEventController extends Controller
                     //$em->persist($invitedPerson);
                     $em->flush();
                     
-                    $repositorio = $em->getRepository('meetmeBundle:InvitedPerson'); 
-                    $invitedPersons = $repositorio->findAll();
+                    //
+                    $query = $em->createQueryBuilder()
+                    ->select('p')
+                    ->from('meetmeBundle\Entity\InvitedPerson', 'p')
+                    ->innerJoin('p.idevent','e')
+                    ->where('e.id = ?1')
+                    ->setParameter(1 , $event->getId())
+                    ->orderBy('p.invitationDate', 'DESC')
+                    ->getQuery();
+                    //
+                    //$repositorio = $em->getRepository('meetmeBundle:InvitedPerson'); 
+                    //$invitedPersons = $repositorio->findAll();
+                    $invitedPersons = $query->getResult();
                     /*
                      return new Response(
                      'Created user id: '.$user->getId()

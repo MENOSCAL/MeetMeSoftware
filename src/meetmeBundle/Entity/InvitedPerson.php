@@ -29,6 +29,20 @@ class InvitedPerson
     private $email;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="invitation_date", type="datetime", nullable=true)
+     */
+    private $invitationDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="accepted_invitation_date", type="datetime", nullable=true)
+     */
+    private $acceptedInvitationDate;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Event", inversedBy="idinvited")
@@ -83,6 +97,52 @@ class InvitedPerson
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set invitationDate
+     *
+     * @param \DateTime $invitationDate
+     * @return InvitedPerson
+     */
+    public function setInvitationDate($invitationDate)
+    {
+        $this->invitationDate = $invitationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get invitationDate
+     *
+     * @return \DateTime 
+     */
+    public function getInvitationDate()
+    {
+        return $this->invitationDate;
+    }
+
+    /**
+     * Set acceptedInvitationDate
+     *
+     * @param \DateTime $acceptedInvitationDate
+     * @return InvitedPerson
+     */
+    public function setAcceptedInvitationDate($acceptedInvitationDate)
+    {
+        $this->acceptedInvitationDate = $acceptedInvitationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get acceptedInvitationDate
+     *
+     * @return \DateTime 
+     */
+    public function getAcceptedInvitationDate()
+    {
+        return $this->acceptedInvitationDate;
     }
 
     /**

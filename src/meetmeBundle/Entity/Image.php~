@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Image
  *
- * @ORM\Table(name="image", indexes={@ORM\Index(name="fk_image_user", columns={"iduser"})})
+ * @ORM\Table(name="image", indexes={@ORM\Index(name="fk_img_user", columns={"iduser"})})
  * @ORM\Entity
  */
 class Image
@@ -24,7 +24,7 @@ class Image
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="string", length=255, nullable=true)
+     * @ORM\Column(name="path", type="string", length=255, nullable=false)
      */
     private $path;
 

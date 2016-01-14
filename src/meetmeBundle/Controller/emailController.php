@@ -18,7 +18,17 @@ class emailController extends Controller{
                 $name = $login->getName();
                 $lastname = $login->getLastName();
                 $sesion->set('login', $login);
+                
+                $eventTitle= $request->get('eventtitle');
                 $email = $request->get('email');
+                
+                $fullName = $request->get('firstname');
+                $searchCode = $request->get('searchcode');
+                $eventDate  = $request->get('eventdate');
+                $hour = $request->get('hour');
+                $place= $request->get('place');
+                
+                
                 $emailConstraint = new Email();
                 //We can set all restriction options in this manner.
                 $emailConstraint->message = 'Invalid email address';
@@ -29,7 +39,11 @@ class emailController extends Controller{
                 );
                 if (count($errorList) == 0) {
                 // This is a valid email.
-                $messagetxt = $request->get('messagetxt');
+                
+                $messagetxt1 =  "This is an invitation for you to participate in this Meetme Event: \n\n".$eventTitle."\n".$eventDate."\n".$hour."\n".$place."\n\n".$fullName."\n".$searchCode."\n\n";
+                $messagetxt2 =  "Please click here to accept this invitation\n\n";
+                $messagetxt3 = $request->get('messagetxt');
+                $messagetxt = $messagetxt1.$messagetxt2.$messagetxt3;
                 $limit=1; 
                 $em = $this->getDoctrine()->getManager();
                 $query = $em->createQueryBuilder()
@@ -42,6 +56,7 @@ class emailController extends Controller{
                 $events = $query->getResult();
                 $invitedPerson = new InvitedPerson(); 
                 $invitedPerson->setEmail($email);
+                $invitedPerson->setInvitationDate(new \DateTime("now"));
                 foreach($events as $event)
                 {
                     //$id = $event->getId();
@@ -53,7 +68,7 @@ class emailController extends Controller{
                  }
                 $message = \Swift_Message::newInstance()
                 ->setSubject('Invitation from MeetMePlanner...')
-                ->setFrom('rstacks9@gmail.com')
+                ->setFrom('meetmeplanner@gmail.com')
                 ->setTo($email)
                 ->setBody($messagetxt);
                 $mailer = $this->get('mailer');
