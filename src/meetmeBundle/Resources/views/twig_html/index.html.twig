@@ -24,11 +24,11 @@
         {{ ws_client() }}
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a style="background-color:#CC6633" href="{{path('meetme_reload')}}" class="logo">
-                MeetMe
+            <a style="background-color:#2F4171" href="{{path('meetme_reload')}}" class="logo">
+                 <img src="{{asset('bundles/meetme/img/meetme_logo_long.png')}}" alt="" width="145">
             </a>
             <!-- Header Navbar: style can be found in header.less -->
-            <nav style="background-color:#FF9900"class="navbar navbar-static-top" role="navigation">
+            <nav style="background-color:#344b7d"class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -151,7 +151,7 @@
                                 <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span></br>
                         </div>
-			<div id="display"></div>
+			<!-- <div id="display"></div> -->
                     </form>
      
                     <ul class="sidebar-menu">
@@ -249,7 +249,7 @@
                                         <br> 
                                         <input name="userfile" type="file" accept="image/x-png, image/gif, image/jpeg"> 
                                         <br> 
-                                        <input type="submit" style="background-color:#FF9900;"class="btn btn-block" value="Send"> 
+                                        <input type="submit" style="background-color:#344b7d;"class="btn btn-block" value="Send"> 
                                         </form>
 
         
@@ -273,7 +273,7 @@
                         </li>
                         
                         <li class="active">
-                            <a class="botonMenu" style="background-color:#FFE4B5" href="#">
+                            <a class="botonMenu" style="background-color:#B5C8FF" href="#">
                                 <i class="fa fa-road"></i>
                                 <span data-toggle="modal" data-target="#evento" >Create Event</span>
                             </a>
@@ -283,14 +283,14 @@
                             <div class="modal fade" id="evento" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content" >
-                                        <div style="background-color:#FF9900;" class="modal-header">
-                                            <button style="background-color:#FF9900;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h2 style="color:white;background-color:#FF9900;font-family:'Kaushan Script', cursive;">Create Event</h2>
+                                        <div style="background-color:#344b7d;" class="modal-header">
+                                            <button style="background-color:#344b7d;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h2 style="color:white;background-color:#344b7d;font-family:'Kaushan Script', cursive;">Create Event</h2>
                                         </div>
                                         <div class="modal-body" style="overflow-y: auto; height: 300px;">
                                             <div>
-                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('meetme_formalevent')}}" class="btn btn-block"><b>Formal Event</b></a>
-                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('meetme_informalevent')}}" class="btn btn-block"><b>Informal Event</b></a>
+                                                <br><br><br><a style="background-color:#344b7d;" href="{{path('meetme_formalevent')}}" class="btn btn-block"><b>Formal Event</b></a>
+                                                <br><br><br><a style="background-color:#344b7d;" href="{{path('meetme_informalevent')}}" class="btn btn-block"><b>Informal Event</b></a>
                                             </div>
                                            
                                         </div>
@@ -304,7 +304,7 @@
                          
                          
                          <li class="active">
-                            <a class="botonMenu" style="background-color:#FFE4B5" href="#">
+                            <a class="botonMenu" style="background-color:#B5C8FF" href="#">
                                 <i class="fa fa-road"></i>
                                 <span data-toggle="modal" data-target="#searchevent" >Search Events</span>
                             </a>
@@ -314,9 +314,9 @@
                             <div class="modal fade" id="searchevent" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content" >
-                                        <div style="background-color:#FF9900;" class="modal-header">
-                                            <button style="background-color:#FF9900;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h2 style="color:white;background-color:#FF9900;font-family:'Kaushan Script', cursive;">Search Events</h2>
+                                        <div style="background-color:#344b7d;" class="modal-header">
+                                            <button style="background-color:#344b7d;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h2 style="color:white;background-color:#344b7d;font-family:'Kaushan Script', cursive;">Search Events</h2>
                                         </div>
                                         
                                         
@@ -349,7 +349,7 @@
                     </div>
                 </div>
                 <div class="footer bg-gray">              
-                    <button type="submit" style="background-color:#FF9900;"class="btn btn-block">Search</button>          
+                    <button type="submit" style="background-color:#344b7d;"class="btn btn-block">Search</button>          
                              
                 </div>    
                  <div class="footer bg-gray"> 
@@ -367,7 +367,7 @@
                                             
                                             <div>
                                                 
-                                                <br><br><br><a style="background-color:#FF9900;" href="{{path('meetme_informalevent')}}" class="btn btn-block"><b>Search Event</b></a>
+                                                <br><br><br><a style="background-color:#344b7d;" href="{{path('meetme_informalevent')}}" class="btn btn-block"><b>Search Event</b></a>
                                             </div>
                                            
                                         </div>
@@ -454,12 +454,12 @@
         
         
         
-        <footer class="page-footer">
+        <!-- <footer class="page-footer">
             <p class="footer-web">Software Engineering II</p>
             <a class="desarrolladores" href="#" data-toggle="modal" data-target="#modalFooter">Developers</a><br/>
             <p class="copyright">&copy; 2016 All right reserved. </p>
 
-        </footer>
+        </footer> -->
         <div class="modal fade" id="modalFooter" tabindex="-1" aria-hidden="true">
             <form class="form-horizontal" method="post">
                 <div class="modal-dialog">
