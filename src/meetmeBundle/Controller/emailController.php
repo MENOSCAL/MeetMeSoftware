@@ -70,7 +70,7 @@ class emailController extends Controller{
                 ->setSubject('Invitation from MeetMePlanner...')
                 ->setFrom('meetmeplanner@gmail.com')
                 ->setTo($email)
-                ->setBody($messagetxt);
+                ->setBody($messagetxt."\n".$this->render('meetmeBundle:twig_html:invitation.html.twig', array('email'=> $email)));
                 $mailer = $this->get('mailer');
                 $mailer->send($message);
                 $spool = $mailer->getTransport()->getSpool();
