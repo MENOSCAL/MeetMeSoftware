@@ -1,0 +1,119 @@
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700");
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	background: white;
+}
+
+#meetme_header_main {
+	height: 50px;
+	width: 100%;
+	background: #344b7d;
+}
+
+/*Logo CSS*/
+.logo_cont {
+	display: inline-block;
+    height: 50px;
+    padding: 10px 15px;
+    padding-right: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+.logo_link_img {
+	height: 50px;
+}
+
+/*Search CSS*/
+.search_cont {
+	display: inline-block;
+	height: 50px;
+	width: calc(100% - 480px);
+}
+.input-group {
+	display: flex !important;
+	height: 50px;
+}
+.sidebar-form {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: none !important;
+}
+#caja_busqueda {
+	width: 95%; 
+	height: inherit !important; 
+	border: none !important; 
+	border-radius: 0 !important;
+    padding: 20px;
+    text-align: right;
+    color: white;
+    background: #344B7D;
+}
+#caja_busqueda:focus {
+	background: rgba(32, 52, 94, 0.2);
+}
+.skin-blue .sidebar-form .btn {
+    height: 50px;
+    width: 50px;
+    border-radius: 0 !important;
+    background: #294072;
+    border: none;
+    color: white;
+}
+.skin-blue .sidebar-form input[type="text"]:focus + .input-group-btn .btn {
+    background-color: #20345E;
+    color: #FFF;
+}
+
+/*placeholder fix*/
+::-webkit-input-placeholder {
+	color: rgba(255,255,255,0.5);
+	font-style: italic;
+}
+:-moz-placeholder {
+	color: rgba(255,255,255,0.5);
+	font-style: italic;
+	opacity: 1;
+}
+::-moz-placeholder {
+	color: rgba(255,255,255,0.5);
+	font-style: italic;
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	color: rgba(255,255,255,0.5);
+	font-style: italic;
+}
+:placeholder-shown {
+	color: rgba(255,255,255,0.5);
+	font-style: italic;
+}
+
+/*Notifications CSS*/
+.notifications_cont {
+	display: inline-block;
+    height: 50px;
+    width: 281px;
+}
+.user-menu .dropdown-toggle, .notifications-menu .dropdown-toggle {
+	color: white;
+}
+.meetme_toggle {
+	font-size: 20px;
+	color: white;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: rgba(41, 64, 114, 0.6) !important;
+    color: white !important;
+}
+.label-warning {
+	background-color: #E4A300;
+	margin: 5px;
+}

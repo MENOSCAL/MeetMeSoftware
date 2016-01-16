@@ -7,14 +7,19 @@
         <!-- bootstrap 3.0.2 -->
         <link href="{{asset('bundles/meetme/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
-        <link href="{{asset('bundles/meetme/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link href="{{asset('bundles/meetme/css/ionicons.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="{{asset('bundles/meetme/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />
         <!--Google API-->
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;signed_in=true&amp;libraries=places,geometry&amp;region=ec&amp;language=es&amp;sensor=false"></script>
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+        <!-- CUSTOM INDEX CSS -->
+        <link href="{{asset('bundles/meetme/css/index.css')}}" rel="stylesheet" type="text/css" />
+
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,700,200,300,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     </head>
 
     <body class="skin-blue">
@@ -22,54 +27,71 @@
         {{ ws_client() }}
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a style="background-color:#2F4171" href="{{path('meetme_reload')}}" class="logo">
-                <img src="{{asset('bundles/meetme/img/meetme_logo_long.png')}}" alt="" width="145">
-            </a>
-            <!-- Header Navbar: style can be found in header.less -->
-            <nav style="background-color:#344b7d"class="navbar navbar-static-top" role="navigation">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <div class="navbar-right">
+            <!-- HEADER CONTAINER -->
+            <div id="meetme_header_main" class="navbar-static-top">
+                <!-- LOGO -->
+                <div class="logo_cont">
+                   <a class="logo_link_img" href="{{path('meetme_reload')}}">
+                        <img src="{{asset('bundles/meetme/img/meetme_logo_long.png')}}" alt="MeetMe Logo" width="145">
+                    </a> 
+                </div>
+                <!-- SEARCH -->
+                <div class="search_cont">
+                    <!-- search form -->
+                    {#<form action="perfil_amigo.html" method="get" class="sidebar-form">#}
+                    <form class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" name="clave" class="busca" id="caja_busqueda" placeholder="Search..."/>
+                            <span class="input-group-btn">
+                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                            </br>
+                        </div>
+                        <!-- <div id="display"></div> -->
+                    </form>
+                </div>
+                <!-- NOTIFICATIONS -->
+                <div class="notifications_cont navbar-right">
                     <ul class="nav navbar-nav">
                         <!-- Notifications: style can be found in dropdown.less -->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-warning"></i>
-                                <span class="label label-warning">10</span>
+                                <span class="label label-warning">5</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header">You have 10 notifications</li>
+                                <li class="header">You have 5 notifications</li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
                                     <ul class="menu">
                                         <li>
                                             <a href="#" id="rutaNotificacion">
-                                                <i class="ion ion-model-s danger"></i> Maria ha creado una nueva ruta
+                                                <i class="ion ion-model-s danger"></i>
+                                                Mary has invited yo to "Work planning meeting"
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="ion ion-ios7-people info"></i> 5 new members joined today
+                                                <i class="ion ion-ios7-people info"></i>
+                                                5 new members joined today
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-warning danger"></i> Very long description here that may not fit into the page and may cause design problems
+                                                <i class="fa fa-warning danger"></i>
+                                                Julio has remove the meeting event
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="fa fa-users warning"></i> 5 new members joined
+                                                <i class="fa fa-users warning"></i>
+                                                5 New members joined
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <i class="ion ion-ios7-person danger"></i> You changed your username
+                                                <i class="ion ion-ios7-person danger"></i>
+                                                You changed your username
                                             </a>
                                         </li>
                                     </ul>
@@ -86,15 +108,12 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    
                                     <img style="background-image: url({{ asset(nameImg ) }});background-size: 100% 100%;" class="img-circle" alt="" />
                                     <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">&nbsp;</a>
-                                    
-                                    
-                                    
-                                    
                                     <p>
-                                        <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">   <span data-toggle="modal" data-target="#modalImage" >{{name}} {{lastname}}</span>    </a>
+                                        <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">
+                                            <span data-toggle="modal" data-target="#modalImage" >{{name}} {{lastname}}</span>
+                                        </a>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
@@ -108,9 +127,21 @@
                                 </li>
                             </ul>
                         </li>
+                        <!-- Sidebar toggle button-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle meetme_toggle" data-toggle="offcanvas" role="button">
+                                <i class="fa fa-bars"></i>
+                            </a>
+                        </li>
+                        
                     </ul>
                 </div>
-            </nav>
+            </div>
+
+            
+            <!-- Header Navbar: style can be found in header.less -->
+            <!-- <nav style="background-color:#344b7d"class="navbar navbar-static-top" role="navigation">
+            </nav> -->
         </header>
                                     
                                     
@@ -135,18 +166,7 @@
                         </div>
                     </div>
 
-                    <!-- search form -->
-                    {#<form action="perfil_amigo.html" method="get" class="sidebar-form">#}
-                    <form class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="clave" class="busca" id="caja_busqueda" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                            </br>
-                        </div>
-                        <!-- <div id="display"></div> -->
-                    </form>
+                    
      
                     <ul class="sidebar-menu">
                         <li class="active">

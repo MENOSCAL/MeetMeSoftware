@@ -39,10 +39,11 @@ body {
 	text-align: center;
 }
 #logo_container img {
-	position: relative;
-    top: -90px;
+    position: relative;
+    top: -85px;
     left: -3px;
     width: 350px;
+    height: 70px;
     margin: 0 auto;
 }
 .header {
