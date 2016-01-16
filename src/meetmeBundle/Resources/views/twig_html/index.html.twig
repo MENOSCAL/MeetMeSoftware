@@ -107,29 +107,35 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
-                                <li class="user-header bg-light-blue">
-                                    <img style="background-image: url({{ asset(nameImg ) }});background-size: 100% 100%;" class="img-circle" alt="" />
-                                    <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">&nbsp;</a>
+                                <li class="user-header">
+                                    <img style="background-image: url({{ asset(nameImg ) }});background-size: 100% 100%;" class="user_image_modal" alt="" />
+                                    <!-- <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">&nbsp;</a> -->
                                     <p>
                                         <a href="{{path('meetme_upload')}}" class="text-center" title="click to change image">
-                                            <span data-toggle="modal" data-target="#modalImage" >{{name}} {{lastname}}</span>
+                                            <span class="user_name_tooltip" data-toggle="modal" data-target="#modalImage" >{{name}} {{lastname}}</span>
                                         </a>
                                     </p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Contacts</a>
+                                        <a href="#" class="btn btn-default btn-flat">
+                                            <i class="fa fa-users"></i>
+                                            Contacts
+                                        </a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{path('meetme_logout')}}" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{path('meetme_logout')}}" class="btn btn-default btn-flat">
+                                            <i class="fa fa-sign-out"></i>
+                                            Sign out
+                                        </a>
                                     </div>
                                 </li>
                             </ul>
                         </li>
                         <!-- Sidebar toggle button-->
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle meetme_toggle" data-toggle="offcanvas" role="button">
+                            <a href="#" class="dropdown-toggle meetme_toggle" data-toggle="offcanvas" role="button" disabled>
                                 <i class="fa fa-bars"></i>
                             </a>
                         </li>
@@ -147,14 +153,13 @@
                                     
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="left-side sidebar-offcanvas">
+            <aside class="left-side sidebar-offcanvas meetme_main_menu">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
-                    <div class="user-panel">
+                    <!-- <div class="user-panel">
                         <div class="pull-left image">
                             <img style="background-image: url({{ asset(nameImg ) }}); background-size: 100% 100%;" class="img-circle" alt="" />
-                            
                         </div>
                         <div class="pull-left image">
                             
@@ -164,11 +169,11 @@
                             <p>Hi!, {{name}} {{lastname}}</p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
-                    </div>
+                    </div> -->
 
                     
      
-                    <ul class="sidebar-menu">
+                    <ul class="sidebar-menu meetme_main_ul">
                         <li class="active">
                             <a href="{{path('meetme_reload')}}">
                                 <i class="fa fa-globe"></i> <span>Home</span>
@@ -181,7 +186,7 @@
                         </li>
                         <li id="crearRuta" class="active">
                             <a href="#">
-                                <i class="fa fa-road"></i> <span>Calendar</span>
+                                <i class="fa fa-calendar"></i> <span>Calendar</span>
                             </a>
                             <div class="rutaReset" style="display:none;margin:5px 0 5px 25px;">
                                 <input type="button" class="btn btn-info btnResetRuta" value="Reset" onclick="reset()"/>
@@ -190,7 +195,7 @@
                         <li class="active">
                             <!--Begin. copiar esto y pegarlo para form upload-->
                             <a href="#">
-                                <i class="fa fa-road"></i>
+                                <i class="fa fa-info-circle"></i>
                                 <span data-toggle="modal" data-target="#modalRuta" >Contact Us</span>
                             </a>
 
@@ -258,7 +263,7 @@
                             <!--End. Pop up upload image form-->
                         </li>
                         
-                        <li class="active">
+                        <!-- <li class="active">
                             <a class="botonMenu" style="background-color:#B5C8FF" href="#">
                                 <i class="fa fa-road"></i>
                                 <span data-toggle="modal" data-target="#evento" >Create Event</span>
@@ -329,7 +334,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
                         
                     </ul>
                 </section>
@@ -337,7 +342,7 @@
             </aside>
                                             
             <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">
+            <aside class="right-side body_main_meetme">
             {% for type, flashMessage in app.session.flashbag.all() %}
                 <div class="alert alert-{{ type }} fade in">
                     <button class="close" data-dismiss="alert" type="button">×</button>
@@ -353,7 +358,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
                         {% block content %}
-                            <h1> Eventos </h1><br />
+                            <h1 class="body_h1"> Eventos </h1><br />
 
                             {% for event in pagination %}
                             <!--<a href="" target="_blank">-->

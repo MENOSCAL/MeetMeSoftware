@@ -117,3 +117,61 @@ body {
 	background-color: #E4A300;
 	margin: 5px;
 }
+
+/*MAIN MENU*/
+.meetme_main_menu {
+	width: 100%;
+}
+.meetme_main_ul .active{
+	display: inline-block !important;
+}
+.skin-blue .sidebar > .sidebar-menu > li {
+	background: transparent !important;
+	border-bottom: 2px solid transparent;
+}
+.skin-blue .sidebar > .sidebar-menu > li:hover {
+	background: transparent !important;
+	border-bottom: 2px solid #2478c1;
+}
+.active a {
+	display: inline-block;
+	padding: 12px 15px !important;
+	background: transparent !important;
+}
+.active a i {
+	display: inline-block;
+	color: #294072;
+}
+.active a span {
+	display: inline-block;
+	color: #294072;
+}
+
+/*USER TOOLTIP*/
+.user_image_modal {
+	border: none !important;
+	border-radius: 50%;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+	background: white;
+	height: 150px;
+}
+.user_name_tooltip {
+	font-size: 20px;
+    text-shadow: none;
+    font-weight: 600;
+}
+
+/*BODY*/
+.body_main_meetme {
+    margin: 0;
+    margin-top: 50px;
+    margin-left: 14px;
+}
+
+.body_main_meetme .body_h1 {
+	margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}
