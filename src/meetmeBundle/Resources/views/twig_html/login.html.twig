@@ -9,9 +9,11 @@
         <link href="{{asset('bundles/meetme/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <!-- font Awesome -->
         <link href="{{asset('bundles/meetme/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
-        <!-- Theme style -->
-        
+        <!-- font facebook -->
+        <link href="{{asset('bundles/meetme/css/facebook.css')}}" rel="stylesheet" type="text/css" />
        
+        
+        <!-- Theme style -->
          <!--<link href="{{asset('bundles/meetme/css/darkly.min.css')}}" rel="stylesheet">--> 
          <!--<link href="{{asset('bundles/meetme/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" /> --> 
          <!--<link href="{{asset('bundles/meetme/css/style1.css')}}" rel="stylesheet"> --> 
@@ -22,6 +24,7 @@
 
     </head>
     <body>   
+        
 	    <div class="form">
 	        <div id="logo_container">
     			<img src="{{asset('bundles/meetme/img/meetme_logo_long.png')}}" alt="">
@@ -45,8 +48,8 @@
 					</ul>
 				</form>
 				<div class="social">
-					<a href="https://www.facebook.com/dialog/oauth?client_id=730641610413296&redirect_uri=http://localhost/MeetMeSoftware/web/app_dev.php/eventoformal"><div class="fb"><i class="fa fa-facebook-f"></i> &nbsp; Login With Facebook</div></a>
-					<a href="#"><div class="gl"><i class="fa fa-google"></i> &nbsp;  Login With Google</div></a>
+					<a href="#" id="login"  ><div class="fb"><i class="fa fa-facebook-f"></i> &nbsp; Login With Facebook</div></a>
+                                        <a href="#"><div class="gl"><i class="fa fa-google"></i> &nbsp;  Login With Google</div></a>
 				</div>
 			</div><br/>
 			<div class="sign">
@@ -73,11 +76,8 @@
 	  }(document, 'script', 'facebook-jssdk'));
 	 </script>
          
-         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-         </fb:login-button> 
-         
-         <div  id="status" style="color:#FF0000;">
-         </div>
+	
+	
     
     </body>
 </html>

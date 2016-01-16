@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15/01/2016, 21:57:09
+    Author     : victor
+*/
+
+
+strong, img {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 200px;
+    height: 100px;
+    display: block;
+}
+img {
+    position: absolute;
+    top: 105px;
+    left: 0;
+    width: 170px;
+    height: 100px;
+
+}
+#logout {
+    position: absolute;
+    top: 220px;
+    left: 0;
+    width: 100px;
+    height: 25px;
+    
+}
+
+#facebook-session{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 50px;
+    height: 50px;
+
+}

@@ -4,79 +4,93 @@
  * and open the template in the editor.
  */
 
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
+  $(function() {
 
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+	var app_id = '730641610413296';
+	var scopes = 'email, user_friends';
 
-  window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '730641610413296',
-    cookie     : true,  // enable cookies to allow the server to access 
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.2' // use version 2.2
-  });
+	var div_session = "<div id='facebook-session'>"+
+					  "<strong></strong>"+
+					  "<img>"+
+					  "<a href='#' id='logout' class='bt btn-danger'>Cerrar sesión</a>"+
+					  "</div>";
 
-  // Now that we've initialized the JavaScript SDK, we call 
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
+	window.fbAsyncInit = function() {
 
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
- 
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
+	  	FB.init({
+	    	appId      : app_id,
+	    	status     : true,
+	    	cookie     : true, 
+	    	xfbml      : true, 
+	    	version    : 'v2.5'
+	  	});
 
 
+	  	FB.getLoginStatus(function(response) {
+	    	statusChangeCallback(response, function() {});
+	  	});
+  	};
+
+  	var statusChangeCallback = function(response, callback) {
+  		console.log(response);
+   		
+    	if (response.status === 'connected') {
+      		getFacebookData();
+    	} else {
+     		callback(false);
+    	}
+  	}
+
+  	var checkLoginState = function(callback) {
+    	FB.getLoginStatus(function(response) {
+      		callback(response);
+    	});
+  	}
+
+  	var getFacebookData =  function() {
+  		FB.api('/me', function(response) {
+	  		$('#login').after(div_session);
+	  		
+	  		$('#facebook-session strong').text("Bienvenido: "+response.name);
+	  		$('#facebook-session img').attr('src','http://graph.facebook.com/'+response.id+'/picture?type=large');
+	  	});
+  	}
+
+  	var facebookLogin = function() {
+  		checkLoginState(function(data) {
+  			if (data.status !== 'connected') {
+  				FB.login(function(response) {
+  					if (response.status === 'connected')
+  						getFacebookData();
+  				}, {scope: scopes});
+  			}
+  		})
+  	}
+
+  	var facebookLogout = function() {
+  		checkLoginState(function(data) {
+  			if (data.status === 'connected') {
+				FB.logout(function(response) {
+					
+					$('#facebook-session').remove();
+				})
+			}
+  		})
+
+  	}
 
 
 
+  	$(document).on('click', '#login', function(e) {
+  		e.preventDefault();
+
+  		facebookLogin();
+  	})
+
+  	$(document).on('click', '#logout', function(e) {
+  		e.preventDefault();
+                
+  		facebookLogout();
+  	})
+
+})
