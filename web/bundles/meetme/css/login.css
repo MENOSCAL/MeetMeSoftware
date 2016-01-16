@@ -43,7 +43,7 @@ body {
     top: -85px;
     left: -3px;
     width: 350px;
-    height: 70px;
+    height: 70px !important;
     margin: 0 auto;
 }
 .header {
