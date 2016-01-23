@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="UserEvent" table="user_event">
+    <indexes>
+      <index name="user_event_fk_2" columns="idevent"/>
+      <index name="user_event_fk_1" columns="iduser"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="sendingInvitationDate" type="datetime" column="sending_invitation_date" nullable="true"/>
+    <field name="acceptedInvitationDate" type="datetime" column="accepted_invitation_date" nullable="true"/>
+    <many-to-one field="idevent" target-entity="Event">
+      <join-columns>
+        <join-column name="idevent" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iduser" target-entity="User">
+      <join-columns>
+        <join-column name="iduser" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

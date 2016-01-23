@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Event
  *
- * @ORM\Table(name="event")
+ * @ORM\Table(name="event", indexes={@ORM\Index(name="event_fk_1", columns={"created_by"})})
  * @ORM\Entity
  */
 class Event
@@ -85,26 +85,14 @@ class Event
     private $searchCode;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \User
      *
-     * @ORM\ManyToMany(targetEntity="InvitedPerson", mappedBy="idevent")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
+     * })
      */
-    private $idinvited;
+    private $createdBy;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="idevent")
-     */
-    private $iduser;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idinvited = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->iduser = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 }

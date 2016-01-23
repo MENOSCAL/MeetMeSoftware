@@ -31,38 +31,9 @@ class InvitedPerson
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="invitation_date", type="datetime", nullable=true)
+     * @ORM\Column(name="creation_date", type="datetime", nullable=true)
      */
-    private $invitationDate;
+    private $creationDate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="accepted_invitation_date", type="datetime", nullable=true)
-     */
-    private $acceptedInvitationDate;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Event", inversedBy="idinvited")
-     * @ORM\JoinTable(name="invited_event",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="idinvited", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idevent", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $idevent;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 }

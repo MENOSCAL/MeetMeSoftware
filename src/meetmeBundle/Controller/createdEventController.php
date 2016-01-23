@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use meetmeBundle\Entity\Event;
+use meetmeBundle\Entity\UserEvent;
 use meetmeBundle\Entity\InvitedPerson;
 
 class createdEventController extends Controller
@@ -29,6 +30,7 @@ class createdEventController extends Controller
                     $description = $request->get('description');
                     $place = $request->get('place');
                     $event = new Event();  
+                    $event->setCreatedBy($user);
                     $event->setType("I");
                     $type = $event->getType();
                     $event->setTitle($title);
@@ -45,21 +47,34 @@ class createdEventController extends Controller
                     $searchCode = substr(md5(microtime()),rand(0,21),10);
                     $event->setSearchCode($searchCode);
                     
-                    //$email = $request->get('email');
-                    
-                    //$invitedPerson = new InvitedPerson(); 
-                    //$invitedPerson->setEmail($email);
-                    
-                    $event->addIduser($user);
-                    $user->addIdevent($event);
-                    //$event->addIdinvited($invitedPerson);
-                    
                     $em->persist($event);
-                    $em->persist($user);
-                    //$em->persist($invitedPerson);
+                    $em->flush();                    
+                    
+                    /*
+                    $limit=1; 
+                    $em = $this->getDoctrine()->getManager();
+                    $query = $em->createQueryBuilder()
+                    ->select('e')
+                    ->from('meetmeBundle:Event', 'e')
+                    ->orderBy('e.creationDate', 'DESC')
+                    ->setMaxResults($limit)
+                    ->getQuery() 
+                    ;
+                    $events = $query->getResult();
+                    
+                    foreach ($events as $event){
+                        $idevent = $event->getId();
+                    }
+                    $user->getId();
+                     */
+                    
+                    $userEvent = new UserEvent();
+                    $userEvent->setIdevent($event);
+                    $userEvent->setIduser($user);
+                    $em->persist($userEvent);
                     $em->flush();
                     
-                    //
+                    /*
                     $query = $em->createQueryBuilder()
                     ->select('p')
                     ->from('meetmeBundle\Entity\InvitedPerson', 'p')
@@ -68,9 +83,22 @@ class createdEventController extends Controller
                     ->setParameter(1 , $event->getId())
                     ->orderBy('p.invitationDate', 'DESC')
                     ->getQuery();
-                    //
-                    //$repositorio = $em->getRepository('meetmeBundle:InvitedPerson'); 
-                    //$invitedPersons = $repositorio->findAll();
+                    */
+                    
+                     $query = $em->createQueryBuilder()
+                     ->select('ip.id AS pid', 'ip.email')
+                     ->from('meetmeBundle\Entity\InvitedEvent', 'ie')
+                     ->innerJoin('ie.idevent','e')
+                     ->innerJoin('ie.idinvited','ip')
+                     ->where('e.id = ?1')
+                     ->setParameter(1 , $event->getId())
+                     ->orderBy('ie.sendingInvitationDate', 'DESC')
+                     ->getQuery();
+                     
+                     
+                    
+                                   //$repositorio = $em->getRepository('meetmeBundle:InvitedPerson'); 
+                                   //$invitedPersons = $repositorio->findAll();
                     $invitedPersons = $query->getResult();
                     /*
                      return new Response(

@@ -12,15 +12,12 @@
         <!-- font facebook -->
         <link href="{{asset('bundles/meetme/css/facebook.css')}}" rel="stylesheet" type="text/css" />
        
-        
         <!-- Theme style -->
          <!--<link href="{{asset('bundles/meetme/css/darkly.min.css')}}" rel="stylesheet">--> 
          <!--<link href="{{asset('bundles/meetme/css/AdminLTE.css')}}" rel="stylesheet" type="text/css" /> --> 
          <!--<link href="{{asset('bundles/meetme/css/style1.css')}}" rel="stylesheet"> --> 
         
-        
-        
-        <link href="{{asset('bundles/meetme/css/login.css')}}" rel="stylesheet">
+         <link href="{{asset('bundles/meetme/css/login.css')}}" rel="stylesheet">
 
     </head>
     <body>   
@@ -49,7 +46,12 @@
 				</form>
 				<div class="social">
 					<a href="#" id="login"  ><div class="fb"><i class="fa fa-facebook-f"></i> &nbsp; Login With Facebook</div></a>
-                                        <a href="#"><div class="gl"><i class="fa fa-google"></i> &nbsp;  Login With Google</div></a>
+                                        <!--<a href="#"><div class="gl"><i class="fa fa-google"></i> &nbsp;  Login With Google</div></a>-->
+                                        <button  class = "gl" style = "color: white; font-size: 14px; width:150px" onclick="login()" >
+                                            <i class="fa fa-google"></i> 
+                                                &nbsp;  Login With Google
+                                        </button>
+                                        <div id="profile"></div>
 				</div>
 			</div><br/>
 			<div class="sign">
@@ -64,7 +66,9 @@
         <script src="{{asset('bundles/meetme/js/bootstrap.min.js')}}" type="text/javascript"></script>        
         <!-- login Facebook -->
         <script src="{{asset('bundles/meetme/js/facebook.js')}}" type="text/javascript"></script> 
+        <script src="{{asset('bundles/meetme/js/google.js')}}" type="text/javascript"></script> 
     
+        
 	<script>
 	// Load the SDK asynchronously
 	  (function(d, s, id) {

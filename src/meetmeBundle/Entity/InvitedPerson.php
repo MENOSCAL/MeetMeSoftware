@@ -31,39 +31,10 @@ class InvitedPerson
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="invitation_date", type="datetime", nullable=true)
+     * @ORM\Column(name="creation_date", type="datetime", nullable=true)
      */
-    private $invitationDate;
+    private $creationDate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="accepted_invitation_date", type="datetime", nullable=true)
-     */
-    private $acceptedInvitationDate;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Event", inversedBy="idinvited")
-     * @ORM\JoinTable(name="invited_event",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="idinvited", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idevent", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $idevent;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -100,81 +71,25 @@ class InvitedPerson
     }
 
     /**
-     * Set invitationDate
+     * Set creationDate
      *
-     * @param \DateTime $invitationDate
+     * @param \DateTime $creationDate
      * @return InvitedPerson
      */
-    public function setInvitationDate($invitationDate)
+    public function setCreationDate($creationDate)
     {
-        $this->invitationDate = $invitationDate;
+        $this->creationDate = $creationDate;
 
         return $this;
     }
 
     /**
-     * Get invitationDate
+     * Get creationDate
      *
      * @return \DateTime 
      */
-    public function getInvitationDate()
+    public function getCreationDate()
     {
-        return $this->invitationDate;
-    }
-
-    /**
-     * Set acceptedInvitationDate
-     *
-     * @param \DateTime $acceptedInvitationDate
-     * @return InvitedPerson
-     */
-    public function setAcceptedInvitationDate($acceptedInvitationDate)
-    {
-        $this->acceptedInvitationDate = $acceptedInvitationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get acceptedInvitationDate
-     *
-     * @return \DateTime 
-     */
-    public function getAcceptedInvitationDate()
-    {
-        return $this->acceptedInvitationDate;
-    }
-
-    /**
-     * Add idevent
-     *
-     * @param \meetmeBundle\Entity\Event $idevent
-     * @return InvitedPerson
-     */
-    public function addIdevent(\meetmeBundle\Entity\Event $idevent)
-    {
-        $this->idevent[] = $idevent;
-
-        return $this;
-    }
-
-    /**
-     * Remove idevent
-     *
-     * @param \meetmeBundle\Entity\Event $idevent
-     */
-    public function removeIdevent(\meetmeBundle\Entity\Event $idevent)
-    {
-        $this->idevent->removeElement($idevent);
-    }
-
-    /**
-     * Get idevent
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdevent()
-    {
-        return $this->idevent;
+        return $this->creationDate;
     }
 }

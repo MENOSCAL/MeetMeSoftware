@@ -45,7 +45,7 @@ class loginController extends Controller
                         if (strnatcasecmp ( $domain , "@gmail.com" ) == 0 ) {
                           $emailcode = "g";
                         }            
-                        
+                        /*
                          $maxItemPerPage = 5;
                  $query = $em->createQueryBuilder()
                  ->select('e')
@@ -55,6 +55,32 @@ class loginController extends Controller
                 ->setParameter(1 , $user->getId())
                 ->orderBy('e.eventDate', 'DESC')
                 ->getQuery()->getResult();
+                        
+                         */
+                        /*
+                         $maxItemPerPage = 5;
+                         
+                  $query = $em->createQueryBuilder()
+                ->select('e.id AS eid', 'e.type', 'e.title', 'e.description', 'e.eventDate', 'e.eventHour', 'e.place' )
+                ->from('meetmeBundle\Entity\UserEvent', 'ue')
+                ->innerJoin('ue.idevent','e')
+                 ->innerJoin('ue.iduser','u')
+                ->where('u.id = ?1')
+                ->setParameter(1 , $user->getId())
+                ->orderBy('e.eventDate', 'DESC')
+                ->getQuery()->getResult();
+                  */
+                 
+                  $maxItemPerPage = 5;
+                  $query = $em->createQueryBuilder()
+                ->select('e.id as eid', 'e.title', 'e.description' )
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->where('e.createdBy = ?1')
+                ->orderBy('e.creationDate', 'DESC')
+                ->setParameter(1 , $user->getId())
+                ->getQuery()->getResult();
+                  
+                  
                  
                 $paginator  = $this->get('knp_paginator');
                 $pagination = $paginator->paginate(
@@ -95,7 +121,9 @@ class loginController extends Controller
                       
                       //$page_title = Util::getFormattedPageTitle("Events");
 
+                      
                  $maxItemPerPage = 5;
+                 /*
                  $query = $em->createQueryBuilder()
                  ->select('e')
                 ->from('meetmeBundle\Entity\Event', 'e')
@@ -104,7 +132,30 @@ class loginController extends Controller
                 ->setParameter(1 , $user->getId())
                 ->orderBy('e.eventDate', 'DESC')
                 ->getQuery()->getResult();
-              
+                       
+                       */
+                 /*
+                        $query = $em->createQueryBuilder()
+               ->select('e.id AS eid', 'e.type', 'e.title', 'e.description', 'e.eventDate', 'e.eventHour', 'e.place' )
+                ->from('meetmeBundle\Entity\UserEvent', 'ue')
+                ->innerJoin('ue.idevent','e')
+                 ->innerJoin('ue.iduser','u')
+                ->where('u.id = ?1')
+                ->setParameter(1 , $user->getId())
+                ->orderBy('e.eventDate', 'DESC')
+                ->getQuery()->getResult();
+                  
+                  */
+                       
+              $maxItemPerPage = 5;
+                  $query = $em->createQueryBuilder()
+                ->select('e.id as eid', 'e.title', 'e.description' )
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->where('e.createdBy = ?1')
+                ->orderBy('e.creationDate', 'DESC')
+                ->setParameter(1 , $user->getId())
+                ->getQuery()->getResult();
+                  
               
                /*todos los eventos creados por todos los users
                 $query = $em->createQueryBuilder()
@@ -172,6 +223,8 @@ class loginController extends Controller
                      } 
                      
                      $maxItemPerPage = 5;
+                     
+                     /*
                  $query = $em->createQueryBuilder()
                  ->select('e')
                 ->from('meetmeBundle\Entity\Event', 'e')
@@ -180,7 +233,28 @@ class loginController extends Controller
                 ->setParameter(1 , $user->getId())
                 ->orderBy('e.eventDate', 'DESC')
                 ->getQuery()->getResult();
-                 
+                 */
+                     /*
+                     $query = $em->createQueryBuilder()
+                ->select('e.id AS eid', 'e.type', 'e.title', 'e.description', 'e.eventDate', 'e.eventHour', 'e.place' )
+                ->from('meetmeBundle\Entity\UserEvent', 'ue')
+                ->innerJoin('ue.idevent','e')
+                 ->innerJoin('ue.iduser','u')
+                ->where('u.id = ?1')
+                ->setParameter(1 , $user->getId())
+                ->orderBy('e.eventDate', 'DESC')
+                ->getQuery()->getResult();
+                    */
+                     $maxItemPerPage = 5;
+                  $query = $em->createQueryBuilder()
+                ->select('e.id as eid', 'e.title', 'e.description' )
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->where('e.createdBy = ?1')
+                ->orderBy('e.creationDate', 'DESC')
+                ->setParameter(1 , $user->getId())
+                ->getQuery()->getResult();
+                  
+                  
                 $paginator  = $this->get('knp_paginator');
                 $pagination = $paginator->paginate(
                 $query,

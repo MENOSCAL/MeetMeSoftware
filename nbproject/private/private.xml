@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/nologinController.php</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Resources/views/twig_html/index0_redesigned.html.twig</file>
+            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/createdEventController.php</file>
+            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/loginController.php</file>
             <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/confirmController.php</file>
-            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/emailController.php</file>
+            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Resources/views/twig_html/invitation.html.twig</file>
+            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Controller/uploadController.php</file>
+            <file>file:/C:/wamp/www/MeetMeSoftware/src/meetmeBundle/Entity/InvitedEvent.php</file>
         </group>
     </open-files>
 </project-private>

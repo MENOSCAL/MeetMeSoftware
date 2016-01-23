@@ -179,11 +179,207 @@
                                 <i class="fa fa-globe"></i> <span>Home</span>
                             </a>
                         </li>
+                        
+                        <!--
                         <li class="active">
-                            <a href="{{path('meetme_profile', {'usuariop': username})}}">
-                                <i class="fa fa-user"></i> <span>Contacts</span>
+                            <a href="{{path('meetme_formalevent', {'usuariop': username})}}">
+                                <i class="fa fa-user"></i> <span>Formal Event</span>
                             </a>
                         </li>
+                        -->
+                        
+                        
+                        <li class="active">
+                            <!--Begin. copiar esto y pegarlo para formal Event-->
+                            <a href="#">
+                                <i class="fa fa-info-circle"></i>
+                                <span data-toggle="modal" data-target="#FormalEvent" >Formal Event</span>
+                            </a>
+
+                            <div class="modal fade" id="FormalEvent" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" >
+                                        <div style="background-color:#304677;" class="modal-header">
+                                            <button style="background-color:#367fa9;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h2 style="color:white;background-color:#304677;font-family:'Kaushan Script', cursive;">Formal Event</h2>
+                                        </div>
+                                        <div class="modal-body" style="overflow-y: auto; height: 450px;">
+                                            
+                                            
+                                            
+                                            
+                                            <form action="{{path('meetme_formalevent')}}" method="POST">
+                
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <input type="text" name="titulo" class="form-control" maxlength="15" placeholder="Write a title for the agenda..."/>
+                    </div>
+                    <div class="form-group">
+                         <label class = "labelf" for="cargo">Role</label>
+                    </div>
+                    <div class="form-group">
+                        <select name="cargo" class="form-control">
+                            <option  value="secretario">Secretario</option>
+                            <option  value="moderador">Moderador</option>
+                            <option  value="administrador">Administrador</option>
+                        </select>
+                    </div>    
+                     <div class="form-group">
+                         <label class = "labelf" for="cargo">Participants</label>
+                    </div>
+                    <div class="form-group">
+                        <select name="invitado" class="form-control">
+                            <option  value="name">Evelyn Gonzalez</option>
+                            <option  value="name">Raul Rodriguez</option>
+                            <option  value="name">Victor Menoscal</option>
+                            <option  value="name">Marcelo Sanchez</option>
+                        </select>
+                    </div>    
+                    <div class="form-group">
+                        <input type="text" name="descripcion" class="form-control" maxlength="15" placeholder="A description for the agenda..."/>
+                    </div>
+                    
+
+                </div>
+                <div class="footer bg-gray">              
+                    <button type="submit" style="background-color:#FF9900;" class="btn btn-block">Create Event</button>
+                    <a href="{{path('meetme_login')}}" class="text-center">Go back</a>
+                </div>
+            </form>
+            
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End. Pop Up formal event Form -->
+                            
+                            
+                           
+                           
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                         <li class="active">
+                            <!--Begin. copiar esto y pegarlo para Informal Event-->
+                            <a href="#">
+                                <i class="fa fa-info-circle"></i>
+                                <span data-toggle="modal" data-target="#InformalEvent" >Informal Event</span>
+                            </a>
+
+                            <div class="modal fade" id="InformalEvent" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" >
+                                        <div style="background-color:#304677;" class="modal-header">
+                                            <button style="background-color:#367fa9;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h2 style="color:white;background-color:#304677;font-family:'Kaushan Script', cursive;">Informal Event</h2>
+                                        </div>
+                                        <div class="modal-body" style="overflow-y: auto; height: 450px;">
+                                            
+                                            <form action="{{path('meetme_createdevent')}}" method="POST">
+                
+                <div class="body bg-gray">
+                    <div class="form-group">
+                        <input type="text" name="title" class="form-control" maxlength="80" placeholder="Write a title for the agenda..." required/>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                         <label class = "labelf" for="date">Please choose a date</label>
+                    </div>
+                    
+                    <div class="form-group">	
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="time" name="hour" class="form-control" maxlength="15" placeholder="Please type an hour for this event..." required/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="description" class="form-control" maxlength="500" placeholder="A description for the agenda..." required/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="place" class="form-control" maxlength="100" placeholder="Place of the event..." required/>
+                    </div>
+                  
+                </div>
+                <div class="footer bg-gray">              
+                    <button type="submit" style="background-color:#344B7D; color: white"class="btn btn-block">Save</button>          
+                                          
+                </div>    
+                 <div class="footer bg-gray"> 
+                    <a href="{{path('meetme_login')}}" class="text-center">Go back</a>
+                </div>
+            </form>
+            
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End. Pop Up Informal event Form -->
+                            
+                            
+                           
+                           
+                        </li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         <li id="crearRuta" class="active">
                             <a href="#">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
@@ -192,6 +388,15 @@
                                 <input type="button" class="btn btn-info btnResetRuta" value="Reset" onclick="reset()"/>
                             </div>
                         </li>
+                        
+                        
+                        
+                       
+                         
+                       
+                        
+                        
+                        
                         <li class="active">
                             <!--Begin. copiar esto y pegarlo para form upload-->
                             <a href="#">
@@ -237,6 +442,8 @@
                             </div>
                             <!--End. copiar esto y pegarlo para form upload-->
                             
+                            
+                           
                             <!--Begin. Pop Up Upload Image Form -->
                             <div class="modal fade" id="modalImage" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -357,14 +564,22 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
+                            <h1 class="body_h1"> Events </h1><br />
+                            <table id = "tablehead" cellpadding="0" cellspacing="0" width="100%">
+                                        <thead>
+                                           <th>Title</th>
+                                           <th>Description</th>
+                                        </thead>
+                            </table>           
                         {% block content %}
-                            <h1 class="body_h1"> Eventos </h1><br />
+                            
 
                             {% for event in pagination %}
                             <!--<a href="" target="_blank">-->
-                            <a href="{{ path('meetme_showevent', {'varid': event.id}) }}">
-                                <div dir="rtl" class="st_simple_box" id="customer{{event.id}}" >
-                                    <table cellpadding="0" cellspacing="0" width="100%">
+                            <a href="{{ path('meetme_showevent', {'varid': event.eid}) }}">
+                                <div dir="rtl" class="st_simple_box" id="customer{{event.eid}}" >
+                                    <table id = "tablevents" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
                                         <tr>
                                             <td style="vertical-align: top; width: 15px;">
                                                 
@@ -376,6 +591,7 @@
                                                 <p><span style="font-family: Tahoma;">{{event.title}}</span></p>
                                             </td>
                                         </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </a>

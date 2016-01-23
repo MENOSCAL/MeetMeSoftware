@@ -175,3 +175,55 @@ body {
     padding: 0;
     margin-top: 10px;
 }
+
+#tablehead {
+/*estilo de los elementos(th)*/
+background-color: #304677;
+width:80%;
+color:#fff;
+font-size:16px;
+padding: 8px;
+margin:24px auto;
+border-left: 1px solid #ccc;
+border-right: 1px solid #ccc;
+font-family:helvetica,arial,sans-serif;
+/*font-weight:normal;*/
+text-transform: uppercase;
+}
+
+#tablehead th{
+    text-align: center;
+}
+
+
+
+#tablevents{
+/*estilo de el cuerpo de nuestra tabla*/
+background-color: #304677;
+width:80%;
+margin:24px auto;
+border-left: 1px solid #ccc;
+border-right: 1px solid #ccc;
+font-family:helvetica,arial,sans-serif;
+font-weight:normal;
+text-transform: uppercase;
+}
+
+
+
+
+#tablevents td{
+/*estilo a los elementos (td)*/
+width:100px;
+height: 24px;
+}
+/*Aqui esta la magia ahora vamos usar el  nth-child()**/
+#tablevents tr:nth-child(odd){
+/*colors odd rows*/
+background-color: #ffffff;
+}
+#tablevents tr:nth-child(even){
+/*colors even rows*/
+background:#EDEDED;
+/*background:#304677;*/
+}

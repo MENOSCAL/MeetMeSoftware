@@ -3,7 +3,9 @@
 namespace meetmeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use meetmeBundle\Entity\Event;
 use meetmeBundle\Entity\InvitedPerson;
+use meetmeBundle\Entity\InvitedEvent;
 use Symfony\Component\Validator\Constraints\Email;
 
 class emailController extends Controller{
@@ -20,6 +22,7 @@ class emailController extends Controller{
                 $sesion->set('login', $login);
                 
                 $eventTitle= $request->get('eventtitle');
+                ///$eventTitle= filter_input(INPUT_POST, 'eventtitle', FILTER_SANITIZE_STRING);
                 $email = $request->get('email');
                 
                 $fullName = $request->get('firstname');
@@ -28,6 +31,8 @@ class emailController extends Controller{
                 $hour = $request->get('hour');
                 $place= $request->get('place');
                 
+                $code = $searchCode.htmlspecialchars("<").$email;
+                                
                 
                 $emailConstraint = new Email();
                 //We can set all restriction options in this manner.
@@ -44,33 +49,141 @@ class emailController extends Controller{
                 $messagetxt2 =  "Please click here to accept this invitation\n\n";
                 $messagetxt3 = $request->get('messagetxt');
                 $messagetxt = $messagetxt1.$messagetxt2.$messagetxt3;
-                $limit=1; 
+                
+                
+                $sesion = $this->getRequest()->getSession();
+                $em = $this->getDoctrine()->getManager();
+                $repository = $em->getRepository('meetmeBundle:InvitedPerson'); 
+        
+        
+                $invitedPerson = new InvitedPerson();
+                $invitedPerson = $repository->findOneBy(array('email'=>$email));
+                
+                if(!$invitedPerson){
+                        $invitedPerson->setEmail($email);
+                        $em->persist($invitedPerson);
+                        $em->flush();
+                }       
+                
+                
+                 $query = $em->createQueryBuilder()
+                ->select('e')
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->andWhere('e.searchCode = ?1')
+                ->setParameter(1 , $searchCode)
+                ->getQuery();
+                 
+                 $events = $query->getResult();
+                
+                /* funciona 100 %
+                 $query = $em->createQueryBuilder()
+                ->select('e')
+                ->from('meetmeBundle\Entity\Event', 'e')
+                ->where('e.createdBy = ?1')
+                ->andWhere('e.place = ?2')
+                ->setParameter(1 , 100)
+                ->setParameter(2 , 'Guayaquil')
+                ->getQuery();
+                 
+                 $events = $query->getResult();
+                 */
+                 
+                
+                ////$repository2 = $em->getRepository('meetmeBundle:Event'); 
+                ///$event = new Event();
+                /////$event = $repository2->findOneBy(array('title'=> $eventTitle, 'place' => $place ));
+                
+                
+              foreach($events as $event){
+                   
+                $invitedPerson = $repository->findOneBy(array('email'=>$email));  
+                $invitedEvent = new InvitedEvent();
+                $invitedEvent->setIdevent($event);
+                $invitedEvent->setIdinvited($invitedPerson);
+                $invitedEvent->setSendingInvitationDate(new \DateTime("now"));
+                
+                $em->persist($invitedEvent);
+                $em->flush();
+                        
+               
+               }        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                 //////}
+                //$invitedPerson = new InvitedPerson(); 
+                //$invitedPerson->setEmail($email);
+                
+                
+               // $invitedPerson->setInvitationDate(new \DateTime("now"));
+                
+                
+                
+                //foreach($events as $event)
+                //{
+                    //$id = $event->getId();
+                    //$event->addIdinvited($invitedPerson);
+                    //$invitedPerson->addIdevent($event);
+                    //$em->persist($event);
+                    //$em->persist($invitedPerson);
+                   // $em->flush();
+                 //}
+                  /*  
+                  $limit=1; 
                 $em = $this->getDoctrine()->getManager();
                 $query = $em->createQueryBuilder()
                 ->select('e')
                 ->from('meetmeBundle:Event', 'e')
-                ->orderBy('e.eventDate', 'DESC')
+                ->orderBy('e.creationDate', 'DESC')
                 ->setMaxResults($limit)
                 ->getQuery() 
                 ;
                 $events = $query->getResult();
-                $invitedPerson = new InvitedPerson(); 
-                $invitedPerson->setEmail($email);
-                $invitedPerson->setInvitationDate(new \DateTime("now"));
-                foreach($events as $event)
+                
+                
+                $limit=1; 
+                $em = $this->getDoctrine()->getManager();
+                $query = $em->createQueryBuilder()
+                ->select('p')
+                ->from('meetmeBundle:InvitedPerson', 'p')
+                ->orderBy('p.creationDate', 'DESC')
+                ->setMaxResults($limit)
+                ->getQuery() 
+                ;
+                $invitedPersons = $query->getResult();
+                
+                 foreach($events as $event)
                 {
-                    //$id = $event->getId();
-                    $event->addIdinvited($invitedPerson);
-                    $invitedPerson->addIdevent($event);
-                    $em->persist($event);
-                    $em->persist($invitedPerson);
-                    $em->flush();
-                 }
+                   $idevent = $event->getId();
+                }
+                
+                 foreach($invitedPersons as $invitedPerson)
+                {
+                   $idInvitedPerson = $invitedPerson->getId();
+                }
+                
+                */
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 $message = \Swift_Message::newInstance()
                 ->setSubject('Invitation from MeetMePlanner...')
                 ->setFrom('meetmeplanner@gmail.com')
                 ->setTo($email)
-                ->setBody($messagetxt."\n".$this->render('meetmeBundle:twig_html:invitation.html.twig', array('email'=> $email)));
+                ->setBody($messagetxt."\n".$this->render('meetmeBundle:twig_html:invitation.html.twig', array('code'=> $code)));
                 $mailer = $this->get('mailer');
                 $mailer->send($message);
                 $spool = $mailer->getTransport()->getSpool();

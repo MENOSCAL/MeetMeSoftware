@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Event
  *
- * @ORM\Table(name="event")
+ * @ORM\Table(name="event", indexes={@ORM\Index(name="event_fk_1", columns={"created_by"})})
  * @ORM\Entity
  */
 class Event
@@ -85,27 +85,15 @@ class Event
     private $searchCode;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \User
      *
-     * @ORM\ManyToMany(targetEntity="InvitedPerson", mappedBy="idevent")
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
+     * })
      */
-    private $idinvited;
+    private $createdBy;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="idevent")
-     */
-    private $iduser;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idinvited = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->iduser = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -326,68 +314,25 @@ class Event
     }
 
     /**
-     * Add idinvited
+     * Set createdBy
      *
-     * @param \meetmeBundle\Entity\InvitedPerson $idinvited
+     * @param \meetmeBundle\Entity\User $createdBy
      * @return Event
      */
-    public function addIdinvited(\meetmeBundle\Entity\InvitedPerson $idinvited)
+    public function setCreatedBy(\meetmeBundle\Entity\User $createdBy = null)
     {
-        $this->idinvited[] = $idinvited;
+        $this->createdBy = $createdBy;
 
         return $this;
     }
 
     /**
-     * Remove idinvited
+     * Get createdBy
      *
-     * @param \meetmeBundle\Entity\InvitedPerson $idinvited
+     * @return \meetmeBundle\Entity\User 
      */
-    public function removeIdinvited(\meetmeBundle\Entity\InvitedPerson $idinvited)
+    public function getCreatedBy()
     {
-        $this->idinvited->removeElement($idinvited);
-    }
-
-    /**
-     * Get idinvited
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdinvited()
-    {
-        return $this->idinvited;
-    }
-
-    /**
-     * Add iduser
-     *
-     * @param \meetmeBundle\Entity\User $iduser
-     * @return Event
-     */
-    public function addIduser(\meetmeBundle\Entity\User $iduser)
-    {
-        $this->iduser[] = $iduser;
-
-        return $this;
-    }
-
-    /**
-     * Remove iduser
-     *
-     * @param \meetmeBundle\Entity\User $iduser
-     */
-    public function removeIduser(\meetmeBundle\Entity\User $iduser)
-    {
-        $this->iduser->removeElement($iduser);
-    }
-
-    /**
-     * Get iduser
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIduser()
-    {
-        return $this->iduser;
+        return $this->createdBy;
     }
 }

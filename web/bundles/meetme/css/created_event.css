@@ -1,0 +1,48 @@
+
+label{
+width:100px;
+border-color:#0101DF;
+border-width:1px;
+margin-left:5px;
+border-style:solid;
+background:#F5F5F5;
+font-family:"Courier New",monospace;
+font-size:12px;
+color:#08298A;
+}
+
+input{
+width:200px;
+border-color:#0101DF;
+border-width:1px;
+margin-left:10px;
+border-style:solid;
+background:#F5F5F5;
+font-family:"Courier New",monospace;
+font-size:12px;
+color:#08298A;
+}
+
+#submitbtn1{
+width:300px;
+border-color:#0101DF;
+border-width:2px;
+margin-left:10px;
+border-style:solid;
+background:#F5F5F5;
+font-family:"Courier New",monospace;
+font-size:12px;
+color:#08298A;
+}
+
+#event_created_by{
+width:300px;
+border-color:#0101DF;
+border-width:3px;
+margin-left:10px;
+border-style:solid;
+background:#F5F5F5;
+font-family:"Courier New",monospace;
+font-size:14px;
+color:#08298A;
+}

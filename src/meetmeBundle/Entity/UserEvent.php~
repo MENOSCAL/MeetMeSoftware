@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserEvent
  *
- * @ORM\Table(name="user_event", indexes={@ORM\Index(name="fk_user", columns={"iduser"}), @ORM\Index(name="fk_event", columns={"idevent"})})
+ * @ORM\Table(name="user_event", indexes={@ORM\Index(name="user_event_fk_2", columns={"idevent"}), @ORM\Index(name="user_event_fk_1", columns={"iduser"})})
  * @ORM\Entity
  */
 class UserEvent
@@ -22,14 +22,18 @@ class UserEvent
     private $id;
 
     /**
-     * @var \Event
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="Event")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idevent", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="sending_invitation_date", type="datetime", nullable=true)
      */
-    private $idevent;
+    private $sendingInvitationDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="accepted_invitation_date", type="datetime", nullable=true)
+     */
+    private $acceptedInvitationDate;
 
     /**
      * @var \User
@@ -41,61 +45,15 @@ class UserEvent
      */
     private $iduser;
 
-
-
     /**
-     * Get id
+     * @var \Event
      *
-     * @return integer 
+     * @ORM\ManyToOne(targetEntity="Event")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idevent", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $idevent;
 
-    /**
-     * Set idevent
-     *
-     * @param \meetmeBundle\Entity\Event $idevent
-     * @return UserEvent
-     */
-    public function setIdevent(\meetmeBundle\Entity\Event $idevent = null)
-    {
-        $this->idevent = $idevent;
 
-        return $this;
-    }
-
-    /**
-     * Get idevent
-     *
-     * @return \meetmeBundle\Entity\Event 
-     */
-    public function getIdevent()
-    {
-        return $this->idevent;
-    }
-
-    /**
-     * Set iduser
-     *
-     * @param \meetmeBundle\Entity\User $iduser
-     * @return UserEvent
-     */
-    public function setIduser(\meetmeBundle\Entity\User $iduser = null)
-    {
-        $this->iduser = $iduser;
-
-        return $this;
-    }
-
-    /**
-     * Get iduser
-     *
-     * @return \meetmeBundle\Entity\User 
-     */
-    public function getIduser()
-    {
-        return $this->iduser;
-    }
 }

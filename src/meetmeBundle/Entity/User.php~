@@ -59,9 +59,9 @@ class User
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer", nullable=false)
+     * @ORM\Column(name="is_active", type="integer", nullable=false)
      */
-    private $status;
+    private $isActive;
 
     /**
      * @var string
@@ -87,27 +87,5 @@ class User
      */
     private $country;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Event", inversedBy="iduser")
-     * @ORM\JoinTable(name="user_event",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="iduser", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idevent", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $idevent;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 }

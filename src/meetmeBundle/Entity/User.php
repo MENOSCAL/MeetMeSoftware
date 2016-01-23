@@ -59,9 +59,9 @@ class User
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer", nullable=false)
+     * @ORM\Column(name="is_active", type="integer", nullable=false)
      */
-    private $status;
+    private $isActive;
 
     /**
      * @var string
@@ -87,28 +87,6 @@ class User
      */
     private $country;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Event", inversedBy="iduser")
-     * @ORM\JoinTable(name="user_event",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="iduser", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="idevent", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $idevent;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->idevent = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
 
     /**
@@ -237,26 +215,26 @@ class User
     }
 
     /**
-     * Set status
+     * Set isActive
      *
-     * @param integer $status
+     * @param integer $isActive
      * @return User
      */
-    public function setStatus($status)
+    public function setIsActive($isActive)
     {
-        $this->status = $status;
+        $this->isActive = $isActive;
 
         return $this;
     }
 
     /**
-     * Get status
+     * Get isActive
      *
      * @return integer 
      */
-    public function getStatus()
+    public function getIsActive()
     {
-        return $this->status;
+        return $this->isActive;
     }
 
     /**
@@ -326,38 +304,5 @@ class User
     public function getCountry()
     {
         return $this->country;
-    }
-
-    /**
-     * Add idevent
-     *
-     * @param \meetmeBundle\Entity\Event $idevent
-     * @return User
-     */
-    public function addIdevent(\meetmeBundle\Entity\Event $idevent)
-    {
-        $this->idevent[] = $idevent;
-
-        return $this;
-    }
-
-    /**
-     * Remove idevent
-     *
-     * @param \meetmeBundle\Entity\Event $idevent
-     */
-    public function removeIdevent(\meetmeBundle\Entity\Event $idevent)
-    {
-        $this->idevent->removeElement($idevent);
-    }
-
-    /**
-     * Get idevent
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdevent()
-    {
-        return $this->idevent;
     }
 }
